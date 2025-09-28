@@ -28,6 +28,12 @@ header {
     font-size: 1.8rem;
     font-weight: normal;
     letter-spacing: 1px;
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.logo:hover {
+    color: inherit !important;
 }
 
 nav {
