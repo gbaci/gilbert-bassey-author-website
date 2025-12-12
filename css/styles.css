@@ -1099,7 +1099,7 @@ footer p {
 }
 /* ADM WHAT I ASK SECTION */
 .adm-ask-section {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto 4rem auto;
 }
 .adm-ask-intro {
@@ -1131,7 +1131,7 @@ footer p {
 
 /* ADM FORM SECTION */
 .adm-form-section {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto 6rem auto;
 }
 
@@ -1254,7 +1254,26 @@ footer p {
     min-width: 0;
 }
 
+/* ADM BOOK DESCRIPTION */
+.adm-description {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
 
+.adm-description .section-header {
+    margin-bottom: 2rem;
+}
+
+.adm-description p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.adm-description p:last-child {
+    margin-bottom: 0;
+}
 /* ADM MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .adm-hero-content {
