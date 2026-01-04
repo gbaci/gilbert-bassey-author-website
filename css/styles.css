@@ -1613,3 +1613,70 @@ footer p {
     box-sizing: border-box;
 }
 }
+
+/* Fair Deal page - asks next to cover */
+.adm-asks-new h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.adm-asks-new .adm-ask-intro {
+    font-style: normal;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.adm-ask-list-inline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.adm-ask-list-inline li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.adm-ask-list-inline li:last-child {
+    border-bottom: none;
+}
+
+.adm-ask-list-inline strong {
+    color: #333;
+}
+
+.adm-ask-note {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.adm-ask-list-inline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    counter-reset: asks;
+}
+
+.adm-ask-list-inline li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    position: relative;
+    counter-increment: asks;
+}
+
+.adm-ask-list-inline li::before {
+    content: counter(asks) ".";
+    position: absolute;
+    left: 0;
+    color: #c41e3a;
+    font-weight: 600;
+}
