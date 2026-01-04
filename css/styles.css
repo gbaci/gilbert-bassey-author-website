@@ -1396,7 +1396,9 @@ footer p {
 }
 
 .book-option-card .buy-btn {
-    display: inline-block;
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 
 /* Digital form placeholder - will be replaced by MailerLite */
