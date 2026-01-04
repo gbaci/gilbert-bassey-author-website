@@ -1305,6 +1305,250 @@ footer p {
     flex-wrap: wrap;
 }
 
+/* =====================================================
+   A DECENT MAN - RESTRUCTURED BOOK PAGE STYLES
+   Add this to the end of your styles.css file
+   ===================================================== */
+
+/* HERO - Title and Tagline centered */
+.adm-hero-new {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.adm-hero-new h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.adm-tagline-new {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* BOOK DETAILS - Cover and Synopsis side by side */
+.adm-book-details {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 6rem;
+}
+
+.adm-cover-new {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.adm-synopsis-new p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.25rem;
+}
+
+.adm-synopsis-new p:last-child {
+    margin-bottom: 0;
+}
+
+/* GET THE BOOK SECTION */
+.adm-get-book {
+    max-width: 700px;
+    margin: 0 auto 6rem auto;
+}
+
+.book-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.book-option-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.book-option-card.book-option-featured {
+    border: 2px solid #c41e3a;
+    background: #fefafa;
+}
+
+.book-option-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.book-option-card > p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.book-option-card .buy-btn {
+    display: inline-block;
+}
+
+/* Digital form placeholder - will be replaced by MailerLite */
+.digital-form-placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-row-inline {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.form-row-inline input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.digital-form-placeholder button {
+    padding: 0.9rem 1.5rem;
+    background: #c41e3a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.digital-form-placeholder button:hover {
+    background: #a01829;
+}
+
+/* Ebook links container */
+.ebook-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* LEAVE A REVIEW SECTION */
+.adm-reviews {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
+
+.reviews-intro {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.review-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ADM Free Ebook Form - inside card */
+.book-option-card .ml-form-embedContainer {
+    margin: 0 !important;
+    max-width: none !important;
+    text-align: left !important;
+}
+
+.book-option-card .ml-form-embedWrapper {
+    padding: 0 !important;
+}
+
+.book-option-card .ml-form-embedBody {
+    padding: 0 !important;
+}
+
+.book-option-card .form-row {
+    margin-bottom: 1rem;
+}
+
+.book-option-card button[type="submit"] {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: #c41e3a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.book-option-card button[type="submit"]:hover {
+    background: #a01829;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .adm-hero-new h1 {
+        font-size: 2.2rem;
+    }
+    
+    .adm-tagline-new {
+        font-size: 1.1rem;
+    }
+    
+    .adm-book-details {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .adm-cover-container-new {
+        text-align: center;
+    }
+    
+    .adm-cover-new {
+        max-width: 220px;
+    }
+    
+    .book-option-card {
+        padding: 1.5rem;
+    }
+    
+    .form-row-inline {
+        flex-direction: column;
+    }
+    
+    .digital-form-placeholder button {
+        width: 100%;
+    }
+    
+    .ebook-links {
+        flex-direction: column;
+    }
+    
+    .ebook-links .buy-btn {
+        text-align: center;
+    }
+    
+    .review-links {
+        flex-direction: column;
+    }
+    
+    .review-links .buy-btn {
+        text-align: center;
+    }
+}
+
 /* ADM MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .adm-hero-content {
