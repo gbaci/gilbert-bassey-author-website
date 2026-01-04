@@ -1680,3 +1680,90 @@ footer p {
     color: #c41e3a;
     font-weight: 600;
 }
+
+/* for the review page */
+ .review-page {
+            text-align: center;
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .review-cover {
+            width: 180px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .review-page h1 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .review-page .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .review-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .review-btn {
+            display: block;
+            padding: 1rem 1.5rem;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .review-btn:hover {
+            border-color: #c41e3a;
+            color: #c41e3a;
+        }
+        
+        .social-note {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .review-divider {
+            margin: 2.5rem 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        
+        .social-section h2 {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .social-links a:hover {
+            color: #c41e3a;
+        }
