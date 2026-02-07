@@ -1769,3 +1769,314 @@ footer p {
         .social-links a:hover {
             color: #c41e3a;
         }
+
+/* =====================================================
+   HYVOR TALK COMMENTS SECTION
+   ===================================================== */
+
+.hyvor-comments {
+    margin: 6rem 0 4rem 0;
+    padding-top: 4rem;
+    border-top: 1px solid #eee;
+}
+
+.hyvor-comments .section-header {
+    margin-bottom: 3rem;
+}
+
+/* =====================================================
+   BLOG INDEX PAGE (Lightbringer)
+   ===================================================== */
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.blog-header h1 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.blog-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Tag Filters */
+.tag-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tag-btn {
+    padding: 0.5rem 1.2rem;
+    background: white;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-btn:hover {
+    border-color: #c41e3a;
+    color: #c41e3a;
+    background: #fff5f7;
+}
+
+.tag-btn.active {
+    background: #c41e3a;
+    color: white;
+    border-color: #c41e3a;
+}
+
+/* Post List */
+.post-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post-count {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.post-card {
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.post-card:hover {
+    border-color: #c41e3a;
+    box-shadow: 0 4px 12px rgba(196, 30, 58, 0.08);
+}
+
+.post-card-title {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 0.75rem;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.post-card-title:hover {
+    color: #c41e3a;
+}
+
+.post-card-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.post-card-category {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+}
+
+/* Post Tags */
+.post-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.post-tag {
+    padding: 0.3rem 0.8rem;
+    background: #f5f5f5;
+    color: #666;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* =====================================================
+   BLOG POST PAGE
+   ===================================================== */
+
+.blog-post {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.post-header h1 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.post-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.post-author {
+    font-weight: 500;
+    color: #333;
+}
+
+.post-category {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+}
+
+/* Post Content Typography */
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.post-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 3rem 0 1.5rem 0;
+    color: #333;
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem 0;
+    color: #333;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content blockquote {
+    border-left: 4px solid #c41e3a;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #555;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.75rem;
+}
+
+.post-content code {
+    background: #f5f5f5;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    color: #c41e3a;
+}
+
+.post-content a {
+    color: #c41e3a;
+    text-decoration: none;
+    border-bottom: 1px solid #c41e3a;
+}
+
+.post-content a:hover {
+    border-bottom: 2px solid #c41e3a;
+}
+
+/* Mobile Responsive - Blog */
+@media (max-width: 768px) {
+    .blog-header h1 {
+        font-size: 2rem;
+    }
+
+    .tag-filters {
+        gap: 0.5rem;
+    }
+
+    .tag-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .post-card {
+        padding: 1.5rem;
+    }
+
+    .post-card-title {
+        font-size: 1.3rem;
+    }
+
+    .post-card-meta {
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .post-header h1 {
+        font-size: 2rem;
+    }
+
+    .post-content {
+        font-size: 1.05rem;
+    }
+
+    .post-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .post-content h3 {
+        font-size: 1.2rem;
+    }
+}
