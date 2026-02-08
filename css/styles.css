@@ -1882,6 +1882,14 @@ footer p {
     color: #c41e3a;
 }
 
+.post-card-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
 .post-card-meta {
     display: flex;
     gap: 1.5rem;
