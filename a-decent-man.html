@@ -185,8 +185,22 @@
         var $ = ml_jQuery || jQuery;
         $('.ml-subscribe-form-35301928 .row-success').show();
         $('.ml-subscribe-form-35301928 .row-form').hide();
-        fbq('track', 'Lead');
     }
+
+    // Fire Lead event when success message becomes visible
+    (function() {
+        var successEl = document.querySelector('.ml-subscribe-form-35301928 .row-success');
+        if (!successEl) return;
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'style' && successEl.style.display !== 'none') {
+                    fbq('track', 'Lead');
+                    observer.disconnect();
+                }
+            });
+        });
+        observer.observe(successEl, { attributes: true, attributeFilter: ['style'] });
+    })();
 </script>
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
 <script>
