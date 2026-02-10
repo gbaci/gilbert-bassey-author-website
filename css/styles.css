@@ -277,6 +277,51 @@ section {
     text-decoration: underline;
 }
 
+/* MY THOUGHTS SECTION (Homepage) */
+.thoughts-section {
+    margin: 8rem 0;
+}
+
+.thoughts-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.thoughts-list li {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.thoughts-list li:first-child {
+    border-top: 1px solid #eee;
+}
+
+.thoughts-title {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.thoughts-title:hover {
+    color: #c41e3a;
+}
+
+.thoughts-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    margin: 0 0 0.3rem 0;
+    line-height: 1.4;
+}
+
+.thoughts-date {
+    font-size: 0.85rem;
+    color: #999;
+}
+
 /* SIMPLE ABOUT PAGE */
 
 .simple-about {
@@ -1929,6 +1974,84 @@ footer p {
     font-size: 0.8rem;
     font-weight: 500;
     text-transform: capitalize;
+}
+
+/* Blog Newsletter CTA */
+.blog-newsletter {
+    text-align: center;
+    max-width: 500px;
+    margin: 6rem auto 4rem auto;
+}
+
+.blog-newsletter h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.blog-newsletter p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.blog-newsletter .newsletter-form {
+    display: flex;
+    gap: 0;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.blog-newsletter .newsletter-form input[type="text"],
+.blog-newsletter .newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-right: none;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border-radius: 0;
+    min-width: 0;
+}
+
+.blog-newsletter .newsletter-form button {
+    padding: 1rem 2rem;
+    border: 1px solid #c41e3a;
+    background: #c41e3a;
+    color: white;
+    font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.blog-newsletter .newsletter-form button:hover {
+    background: #a01829;
+    border-color: #a01829;
+}
+
+@media (max-width: 768px) {
+    .blog-newsletter .newsletter-form {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .blog-newsletter .newsletter-form input[type="text"],
+    .blog-newsletter .newsletter-form input[type="email"] {
+        border-right: 1px solid #ddd;
+        border-bottom: none;
+    }
+
+    .blog-newsletter .newsletter-form button {
+        width: 100%;
+        padding: 1rem;
+    }
 }
 
 /* =====================================================
