@@ -206,6 +206,15 @@
         });
         observer.observe(successEl, { attributes: true, attributeFilter: ['style'] });
     })();
+
+    // Track ebook download clicks via event delegation
+    document.addEventListener('click', function(e) {
+        var link = e.target.closest('.ebook-download-links a');
+        if (link) {
+            var format = link.textContent.trim().replace('Download ', '');
+            fbq('trackCustom', 'EbookDownload', { format: format });
+        }
+    });
 </script>
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
 <script>
