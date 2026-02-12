@@ -1446,6 +1446,31 @@ footer p {
     text-align: center;
 }
 
+/* Ebook Download Links (success message) */
+.ebook-download-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.ml-form-successContent {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.ml-form-successContent h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.ml-form-successContent p {
+    color: #666;
+    margin-bottom: 0;
+}
+
 /* Digital form placeholder - will be replaced by MailerLite */
 .digital-form-placeholder {
     display: flex;
