@@ -5,7 +5,14 @@
       "WebFetch(domain:talk.hyvor.com)",
       "WebFetch(domain:therhythmofexistence.substack.com)",
       "WebFetch(domain:gilbertbassey.medium.com)",
-      "WebFetch(domain:medium.com)"
+      "WebFetch(domain:medium.com)",
+      "Bash(cat:*)",
+      "Bash(xargs:*)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(python3:*)"
     ]
   }
 }
