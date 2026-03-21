@@ -2264,15 +2264,15 @@ footer p {
     border-bottom: 2px solid #c41e3a;
 }
 
-/* SHARE BUTTONS */
-.post-share {
+/* SHARE + COMMENT CTA */
+.post-cta {
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid #e5e5e5;
 }
 
-.share-label {
-    font-size: 0.95rem;
+.share-prompt {
+    font-size: 1rem;
     color: #666;
     margin-bottom: 1rem;
     font-style: italic;
@@ -2306,6 +2306,7 @@ footer p {
 .comment-invitation {
     font-style: italic;
     color: #666;
-    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
     font-size: 1rem;
 }
