@@ -277,6 +277,46 @@ section {
     text-decoration: underline;
 }
 
+/* LEARN STORYCRAFT PROMO (Homepage) */
+.lsc-promo-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.lsc-promo-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.lsc-promo-info h3 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+}
+
+.lsc-promo-info p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .lsc-promo-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .lsc-promo-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
 /* MY THOUGHTS SECTION (Homepage) */
 .thoughts-section {
     margin: 8rem 0;
@@ -2835,6 +2875,55 @@ footer p {
     color: #ddd;
 }
 
+/* REVIEWS — masonry card layout */
+.lsc-reviews-masonry {
+    columns: 3;
+    column-gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.lsc-review-card {
+    break-inside: avoid;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.lsc-band-white .lsc-review-card {
+    background: #f9f9f9;
+}
+
+.lsc-review-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+}
+
+.lsc-review-card cite {
+    font-size: 0.8rem;
+    color: #999;
+    font-style: normal;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 900px) {
+    .lsc-reviews-masonry {
+        columns: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .lsc-reviews-masonry {
+        columns: 1;
+    }
+}
+
 /* CTA BREAK */
 .lsc-cta-line {
     font-size: 1.4rem;
@@ -2871,7 +2960,21 @@ footer p {
 .lsc-price-note {
     font-size: 1rem;
     color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.lsc-earlybird {
+    font-size: 0.95rem;
+    color: #c41e3a;
+    font-weight: 500;
     margin-bottom: 2rem;
+}
+
+.lsc-earlybird strong {
+    background: rgba(196, 30, 58, 0.08);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
 }
 
 .lsc-price-includes {
