@@ -39,6 +39,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1912184123065613');
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {content_name: 'The Storytelling Course', content_type: 'product', value: 30000, currency: 'NGN'});
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1912184123065613&ev=PageView&noscript=1"
@@ -53,6 +54,7 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
       ttq.load('D74LPK3C77UCBSL4PS7G');
       ttq.page();
+      ttq.track('ViewContent', {content_name: 'The Storytelling Course', value: 30000, currency: 'NGN'});
     }(window, document, 'ttq');
     </script>
     <!-- TikTok Pixel Code End -->
@@ -385,6 +387,16 @@
     <footer class="lsc-footer">
         <p>&copy; 2026 Gilbert Bassey. All rights reserved.</p>
     </footer>
+
+    <!-- Track InitiateCheckout on all enroll button clicks -->
+    <script>
+    document.querySelectorAll('a[href*="selar.com/279y7p9l66"]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            fbq('track', 'InitiateCheckout', {content_name: 'The Storytelling Course', value: 30000, currency: 'NGN'});
+            ttq.track('InitiateCheckout', {content_name: 'The Storytelling Course', value: 30000, currency: 'NGN'});
+        });
+    });
+    </script>
 
 </body>
 </html>
