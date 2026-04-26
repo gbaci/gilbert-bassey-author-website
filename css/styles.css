@@ -2545,6 +2545,50 @@ footer p {
     margin-right: auto;
 }
 
+/* Hook-to-title spacing */
+.lsc-hook + .lsc-band-title {
+    margin-top: 4rem;
+}
+
+/* WHAT YOU'LL LEARN — transformation list */
+.lsc-learn-list {
+    list-style: none;
+    padding: 0;
+    max-width: 650px;
+    margin: 0 auto 2rem;
+}
+
+.lsc-learn-list li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #333;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.lsc-learn-list li:last-child {
+    border-bottom: none;
+}
+
+.lsc-learn-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #c41e3a;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.lsc-learn-note {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 /* WHAT YOU GET — 3 feature cards */
 .lsc-cards {
     display: grid;
@@ -2862,17 +2906,17 @@ footer p {
 .lsc-instructor-info p {
     font-size: 1.05rem;
     line-height: 1.8;
-    color: #ccc;
+    color: #333;
     margin-bottom: 1rem;
 }
 
 .lsc-instructor-info strong {
-    color: white;
+    color: #111;
 }
 
 .lsc-instructor-info em {
     font-style: italic;
-    color: #ddd;
+    color: #444;
 }
 
 /* REVIEWS — masonry card layout */
