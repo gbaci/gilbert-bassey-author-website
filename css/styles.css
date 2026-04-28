@@ -2545,6 +2545,13 @@ footer p {
     margin-right: auto;
 }
 
+/* INTRO VIDEO */
+.lsc-intro-video {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
 /* Hook-to-title spacing */
 .lsc-hook + .lsc-band-title {
     margin-top: 4rem;
