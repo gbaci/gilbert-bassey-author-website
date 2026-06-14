@@ -19,7 +19,8 @@
       "WebFetch(domain:selar.com)",
       "WebFetch(domain:help.selar.com)",
       "WebSearch",
-      "WebFetch(domain:selar.co)"
+      "WebFetch(domain:selar.co)",
+      "Bash(ffmpeg -i \"/Users/gilbertbassey/Desktop/Learn Story Craft/1080p/9. Creating compelling antagosnism.mp4\" -c:v libx264 -crf 28 -preset medium -vf scale=1280:720 -c:a aac -b:a 128k -movflags +faststart \"/Users/gilbertbassey/Desktop/Learn Story Craft/compressed/9. Creating compelling antagonism.mp4\" -y)"
     ]
   }
 }

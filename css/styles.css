@@ -1556,6 +1556,75 @@ footer p {
     flex-wrap: wrap;
 }
 
+/* Bookstore availability (Ghana / Nigeria) */
+.bookstore-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.bookstore-col h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #c41e3a;
+    margin-bottom: 0.5rem;
+}
+
+.bookstore-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bookstore-col li {
+    color: #444;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+.bookstore-col li a {
+    color: #444;
+    text-decoration: underline;
+}
+
+.bookstore-pending {
+    color: #999;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.bookstore-note {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.bookstore-note a {
+    color: #c41e3a;
+}
+
+/* Tighten MailerLite newsletter embed on the book page */
+.adm-reviews .ml-form-embedContainer {
+    margin: 1rem 0 0 0 !important;
+    max-width: none !important;
+}
+
+.adm-reviews .ml-form-embedWrapper {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.adm-reviews .ml-form-embedBody,
+.adm-reviews .ml-form-embedBodyHorizontal {
+    padding: 0 !important;
+}
+
+.adm-reviews .ml-form-formContent {
+    margin: 0 !important;
+}
+
 /* LEAVE A REVIEW SECTION */
 .adm-reviews {
     max-width: 700px;
@@ -1647,9 +1716,13 @@ footer p {
     .ebook-links {
         flex-direction: column;
     }
-    
+
     .ebook-links .buy-btn {
         text-align: center;
+    }
+
+    .bookstore-columns {
+        grid-template-columns: 1fr;
     }
     
     .review-links {
