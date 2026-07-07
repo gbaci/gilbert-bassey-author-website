@@ -165,6 +165,33 @@
                     </div>
                     <p class="bookstore-note">Outside Ghana and Nigeria? Order from <a href="https://www.amazon.com/dp/B0GLYS8CLC" target="_blank" rel="noopener">Amazon</a>. It ships worldwide.</p>
                 </div>
+
+                <!-- Free Ebook -->
+                <div class="book-option-card">
+                    <h3>Free Ebook</h3>
+                    <p>Enter your email and get the ebook delivered to your inbox, free.</p>
+                    <div id="mlb2-35301928" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-35301928">
+                        <div class="ml-form-embedWrapper embedForm">
+                            <div class="ml-form-embedBody row-form">
+                                <form class="ml-block-form"
+                                      action="https://assets.mailerlite.com/jsonp/1820482/forms/175649566695098340/subscribe"
+                                      data-code=""
+                                      method="post"
+                                      target="_blank">
+                                    <input type="email" name="fields[email]" placeholder="Your email address" required>
+                                    <input type="hidden" name="ml-submit" value="1">
+                                    <input type="hidden" name="anticsrf" value="true">
+                                    <button type="submit">Get the free ebook</button>
+                                </form>
+                            </div>
+                            <div class="ml-form-successBody row-success" style="display:none;">
+                                <div class="ml-form-successContent">
+                                    <p><strong>Check your inbox</strong> — the ebook is on its way.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -230,10 +257,31 @@
         $('.ml-subscribe-form-31368968 .row-success').show();
         $('.ml-subscribe-form-31368968 .row-form').hide();
     }
+    function ml_webform_success_35301928() {
+        var $ = ml_jQuery || jQuery;
+        $('.ml-subscribe-form-35301928 .row-success').show();
+        $('.ml-subscribe-form-35301928 .row-form').hide();
+    }
 </script>
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"></script>
 <script>
-    fetch("https://assets.mailerlite.com/jsonp/1820482/forms/166621719111403189/takel")
+    fetch("https://assets.mailerlite.com/jsonp/1820482/forms/166621719111403189/takel");
+    fetch("https://assets.mailerlite.com/jsonp/1820482/forms/175649566695098340/takel");
+</script>
+<script>
+    (function() {
+        var successEl = document.querySelector('.ml-subscribe-form-35301928 .ml-form-successBody');
+        if (!successEl) return;
+        var fired = false;
+        var observer = new MutationObserver(function() {
+            if (!fired && successEl.style.display !== 'none') {
+                fired = true;
+                fbq('track', 'Lead');
+                observer.disconnect();
+            }
+        });
+        observer.observe(successEl, { attributes: true, attributeFilter: ['style'] });
+    })();
 </script>
 </body>
 </html>
