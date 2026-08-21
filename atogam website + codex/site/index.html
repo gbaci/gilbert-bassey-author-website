@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Atogam Codex</title>
+  <meta name="description" content="A world-index for A Tale of Gods and Men. Current through Raindance, Book One.">
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function(){var t=localStorage.getItem('codex-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=IBM+Plex+Mono:wght@500;600&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/codex.css">
+</head>
+<body>
+
+  <!-- SVG mark definition — inline so CSS vars (--axis) resolve correctly -->
+  <svg style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="mark" viewBox="0 0 100 100">
+        <line x1="50" y1="5" x2="50" y2="95" style="stroke:var(--axis)" stroke-width="1.4" opacity=".85"/>
+        <circle cx="50" cy="50" r="39" fill="none" stroke="#dca948" stroke-width="3"/>
+        <path d="M26 50 A24 24 0 0 1 74 50 Z" fill="#eddaa1"/>
+        <path d="M26 50 A24 24 0 0 0 74 50 Z" fill="#241a0f"/>
+        <circle cx="50" cy="50" r="24" fill="none" stroke="#cf9f3e" stroke-width="1.1"/>
+        <line x1="26" y1="50" x2="74" y2="50" stroke="#d8ad48" stroke-width="1.1"/>
+        <line x1="50" y1="20.5" x2="50" y2="26" stroke="#b98f34" stroke-width="1.7"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="page">
+
+    <header class="masthead">
+      <svg class="mark" width="42" height="42" viewBox="0 0 100 100" aria-hidden="true"><use href="#mark"/></svg>
+      <h1 class="wordmark">The Atogam Codex</h1>
+      <p class="version-stamp">Current through Raindance · Book One</p>
+    </header>
+
+    <hr class="hairline">
+
+    <div class="category">
+      <div class="category-header">
+        <span class="category-name">Cosmology &amp; Systems</span>
+        <span class="category-count">06</span>
+      </div>
+      <ul class="entry-list">
+        <li>Cosmic Leak</li>
+        <li>The Primordial Forces</li>
+        <li>Soul</li>
+        <li>Atom</li>
+        <li>Cosmic Alignment</li>
+        <li>The Dark Bond</li>
+      </ul>
+    </div>
+
+    <hr class="hairline-faint">
+
+    <div class="category">
+      <div class="category-header">
+        <span class="category-name">People</span>
+        <span class="category-count">08</span>
+      </div>
+      <ul class="entry-list">
+        <li>Ali</li>
+        <li><a href="entries/zaka.html">Zaka — the Rainmaker</a> <span class="gated-marker" title="contains a gated section">⌁</span></li>
+        <li>Dalinar <span class="gated-marker">⌁</span></li>
+        <li>Alma</li>
+        <li>Okoro</li>
+        <li>Daniel</li>
+        <li>Abubakar</li>
+        <li>Farida</li>
+      </ul>
+    </div>
+
+    <hr class="hairline-faint">
+
+    <div class="category">
+      <div class="category-header">
+        <span class="category-name">Organisations &amp; Places</span>
+        <span class="category-count">02</span>
+      </div>
+      <ul class="entry-list">
+        <li>The Lighthouse</li>
+        <li>Hero for Hire</li>
+      </ul>
+    </div>
+
+    <hr class="hairline-faint">
+
+    <div class="category">
+      <div class="category-header">
+        <span class="category-name">Objects</span>
+        <span class="category-count">02</span>
+      </div>
+      <ul class="entry-list">
+        <li>The Mask</li>
+        <li>Three Stones in a Circle</li>
+      </ul>
+    </div>
+
+    <button class="theme-toggle" id="theme-toggle">◑ &nbsp;Toggle theme</button>
+
+  </div>
+
+  <script src="js/codex.js"></script>
+</body>
+</html>

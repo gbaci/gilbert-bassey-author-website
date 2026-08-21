@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="256" height="256" role="img" aria-label="ATOGAM Codex mark — Terminator Rising">
+  
+  <line x1="50" y1="5" x2="50" y2="95" stroke="#cdb98a" stroke-width="1.4"></line>
+  
+  <circle cx="50" cy="50" r="39" fill="none" stroke="#dca948" stroke-width="3"></circle>
+  
+  <path d="M26 50 A24 24 0 0 1 74 50 Z" fill="#eddaa1"></path>
+  
+  <path d="M26 50 A24 24 0 0 0 74 50 Z" fill="#241a0f"></path>
+  
+  <circle cx="50" cy="50" r="24" fill="none" stroke="#cf9f3e" stroke-width="1.1"></circle>
+  
+  <line x1="26" y1="50" x2="74" y2="50" stroke="#d8ad48" stroke-width="1.1"></line>
+  
+  <line x1="50" y1="20.5" x2="50" y2="26" stroke="#b98f34" stroke-width="1.7"></line>
+</svg>

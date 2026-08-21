@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vlogging Course — Direction 1 (Front Page)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#F7F4EE}
+  img{max-width:100%}
+  a{color:#DD2D1B;text-decoration:none}
+  a:hover{color:#B0210F}
+  ::selection{background:#DD2D1B;color:#fff}
+  details>summary{list-style:none;cursor:pointer}
+  details>summary::-webkit-details-marker{display:none}
+
+  /* Responsive collapse — desktop-first design; these override the inline grid columns.
+     See README "Responsive" for the intended breakpoints. */
+  @media (max-width:920px){
+    .d1-hero{grid-template-columns:1fr!important;gap:40px!important}
+    .d1-whofor{grid-template-columns:1fr!important;gap:28px!important}
+    .d1-getgrid{grid-template-columns:repeat(2,1fr)!important}
+    .d1-learn{columns:1!important}
+    .d1-instructor{grid-template-columns:1fr!important;gap:36px!important}
+    .d1-enroll{grid-template-columns:1fr!important;gap:36px!important}
+    .d1-faq{grid-template-columns:1fr!important;gap:24px!important}
+  }
+  @media (max-width:560px){
+    .d1-getgrid{grid-template-columns:1fr!important}
+    .d1-nav nav{display:none!important}
+    section{padding-top:64px!important;padding-bottom:64px!important}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================================================================== -->
+  <!-- DIRECTION 1 — FRONT PAGE (high-contrast light: ink / warm-white / red) -->
+  <!-- Copy is PLACEHOLDER and will be replaced. Capture the design system.   -->
+  <!-- ===================================================================== -->
+  <div style="background:#F7F4EE;color:#16130F;font-family:'Newsreader',Georgia,serif;min-height:100vh;overflow:hidden">
+
+    <!-- sticky early-bird banner -->
+    <div style="position:sticky;top:0;z-index:50;background:#16130F;color:#F7F4EE;font-family:'Space Grotesk',sans-serif">
+      <div style="max-width:1180px;margin:0 auto;padding:11px 32px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-size:13.5px">
+        <span style="opacity:.9">Save ₦15,000 on The Vlogging Course. Early-bird pricing ends August 1.</span>
+        <a href="#enroll" style="color:#FF6A4D;font-weight:600;text-decoration:none;white-space:nowrap">Enroll now →</a>
+      </div>
+    </div>
+
+    <!-- nav -->
+    <header class="d1-nav" style="max-width:1180px;margin:0 auto;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.01em">The Vlogging Course</span>
+      <nav style="display:flex;align-items:center;gap:30px;font-family:'Space Grotesk',sans-serif;font-size:14px">
+        <a href="#learn" style="color:#16130F;text-decoration:none;opacity:.72">Curriculum</a>
+        <a href="#instructor" style="color:#16130F;text-decoration:none;opacity:.72">Instructor</a>
+        <a href="#faq" style="color:#16130F;text-decoration:none;opacity:.72">FAQ</a>
+        <a href="#enroll" style="background:#DD2D1B;color:#fff;text-decoration:none;padding:10px 18px;border-radius:2px;font-weight:600">Enroll</a>
+      </nav>
+    </header>
+
+    <!-- hero -->
+    <section class="d1-hero" style="max-width:1180px;margin:0 auto;padding:36px 32px 70px;display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:center">
+      <div data-reveal>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#DD2D1B;margin-bottom:26px">A <span style="border-bottom:1px dotted #DD2D1B">[X]</span>-week vlogging course for creators, founders, and filmmakers</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(38px,4.7vw,66px);line-height:1.03;letter-spacing:-.026em;margin:0 0 28px">The creators growing fastest don’t have the best cameras. They tell the <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:500;color:#DD2D1B">best stories.</em></h1>
+        <p style="font-size:20px;line-height:1.55;color:#4a443b;max-width:35ch;margin:0 0 34px">A story-first vlogging course for content creators, business owners, and filmmakers who want real growth, not just more posts.</p>
+        <a href="#enroll" style="display:inline-flex;align-items:center;gap:10px;background:#DD2D1B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;text-decoration:none;padding:16px 30px;border-radius:2px">Enroll Now — ₦35,000</a>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#6B655B;margin-top:20px">Early-bird price · ₦15,000 off until August 1 · Course starts November 1</div>
+      </div>
+      <div data-reveal style="position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#DD2D1B;z-index:2"></div>
+        <img src="assets/gilbert-bw.jpg" alt="Gilbert Bassey" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;display:block;filter:grayscale(1) contrast(1.06)">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;color:#6B655B;margin-top:11px;display:flex;justify-content:space-between"><span>Gilbert Bassey · Gillian Baci</span><span>@onegillianbaci</span></div>
+      </div>
+    </section>
+
+    <!-- proof strip -->
+    <section style="border-top:1px solid rgba(22,19,15,.16);border-bottom:1px solid rgba(22,19,15,.16)">
+      <div style="max-width:1180px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:.03em">
+        <span>Over 40 million views</span><span style="color:#DD2D1B">/</span><span>Vlogger of the Year, 2024</span><span style="color:#DD2D1B">/</span><span>Author of <em style="font-family:'Newsreader',serif;font-style:italic">A Decent Man</em></span>
+      </div>
+    </section>
+
+    <!-- who it's for -->
+    <section style="max-width:1180px;margin:0 auto;padding:104px 32px">
+      <div data-reveal class="d1-whofor" style="display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#DD2D1B;margin-bottom:22px">Who it’s for</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(28px,2.7vw,38px);line-height:1.1;letter-spacing:-.02em;margin:0">If you’re building something and need people to pay attention, vlogging is your most powerful tool.</h2>
+        </div>
+        <div>
+          <div style="display:flex;gap:22px;padding:22px 0;border-top:1px solid rgba(22,19,15,.16)">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#DD2D1B;width:26px;flex:none;padding-top:4px">01</span>
+            <p style="margin:0;font-size:19px;line-height:1.5"><strong style="font-weight:600">Content creators and influencers</strong> who want to grow their following and keep the audience they have coming back.</p>
+          </div>
+          <div style="display:flex;gap:22px;padding:22px 0;border-top:1px solid rgba(22,19,15,.16)">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#DD2D1B;width:26px;flex:none;padding-top:4px">02</span>
+            <p style="margin:0;font-size:19px;line-height:1.5"><strong style="font-weight:600">Business owners and founders</strong> who want to build a brand people trust by showing the story behind it.</p>
+          </div>
+          <div style="display:flex;gap:22px;padding:22px 0;border-top:1px solid rgba(22,19,15,.16)">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#DD2D1B;width:26px;flex:none;padding-top:4px">03</span>
+            <p style="margin:0;font-size:19px;line-height:1.5"><strong style="font-weight:600">Filmmakers and video pros</strong> who want to build an audience for their work and keep their craft sharp between projects.</p>
+          </div>
+          <div style="display:flex;gap:22px;padding:22px 0;border-top:1px solid rgba(22,19,15,.16);border-bottom:1px solid rgba(22,19,15,.16)">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#DD2D1B;width:26px;flex:none;padding-top:4px">04</span>
+            <p style="margin:0;font-size:19px;line-height:1.5"><strong style="font-weight:600">Anyone with something to grow:</strong> a name, a brand, a body of work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- why different (inverted band) -->
+    <section style="background:#16130F;color:#F7F4EE">
+      <div data-reveal style="max-width:980px;margin:0 auto;padding:108px 32px;text-align:center">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#FF6A4D;margin-bottom:30px">Why this course is different</div>
+        <p style="font-family:'Newsreader',serif;font-size:clamp(24px,2.7vw,34px);line-height:1.42;margin:0;letter-spacing:-.01em">Most vlogging courses teach cameras, settings, and posting schedules. But audiences don’t grow from production value or frequency. They grow from attention, and <em style="font-style:italic;color:#FF8A72">nothing holds attention like a well-told story.</em> This course is built by a storyteller, around the real growth lever in vlogging: turning your raw moments into videos people watch to the end, follow, and come back for. Master that and you stop chasing the algorithm. You start feeding it exactly what it rewards.</p>
+      </div>
+    </section>
+
+    <!-- what you'll learn -->
+    <section id="learn" style="max-width:1180px;margin:0 auto;padding:104px 32px">
+      <div data-reveal style="max-width:760px;margin-bottom:56px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#DD2D1B;margin-bottom:22px">What you’ll learn</div>
+        <p style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(24px,2.5vw,32px);line-height:1.18;letter-spacing:-.02em;margin:0">By the end of this course, you’ll know how to turn your everyday life and work into vlogs that grow your audience: the kind people watch to the end, follow, and share.</p>
+      </div>
+      <div data-reveal class="d1-learn" style="columns:2;column-gap:64px">
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">01</span><span style="font-size:18px;line-height:1.45">How watch time drives the algorithm, and how story is what drives watch time.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">02</span><span style="font-size:18px;line-height:1.45">What actually separates a vlog from staged “reality TV,” and why true beats polished every time.</span></div>
+      <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">03</span><span style="font-size:18px;line-height:1.45">How to find the story in an ordinary day: a character, a goal, the obstacles, the payoff.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">04</span><span style="font-size:18px;line-height:1.45">Which kind of vlog fits your goals: lifestyle, journey, challenge, travel, and more.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">05</span><span style="font-size:18px;line-height:1.45">How to be natural and watchable on camera, so viewers connect with you and stay.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">06</span><span style="font-size:18px;line-height:1.45">How to shoot footage that tells a story, with the camera you already own.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">07</span><span style="font-size:18px;line-height:1.45">Which moments to capture, and how to frame them, so the story comes together in the edit.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">08</span><span style="font-size:18px;line-height:1.45">How to edit for watch time: a hook in the first 3 seconds, tight pacing, and cutting everything that drags.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">09</span><span style="font-size:18px;line-height:1.45">The art of the mini-vlog: short, standalone moments that quietly pull big numbers.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">10</span><span style="font-size:18px;line-height:1.45">How to record and edit voiceover that carries the story between your clips.</span></div>
+        <div style="break-inside:avoid;display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(22,19,15,.16);border-bottom:1px solid rgba(22,19,15,.16)"><span style="color:#DD2D1B;font-family:'Space Grotesk',sans-serif;font-size:14px">11</span><span style="font-size:18px;line-height:1.45">When to post, how to grow, and how to read your analytics without guessing.</span></div>
+      </div>
+      <p data-reveal style="font-family:'Newsreader',serif;font-style:italic;font-size:21px;line-height:1.5;margin:40px 0 0;max-width:60ch;color:#4a443b">And a repeatable way of seeing and telling your life that you’ll use on every vlog after this one.</p>
+    </section>
+
+    <!-- what you get -->
+    <section style="background:#efe9dd">
+      <div style="max-width:1180px;margin:0 auto;padding:104px 32px">
+        <div data-reveal style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#DD2D1B;margin-bottom:44px">What you get</div>
+        <div data-reveal class="d1-getgrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(22,19,15,.16);border:1px solid rgba(22,19,15,.16)">
+          <div style="background:#F7F4EE;padding:34px 28px;display:flex;flex-direction:column;gap:14px;min-height:230px">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em"><span style="color:#DD2D1B;border-bottom:2px dotted #DD2D1B">[X]</span></span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Video Lessons</span>
+            <span style="font-size:16px;line-height:1.5;color:#4a443b">Pre-recorded so you can watch at your pace. Yours for life.</span>
+          </div>
+          <div style="background:#F7F4EE;padding:34px 28px;display:flex;flex-direction:column;gap:14px;min-height:230px">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em"><span style="color:#DD2D1B;border-bottom:2px dotted #DD2D1B">[X]</span></span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Live Q&amp;A Calls</span>
+            <span style="font-size:16px;line-height:1.5;color:#4a443b">Weekly calls with Gilbert. Bring your footage, your questions, your stuck points.</span>
+          </div>
+          <div style="background:#F7F4EE;padding:34px 28px;display:flex;flex-direction:column;gap:14px;min-height:230px">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;color:#DD2D1B">✦</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Resource Pack</span>
+            <span style="font-size:16px;line-height:1.5;color:#4a443b">Shot-list templates, a gear guide, and editing checklists you’ll reuse on every vlog.</span>
+          </div>
+          <div style="background:#F7F4EE;padding:34px 28px;display:flex;flex-direction:column;gap:14px;min-height:230px">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;color:#DD2D1B">★</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Vlog Reviews</span>
+            <span style="font-size:16px;line-height:1.5;color:#4a443b">Standout students get a vlog personally reviewed by Gilbert. Chosen by quality and engagement.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- credibility band -->
+    <section style="max-width:1180px;margin:0 auto;padding:104px 32px">
+      <div data-reveal style="border:1px solid rgba(22,19,15,.2);padding:64px;text-align:center;max-width:900px;margin:0 auto">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#DD2D1B;margin-bottom:24px">Why learn from Gilbert</div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,46px);line-height:1.08;letter-spacing:-.025em;margin:0 0 26px">You’re learning from a Vlogger of the Year</h2>
+        <p style="font-size:19px;line-height:1.6;color:#4a443b;margin:0;max-width:62ch;margin-left:auto;margin-right:auto">This isn’t theory from someone who studied vlogging. Gilbert’s own vlogs have crossed 40 million views and earned him Vlogger of the Year at the 2024 Social Media Awards. Everything in this course is what actually worked for him, distilled into a method you can follow.</p>
+      </div>
+    </section>
+
+    <!-- instructor -->
+    <section id="instructor" style="background:#16130F;color:#F7F4EE">
+      <div data-reveal class="d1-instructor" style="max-width:1180px;margin:0 auto;padding:104px 32px;display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center">
+        <div style="position:relative">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#DD2D1B;z-index:2"></div>
+          <img src="assets/gilbert-bw.jpg" alt="Gilbert Bassey" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;display:block;filter:grayscale(1) contrast(1.05)">
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#FF6A4D;margin-bottom:22px">The instructor</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,3vw,42px);line-height:1.06;letter-spacing:-.02em;margin:0 0 28px">Gilbert Bassey</h2>
+          <p style="font-size:19px;line-height:1.6;margin:0 0 20px;color:#d8d2c6">Named <strong style="color:#F7F4EE;font-weight:600">Vlogger of the Year at the 2024 Social Media Awards.</strong> His vlogs have been watched over 40 million times across Instagram, TikTok, Facebook, and YouTube (@onegillianbaci).</p>
+          <p style="font-size:19px;line-height:1.6;margin:0 0 20px;color:#d8d2c6">But he’s a storyteller first. He’s the author of <em style="font-style:italic">A Decent Man</em> and writes <em style="font-style:italic">Lightbringer</em>, a newsletter read by over 15,000 people. That’s the real reason behind the numbers: he doesn’t grow by chasing trends or buying gear. He grows by telling stories people can’t stop watching.</p>
+          <p style="font-size:19px;line-height:1.6;margin:0;color:#d8d2c6">This course is everything he knows about turning a real life into video that grows an audience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- enroll -->
+    <section id="enroll" style="max-width:1180px;margin:0 auto;padding:104px 32px">
+      <div data-reveal class="d1-enroll" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#DD2D1B;margin-bottom:28px">Enroll</div>
+          <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(48px,6vw,80px);letter-spacing:-.03em;line-height:1">₦35,000</span>
+            <span style="font-family:'Newsreader',serif;font-size:26px;color:#9a9388;text-decoration:line-through">₦50,000</span>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#DD2D1B;margin-bottom:8px">Early-bird price — save ₦15,000</div>
+          <div style="font-size:18px;color:#4a443b;margin-bottom:34px">One-time payment. Lifetime access.</div>
+          <a href="#enroll" style="display:inline-flex;align-items:center;gap:10px;background:#DD2D1B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;text-decoration:none;padding:18px 36px;border-radius:2px">Enroll Now</a>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#6B655B;line-height:1.6;margin:22px 0 0;max-width:42ch">Early-bird price ends August 1. Registration closes September 30. Course starts November 1, 2026.</p>
+        </div>
+        <div style="border:1px solid rgba(22,19,15,.2)">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6B655B;padding:22px 30px;border-bottom:1px solid rgba(22,19,15,.16)">Includes</div>
+          <ul style="list-style:none;margin:0;padding:8px 30px 14px">
+            <li style="display:flex;gap:14px;padding:14px 0;font-size:17px;line-height:1.4;border-bottom:1px solid rgba(22,19,15,.08)"><span style="color:#DD2D1B">→</span><span><span style="color:#DD2D1B;border-bottom:1px dotted #DD2D1B">[X]</span> video lessons</span></li>
+            <li style="display:flex;gap:14px;padding:14px 0;font-size:17px;line-height:1.4;border-bottom:1px solid rgba(22,19,15,.08)"><span style="color:#DD2D1B">→</span><span><span style="color:#DD2D1B;border-bottom:1px dotted #DD2D1B">[X]</span> weeks of live Q&amp;A calls</span></li>
+            <li style="display:flex;gap:14px;padding:14px 0;font-size:17px;line-height:1.4;border-bottom:1px solid rgba(22,19,15,.08)"><span style="color:#DD2D1B">→</span><span>Resource pack (templates, gear guide, checklists)</span></li>
+            <li style="display:flex;gap:14px;padding:14px 0;font-size:17px;line-height:1.4;border-bottom:1px solid rgba(22,19,15,.08)"><span style="color:#DD2D1B">→</span><span>Lifetime access to all materials</span></li>
+            <li style="display:flex;gap:14px;padding:14px 0;font-size:17px;line-height:1.4;border-bottom:1px solid rgba(22,19,15,.08)"><span style="color:#DD2D1B">→</span><span>A community of creators on the same journey</span></li>
+            <li style="display:flex;gap:14px;padding:14px 0;font-size:17px;line-height:1.4"><span style="color:#DD2D1B">→</span><span>A chance to have your vlog reviewed 1-on-1 by Gilbert</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- faq -->
+    <section id="faq" style="background:#efe9dd">
+      <div class="d1-faq" style="max-width:1180px;margin:0 auto;padding:104px 32px;display:grid;grid-template-columns:.6fr 1.4fr;gap:56px;align-items:start">
+        <h2 data-reveal style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,3vw,42px);letter-spacing:-.02em;line-height:1.04;margin:0">Frequently asked questions</h2>
+        <div data-reveal>
+          <details style="border-top:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">When does the course start?<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">Registration is open through September 30, 2026. The course begins November 1, 2026. Everyone starts together as a cohort.</p></details>
+          <details style="border-top:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">How long do I have access?<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">Lifetime. The lessons are yours forever; the live calls run during the cohort.</p></details>
+          <details style="border-top:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">Do I need an expensive camera?<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">No. Your phone is enough. People watch for the story, not the gear, and the whole course is built to work with what you have.</p></details>
+          <details style="border-top:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">I already post and I’m not growing. Will this help?<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">That’s exactly who this is for. If you’re posting and not growing, the problem usually isn’t effort or frequency, it’s that the videos don’t hold attention. This course fixes the root cause: the story.</p></details>
+          <details style="border-top:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">What if I miss a live call?<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">Every call is recorded and shared with the cohort.</p></details>
+          <details style="border-top:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">Is this for complete beginners?<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">Yes. You can start from zero.</p></details>
+          <details style="border-top:1px solid rgba(22,19,15,.2);border-bottom:1px solid rgba(22,19,15,.2)"><summary style="font-family:'Archivo',sans-serif;font-weight:600;font-size:19px;padding:22px 0;display:flex;justify-content:space-between;gap:20px">I have another question.<span style="color:#DD2D1B">+</span></summary><p style="font-size:17px;line-height:1.6;color:#4a443b;margin:0 0 24px;max-width:62ch">Email me at gilbert@gilbertbassey.com.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- final cta -->
+    <section style="background:#16130F;color:#F7F4EE">
+      <div data-reveal style="max-width:1180px;margin:0 auto;padding:120px 32px;text-align:center">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(40px,6vw,82px);line-height:1.02;letter-spacing:-.03em;margin:0 0 40px">Ready to grow through vlogging?</h2>
+        <a href="#enroll" style="display:inline-flex;align-items:center;gap:10px;background:#DD2D1B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;text-decoration:none;padding:20px 40px;border-radius:2px">Enroll Now — ₦35,000</a>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(247,244,238,.55);margin-top:64px;padding-top:30px;border-top:1px solid rgba(247,244,238,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px"><span>The Vlogging Course — Gilbert Bassey</span><span>gilbert@gilbertbassey.com</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!--
+    NOTE: `[data-reveal]` attributes are left in the markup to document where the original
+    prototype played a fade-up-on-scroll entrance. It is intentionally NOT wired here so the
+    static design always renders fully. To add it in production: on scroll into view, transition
+    each [data-reveal] from opacity:0/translateY(20px) to opacity:1/none (~0.7s ease-out),
+    via IntersectionObserver — and guarantee a fallback that reveals everything if JS is disabled.
+  -->
+
+</body>
+</html>
