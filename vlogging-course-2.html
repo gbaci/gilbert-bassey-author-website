@@ -46,8 +46,8 @@
         @media (min-width:1024px){.d1-pad-lg{padding-top:128px;padding-bottom:128px}}
 
         /* grids: single column on phone (source order matters), multi-column once there's room */
-        .d1-hero{display:grid;grid-template-columns:1fr;gap:34px}
-        @media (min-width:1024px){.d1-hero{grid-template-columns:1.12fr .88fr;gap:60px}}
+        .d1-hero{display:grid;grid-template-columns:1fr;grid-template-areas:"top" "img" "bottom";gap:28px}
+        @media (min-width:1024px){.d1-hero{grid-template-columns:1.12fr .88fr;grid-template-areas:"top img" "bottom img";gap:16px 60px;align-items:start}}
 
         .d1-whofor{display:grid;grid-template-columns:1fr;gap:26px}
         @media (min-width:1024px){.d1-whofor{grid-template-columns:.82fr 1.18fr;gap:56px}}
@@ -70,9 +70,6 @@
         .d1-vlogs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
         @media (min-width:640px){.d1-vlogs{grid-template-columns:repeat(4,1fr);gap:16px}}
 
-        .d1-week{display:grid;grid-template-columns:70px 1fr}
-        @media (min-width:640px){.d1-week{grid-template-columns:100px 1fr}}
-
         /* buttons: full-width thumb targets on phone, auto-width on larger screens */
         .d1-btn{display:flex;width:100%;justify-content:center;align-items:center;gap:10px;background:#DD2D1B;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;text-decoration:none;padding:16px 30px;border-radius:2px}
         @media (min-width:640px){.d1-btn{display:inline-flex;width:auto}}
@@ -89,7 +86,7 @@
   <!-- sticky early-bird banner -->
   <div style="position:sticky;top:0;z-index:50;background:#16130F;color:#F7F4EE;font-family:'Space Grotesk',sans-serif">
     <div class="d1-container" style="padding-top:10px;padding-bottom:10px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-size:12.5px;text-align:center">
-      <span style="opacity:.9">Early-bird pricing ends September 7. Join for ₦15,000.</span>
+      <span style="opacity:.9">₦15,000 — early-bird price until September 7. Regular price ₦20,000.</span>
       <a href="https://selar.com/1p7rd85219" style="color:#FF6A4D;font-weight:600;text-decoration:none;white-space:nowrap">Join now →</a>
     </div>
   </div>
@@ -112,41 +109,21 @@
 
   <!-- hero -->
   <section class="d1-container d1-hero" style="padding-top:12px;padding-bottom:48px">
-    <div data-reveal>
+    <div data-reveal style="grid-area:top">
       <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(32px,8vw,64px);line-height:1.06;letter-spacing:-.022em;margin:20px 0 20px">Learn how to make vlogs people actually <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:500;color:#DD2D1B">want to watch.</em></h1>
-      <p style="font-size:17px;line-height:1.55;color:#4a443b;margin:0 0 26px">Learn how to find the story, shoot it, edit it and turn everyday moments into engaging videos that grow your audience.</p>
-      <a href="https://selar.com/1p7rd85219" class="d1-btn" style="font-size:16px">Join the First Cohort</a>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px">
-        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;color:#DD2D1B">₦20,000</span>
-      </div>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:#6B655B;margin:6px 0 0">Early-bird price ₦15,000 until September 7 · Registration closes September 21</p>
+      <p style="font-size:17px;line-height:1.55;color:#4a443b;margin:0">Learn how to find the story, shoot it, edit it and turn everyday moments into engaging videos that grow your audience.</p>
     </div>
-    <div data-reveal style="position:relative">
+    <div data-reveal style="grid-area:img;position:relative">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#DD2D1B;z-index:2"></div>
       <img src="images/gilbert-bw.jpg" alt="Gillian Baci" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 14%;display:block;filter:grayscale(1) contrast(1.06)">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:#6B655B;margin-top:9px;display:flex;justify-content:space-between"><span>Gilbert Bassey · Gillian Baci</span><span>@onegillianbaci</span></div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:#6B655B;margin-top:9px;display:flex;justify-content:space-between"><span>Gillian Baci · Gilbert Bassey</span><span>@onegillianbaci</span></div>
     </div>
-  </section>
-
-  <!-- proof strip -->
-  <section style="border-top:1px solid rgba(22,19,15,.16);border-bottom:1px solid rgba(22,19,15,.16)">
-    <div class="d1-container" style="padding-top:16px;padding-bottom:16px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-family:'Space Grotesk',sans-serif;font-size:12.5px;letter-spacing:.02em;text-align:center">
-      <span>Over 40 million views</span><span style="color:#DD2D1B">/</span><span>Vlogger of the Year, 2024</span><span style="color:#DD2D1B">/</span><span>Author of <em style="font-family:'Newsreader',serif;font-style:italic">A Decent Man</em></span>
-    </div>
-  </section>
-
-  <!-- proof / actual vlogs -->
-  <section class="d1-container d1-pad">
-    <div data-reveal style="margin-bottom:28px;max-width:68ch">
-      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(23px,5.5vw,38px);line-height:1.18;letter-spacing:-.02em;margin:0 0 16px">40M+ views. Here's the work behind the number.</h2>
-      <p style="font-size:16px;line-height:1.58;color:#4a443b;margin:0">My vlogs have been watched more than <strong style="font-weight:600">40 million times</strong>, and I was named <strong style="font-weight:600">Vlogger of the Year at the 2024 Social Media Awards</strong>. But rather than just tell you that, here are some of the vlogs.</p>
-    </div>
-    <!-- Replace each placeholder below with an actual vlog screenshot showing the view count. Link each to the original post. -->
-    <div data-reveal class="d1-vlogs">
-      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
-      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
-      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
-      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
+    <div data-reveal style="grid-area:bottom">
+      <a href="https://selar.com/1p7rd85219" class="d1-btn" style="font-size:16px">Join the First Cohort</a>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px">
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;color:#DD2D1B">₦15,000</span>
+      </div>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:#6B655B;margin:6px 0 0">Early-bird price until September 7. Regular price: ₦20,000. Registration closes September 21.</p>
     </div>
   </section>
 
@@ -165,6 +142,21 @@
     </div>
   </section>
 
+  <!-- proof / actual vlogs -->
+  <section class="d1-container d1-pad">
+    <div data-reveal style="margin-bottom:28px;max-width:68ch">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(23px,5.5vw,38px);line-height:1.18;letter-spacing:-.02em;margin:0 0 16px">40M+ views</h2>
+      <p style="font-size:16px;line-height:1.58;color:#4a443b;margin:0">My vlogs have been watched more than <strong style="font-weight:600">40 million times</strong>, and I was named <strong style="font-weight:600">Vlogger of the Year at the 2024 Social Media Awards</strong>. But rather than just tell you that, here are some of the vlogs.</p>
+    </div>
+    <!-- Replace each placeholder below with an actual vlog screenshot showing the view count. Link each to the original post. -->
+    <div data-reveal class="d1-vlogs">
+      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
+      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
+      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
+      <a href="#" style="display:flex;text-decoration:none;aspect-ratio:9/16;background:#efe9dd;border:1px dashed rgba(22,19,15,.28);align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:2px;color:#9a9388;font-family:'Space Grotesk',sans-serif"><span style="font-size:20px;opacity:.5;color:#DD2D1B">▶</span><span style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase">Add vlog</span></a>
+    </div>
+  </section>
+
   <!-- what you'll learn -->
   <section id="learn" class="d1-container d1-pad">
     <div data-reveal style="margin-bottom:36px;max-width:760px">
@@ -173,32 +165,38 @@
     </div>
     <div data-reveal class="d1-learn">
       <div style="border:1px solid rgba(22,19,15,.18);padding:24px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B655B;margin-bottom:8px">Week 1</div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;color:#DD2D1B">01</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Foundations</span></div>
         <p style="font-size:14.5px;font-weight:600;margin:0 0 8px">Understand what makes a vlog work.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0">Learn what separates an engaging vlog from a collection of random clips, and develop the mindset you need to start creating consistently.</p>
       </div>
       <div style="border:1px solid rgba(22,19,15,.18);padding:24px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B655B;margin-bottom:8px">Week 2</div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;color:#DD2D1B">02</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Pre-Vlog</span></div>
         <p style="font-size:14.5px;font-weight:600;margin:0 0 8px">Know what to vlog and find the story before you start filming.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0">Learn how to find stories in your everyday life and decide what is actually worth capturing.</p>
       </div>
       <div style="border:1px solid rgba(22,19,15,.18);padding:24px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B655B;margin-bottom:8px">Week 3</div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;color:#DD2D1B">03</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Shooting</span></div>
         <p style="font-size:14.5px;font-weight:600;margin:0 0 8px">Capture the footage you actually need.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0 0 8px">Learn how to shoot your vlogs intentionally, including the shots, sequences and techniques that make editing easier later.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0">You can start with the equipment you already have.</p>
       </div>
       <div style="border:1px solid rgba(22,19,15,.18);padding:24px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B655B;margin-bottom:8px">Week 4</div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;color:#DD2D1B">04</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Editing</span></div>
         <p style="font-size:14.5px;font-weight:600;margin:0 0 8px">Turn your footage into a story people want to finish.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0">Learn how to select, arrange and edit your footage so that your vlog has structure, momentum and a reason to keep watching.</p>
       </div>
-      <div style="border:1px solid #DD2D1B;padding:24px;background:rgba(221,45,27,.04)">
+      <div style="border:1px solid rgba(22,19,15,.18);padding:24px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B655B;margin-bottom:8px">Week 5</div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;color:#DD2D1B">05</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Voiceover</span></div>
         <p style="font-size:14.5px;font-weight:600;margin:0 0 8px">Use your voice to connect the story.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0">Learn how to use voiceover to add context, personality and narrative to your footage.</p>
       </div>
       <div style="border:1px solid rgba(22,19,15,.18);padding:24px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B655B;margin-bottom:8px">Week 6</div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;color:#DD2D1B">06</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px">Posting &amp; Growth</span></div>
         <p style="font-size:14.5px;font-weight:600;margin:0 0 8px">Publish your vlogs strategically and learn from what happens next.</p>
         <p style="font-size:14.5px;line-height:1.55;color:#4a443b;margin:0">Learn how to package and post your vlogs, understand your audience and use what you learn from each video to make the next one better.</p>
@@ -228,24 +226,6 @@
         </div>
       </div>
       <p data-reveal style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(16px,4vw,26px);line-height:1.42;color:#DD2D1B;margin:32px 0 0">The goal is simple: learn something. Try it. Get stuck. Ask questions. Get unstuck. Move on to the next thing.</p>
-    </div>
-  </section>
-
-  <!-- what you get -->
-  <section class="d1-container d1-pad">
-    <div data-reveal>
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#DD2D1B;margin-bottom:16px">What you get</div>
-      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,5.2vw,38px);line-height:1.2;letter-spacing:-.02em;margin:0 0 32px">When you join, you get:</h2>
-      <div style="max-width:680px;border:1px solid rgba(22,19,15,.2)">
-        <div style="padding:6px 22px 4px">
-          <div style="display:flex;gap:12px;padding:15px 0;font-size:15.5px;line-height:1.45;border-bottom:1px solid rgba(22,19,15,.1)"><span style="color:#DD2D1B;flex-shrink:0">→</span><span><strong style="font-weight:600">6 course modules</strong>, released over 6 weeks</span></div>
-          <div style="display:flex;gap:12px;padding:15px 0;font-size:15.5px;line-height:1.45;border-bottom:1px solid rgba(22,19,15,.1)"><span style="color:#DD2D1B;flex-shrink:0">→</span><span><strong style="font-weight:600">6 one-hour live Q&amp;A sessions</strong> with Gilbert</span></div>
-          <div style="display:flex;gap:12px;padding:15px 0;font-size:15.5px;line-height:1.45;border-bottom:1px solid rgba(22,19,15,.1);color:#4a443b"><span style="color:#DD2D1B;flex-shrink:0">→</span><span>Practical lessons on storytelling, shooting, editing and posting</span></div>
-          <div style="display:flex;gap:12px;padding:15px 0;font-size:15.5px;line-height:1.45;border-bottom:1px solid rgba(22,19,15,.1);color:#4a443b"><span style="color:#DD2D1B;flex-shrink:0">→</span><span>Exercises and resources to help you put the lessons into practice</span></div>
-          <div style="display:flex;gap:12px;padding:15px 0;font-size:15.5px;line-height:1.45"><span style="color:#DD2D1B;flex-shrink:0">→</span><span><strong style="font-weight:600">Lifetime access to the recorded course lessons</strong></span></div>
-        </div>
-      </div>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#6B655B;margin:16px 0 0;max-width:60ch">The live Q&amp;As happen during the six-week cohort. The recorded course lessons remain yours after the cohort ends.</p>
     </div>
   </section>
 
@@ -293,34 +273,15 @@
     </div>
   </section>
 
-  <!-- how six weeks work -->
-  <section style="background:#efe9dd">
-    <div class="d1-container d1-pad" style="max-width:1000px">
-      <div data-reveal style="margin-bottom:36px">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#DD2D1B;margin-bottom:16px">How it works</div>
-        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,5.2vw,38px);line-height:1.2;letter-spacing:-.02em;margin:0">Here's what happens when you join.</h2>
-      </div>
-      <div data-reveal style="display:flex;flex-direction:column">
-        <div class="d1-week" style="padding:20px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#DD2D1B;padding-top:3px">Week 1</span><div><p style="font-size:15.5px;font-weight:600;margin:0 0 4px">Module 1 is released.</p><p style="font-size:14px;line-height:1.5;color:#6B655B;margin:0">Learn the foundations and begin applying them.</p></div></div>
-        <div class="d1-week" style="padding:20px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#DD2D1B;padding-top:3px">Week 2</span><div><p style="font-size:15.5px;font-weight:600;margin:0 0 4px">Module 2 is released.</p><p style="font-size:14px;line-height:1.5;color:#6B655B;margin:0">Learn how to find and plan the story before you shoot.</p></div></div>
-        <div class="d1-week" style="padding:20px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#DD2D1B;padding-top:3px">Week 3</span><div><p style="font-size:15.5px;font-weight:600;margin:0 0 4px">Module 3 is released.</p><p style="font-size:14px;line-height:1.5;color:#6B655B;margin:0">Learn how to capture the footage you need.</p></div></div>
-        <div class="d1-week" style="padding:20px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#DD2D1B;padding-top:3px">Week 4</span><div><p style="font-size:15.5px;font-weight:600;margin:0 0 4px">Module 4 is released.</p><p style="font-size:14px;line-height:1.5;color:#6B655B;margin:0">Learn how to turn your footage into a finished story.</p></div></div>
-        <div class="d1-week" style="padding:20px 0;border-top:1px solid rgba(22,19,15,.16)"><span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#DD2D1B;padding-top:3px">Week 5</span><div><p style="font-size:15.5px;font-weight:600;margin:0 0 4px">Module 5 is released.</p><p style="font-size:14px;line-height:1.5;color:#6B655B;margin:0">Learn how to use voiceover to strengthen the story.</p></div></div>
-        <div class="d1-week" style="padding:20px 0;border-top:1px solid rgba(22,19,15,.16);border-bottom:1px solid rgba(22,19,15,.16)"><span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#DD2D1B;padding-top:3px">Week 6</span><div><p style="font-size:15.5px;font-weight:600;margin:0 0 4px">Module 6 is released.</p><p style="font-size:14px;line-height:1.5;color:#6B655B;margin:0">Learn how to publish strategically and learn from your results.</p></div></div>
-      </div>
-      <p data-reveal style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#6B655B;margin:24px 0 0">Every week, there is also a <strong style="color:#16130F">one-hour live Q&amp;A with Gilbert</strong> focused on that week's module.</p>
-    </div>
-  </section>
-
   <!-- enroll / price -->
   <section id="enroll" class="d1-container d1-pad d1-enroll">
     <div>
       <div style="font-family:'Space Grotesk',sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#DD2D1B;margin-bottom:18px">Enroll</div>
       <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,5.2vw,38px);line-height:1.2;letter-spacing:-.02em;margin:0 0 24px">Join the first cohort for ₦15,000.</h2>
-      <div style="margin-bottom:6px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(38px,10vw,72px);letter-spacing:-.03em;line-height:1;color:#DD2D1B">₦15,000</span> <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#6B655B">Early Bird</span></div>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#6B655B;margin:0 0 22px">Regular price: ₦20,000 · Early-bird pricing ends September 7</p>
+      <div style="margin-bottom:6px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(38px,10vw,72px);letter-spacing:-.03em;line-height:1;color:#DD2D1B">₦15,000</span></div>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#6B655B;margin:0 0 22px">Early-bird price until September 7. Regular price: ₦20,000.</p>
       <a href="https://selar.com/1p7rd85219" class="d1-btn" style="font-size:16px">Join the First Cohort</a>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#6B655B;line-height:1.6;margin:18px 0 0">After September 7, the price increases to ₦20,000.<br>Registration closes September 21.<br>The cohort begins September 29.</p>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#6B655B;line-height:1.6;margin:18px 0 0">After September 7, the price is ₦20,000.<br>Registration closes September 21.<br>The cohort begins September 29.</p>
     </div>
     <div>
       <div style="border:1px solid rgba(22,19,15,.2)">
@@ -360,8 +321,8 @@
     <div data-reveal class="d1-container d1-pad-lg" style="text-align:center">
       <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,9vw,80px);line-height:1.06;letter-spacing:-.03em;margin:0 0 18px">Ready to start vlogging?</h2>
       <p style="font-size:16px;line-height:1.58;color:#d8d2c6;max-width:58ch;margin:0 auto 18px">Six weeks. Six modules. Six live Q&amp;As. A practical system for turning your real life into vlogs people actually want to watch — and a better foundation for building an audience through vlogging.</p>
-      <div style="margin:28px 0 12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:#FF6A4D">₦15,000</span> <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(247,244,238,.6)">Early Bird</span></div>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:rgba(247,244,238,.55);margin:0 0 24px">Regular price ₦20,000 · Early bird ends September 7 · Registration closes September 21</p>
+      <div style="margin:28px 0 12px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:#FF6A4D">₦15,000</span></div>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:rgba(247,244,238,.55);margin:0 0 24px">Early-bird price until September 7. Regular price: ₦20,000. Registration closes September 21.</p>
       <a href="https://selar.com/1p7rd85219" class="d1-btn" style="font-size:17px;padding:18px 40px;max-width:360px;margin:0 auto">Join the First Cohort</a>
       <p style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:rgba(247,244,238,.55);margin:12px 0 0">The first cohort begins September 29.</p>
       <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:rgba(247,244,238,.55);margin-top:48px;padding-top:22px;border-top:1px solid rgba(247,244,238,.14);display:flex;flex-direction:column;gap:6px"><span>The Vlogging Course — Gillian Baci (aka Gilbert Bassey)</span><span>gilbert@gilbertbassey.com</span></div>
