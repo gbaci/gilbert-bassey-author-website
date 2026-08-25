@@ -1,39 +1,92 @@
-# Vlogging Course Landing Page — Handoff (2026-08-23)
+# Session Handoff (2026-08-25)
 
-## What this is
-Two competing designs for "The Vlogging Course" landing page, built side by side so Gilbert can compare them on mobile before picking one:
+Covers: vlogging course landing page (copy + hero fix + CTAs), tvc-welcome.html redesign, A Decent Man page button change. Written so a new chat can pick up without re-deriving context.
 
-- **`vlogging-course.html`** — original **Cinematic** design (near-black bg `#0E0D0B`, gold accents `#C9A227`/`#E3BE4A`, Libre Caslon Display + Hanken Grotesk). Dual markup: `.vg-desktop` and `.vg-mobile` blocks toggled at `max-width:768px` (kept deliberately separate — merging via media queries previously broke the hero image positioning).
-- **`vlogging-course-2.html`** — alternate **Direction 1 "Front Page"** design (light editorial: warm-white `#F7F4EE`, ink `#16130F`, red `#DD2D1B`, Archivo/Newsreader/Space Grotesk). Single responsive layout, built **mobile-first** (base CSS is the phone layout; `min-width` media queries at 640/700/760/1024px scale it up to desktop). Has `<meta name="robots" content="noindex, nofollow">` since it's an unpublished draft.
+## Git state
+- Local `main` is in sync with `origin/main` (0 ahead / 0 behind) as of this handoff.
+- **One uncommitted change**: `a-decent-man.html` (Selar button rename/reorder — see below).
+- This sandbox cannot push to GitHub (no stored credentials) — Gilbert pushes manually from his own terminal. Confirm he's actually pushed recently before assuming anything here is live.
+- Note: something in this environment appears to auto-commit periodically with generic messages ("update", "adjust") — git log messages aren't a reliable record of *why* something changed. This doc is the source of truth for intent.
 
-Both files carry **identical real copy** — pricing, dates, curriculum, instructor bio, FAQ. Only the visual system differs. No decision has been made yet on which one ships.
+---
 
-**Not yet decided:** which design wins. Whichever loses should be deleted or archived rather than left sitting in the repo root — don't leave two live-looking drafts indefinitely.
+## 1. Vlogging Course landing page
 
-## Current state / git
-Both files have **uncommitted changes** as of this handoff (see below for what changed). Last commit on `main` is `a280ae2`, in sync with `origin/main`. Note: this sandboxed environment could not push to GitHub earlier in the project (no stored credentials) — Gilbert pushes manually from his own terminal.
+Two competing designs still both exist, side by side, **no decision made yet** on which ships:
+- **`vlogging-course.html`** — Cinematic (near-black `#0E0D0B`, gold `#C9A227`/`#E3BE4A`, Libre Caslon Display + Hanken Grotesk). Dual markup: `.vg-desktop` / `.vg-mobile` blocks, kept deliberately separate (merging via media queries previously broke hero image positioning).
+- **`vlogging-course-2.html`** — Front Page (light editorial, warm-white `#F7F4EE`, red `#DD2D1B`, Archivo/Newsreader/Space Grotesk). Single responsive mobile-first layout. Has `noindex, nofollow` since it's an unpublished draft.
 
-## Real content facts (locked, same in both files)
-- **Pricing:** ₦15,000 shown as *the* price everywhere, with "Early-bird price until September 7. Regular price: ₦20,000." as supporting copy. No coupon code mentioned anywhere on the page (Gilbert confirmed the early-bird price applies without a manual code — if that's wrong, every price block needs revisiting).
-- **Dates:** early-bird ends September 7, 2026 · registration closes September 21, 2026 · cohort begins September 29, 2026.
-- **Selar link:** `https://selar.com/1p7rd85219`
-- **Pixels:** Facebook `1912184123065613`, TikTok `D7M7BURC77U8ETKS15LG` — both fire `ViewContent` at value 15000 NGN on page load.
-- **Curriculum (6 modules = 6 weeks):** Foundations (Week 1), Pre-Vlog (Week 2), Shooting (Week 3), Editing (Week 4), Voiceover (Week 5), Posting & Growth (Week 6). Each module card now carries a small "Week N" tag.
-- **Instructor bio:** Vlogger of the Year, 2024 Social Media Awards · 40M+ views across IG/TikTok/FB/YouTube (@onegillianbaci) · author of *A Decent Man* (4.29/5 Goodreads) · short film *Ananze and the Zipman* streaming on Amazon Prime · studied filmmaking at NYFA.
+**Whichever loses should eventually be deleted/archived — don't leave two live-looking drafts indefinitely.**
+
+### Copy refinement pass (this session)
+Gilbert supplied a full copy brief matching the finalized curriculum. Applied to both files, both breakpoints:
+- Hero: new headline + subhead (no course logistics in the hero — those live elsewhere on the page).
+- "Your life isn't boring" section: refined body copy, new closing line about vlogging = personal storytelling.
+- Foundations, Pre-Vlog, Shooting, Editing, Voiceover module cards: headlines/body rewritten to reflect the actual course philosophy (find the story, capture what matters, cut aggressively, voiceover adds context not narration).
+- Posting & Growth card: **left untouched** per the brief.
+- Proof section, cohort experience, instructor bio, "who this is for," pricing, dates, FAQ: **left untouched** per the brief.
+
+### Hero — mobile face-overlap fix (cinematic only)
+The mobile hero (`vlogging-course.html`, `.vg-mobile`) overlays text on `images/gilbert-bw3.jpg`. Adding a longer headline + subhead pushed content height up, causing text to visually overlap Gilbert's face.
+
+**Final fix** (after a few false starts — see below): the whole hero text stack (h1 + subhead + button + price + fine print) is wrapped in a `<div style="max-width:62%">`. This keeps text confined to the dark/black left portion of the frame, since the photo (`gilbert-bw3.jpg`, roughly square, face+shoulders occupy the right ~40% at most vertical bands) leaves that zone clear. **62% is a confirmed-good value — don't widen it without re-checking against the photo.** Went to 68% briefly to fit "Grow your audience" on one line, Gilbert rejected it and asked to revert to 62%.
+
+Things that were tried and reverted, for context (don't redo these):
+- Extracting the subheading out of the hero into a separate solid-background block below the photo — Gilbert rejected this, wanted it to "flow around the face" while staying in place.
+- Desktop hero and `vlogging-course-2.html`'s hero were **not touched** — desktop has way more vertical room, and course-2's photo sits in its own grid cell (not behind text), so neither has this problem.
+
+Hero headline final state: forced 3-line break via manual `<br>` tags —
+"Grow your audience" / "with vlogs people" / "actually want to watch" (no trailing period — removed across all three hero instances, since no other heading on the page uses one).
+
+Price block in mobile hero: was tiny (13px) and left-aligned; now 26px within the 62% column.
+
+### More CTAs added
+Was only 3 "Join the First Cohort" touchpoints (hero, enroll, final CTA). Now 6, alternating weight (button vs. small text link) so it doesn't recreate density problems:
+1. Hero (button)
+2. After "40M+ views" proof section (small text link)
+3. After full curriculum — high-intent moment (solid button)
+4. After instructor bio (small text link)
+5. Enroll section (button)
+6. Final CTA (button)
+
+Applied identically to both breakpoints of `vlogging-course.html` and the single layout of `vlogging-course-2.html`.
+
+### Final CTA simplified
+Removed the long paragraph under the headline and the redundant date line after the button. New order: headline → price → "The first cohort begins September 29." → button → footer (nothing else below the button). Headline is now **"Ready to upgrade your vlogging?"** — Gilbert's own line, chosen over a few options I proposed.
+
+### Still outstanding (unchanged from before this session)
+- **Design decision**: cinematic vs. front-page — still not picked.
+- **Vlog thumbnails**: "Add vlog" placeholder tiles in the proof section, both files — need real screenshots + view counts + links.
+- **Deploy**: confirm Gilbert has pushed and Netlify redeployed.
+- **Selar redirect**: confirm Selar checkout actually redirects to `tvc-welcome.html` after payment.
+
+### Real content facts (locked, same in both files)
+- Pricing: ₦15,000 early-bird until Sept 7, 2026 → ₦20,000 regular. No coupon code.
+- Dates: early-bird ends Sept 7 · registration closes Sept 21 · cohort starts Sept 29, 2026.
+- Selar link: `https://selar.com/1p7rd85219`
+- Pixels: Facebook `1912184123065613`, TikTok `D7M7BURC77U8ETKS15LG` — both fire `ViewContent` at 15000 NGN on load.
 - Footer contact: `gilbert@gilbertbassey.com`
-- `tvc-welcome.html` (post-payment redirect page) is separate, unaffected by any of this, uses neutral Georgia styling.
 
-## What changed this session (both files, kept in sync)
-1. **Hero cleanup:** removed the redundant "With Gillian Baci (aka Gilbert Bassey)" byline and the "6 weeks · 6 modules · 6 live Q&As" stats line (both restated info shown elsewhere), removed the "First cohort starts September 29" eyebrow line. Subhead now ends on "...that grow your audience" instead of "...people want to keep watching" (growth was missing from the copy).
-2. **Section reorder:** "Your life isn't boring..." now comes before the "40M+ views" proof/vlog-thumbnails section (was reversed before).
-3. **Pricing simplified:** flipped back and forth a few times this session — final state is ₦15,000 leading everywhere, "Early-bird price until September 7. Regular price: ₦20,000." as the supporting line, **no EARLYBIRD code mentioned**.
-4. **Voiceover card:** removed its special highlighted border/background (module 05) — it now matches the other 5 curriculum cards exactly.
-5. **Curriculum + weekly schedule merged:** added a "Week N" tag to each of the 6 curriculum cards; deleted the standalone "how six weeks work" section since it just restated the same 6 modules with shorter copy. This was per feedback from Gilbert's assistant, aimed at cutting how much a visitor has to read before the sign-up action.
-6. **"What you get" deduped:** deleted the standalone "What you get" section (mid-page); kept only the "Includes" card next to the Enroll price, since the two were nearly word-for-word identical and the Enroll placement is more useful (right where the decision happens).
-7. **`vlogging-course-2.html` specific (from earlier in the session, before the above):** proof strip ("Over 40 million views / Vlogger of the Year, 2024 / Author of A Decent Man") removed as redundant with the section right after it; hero restructured into a 3-part CSS grid (`grid-template-areas`) so mobile order is headline/subhead → photo → CTA/price, while desktop keeps the original 2-column split; name caption under hero photo reordered to "Gillian Baci · Gilbert Bassey".
+---
 
-## Still outstanding
-- **Design decision:** cinematic vs. front-page — pick one, then delete/archive the other.
-- **Vlog thumbnails:** the "40M+ views" section still has 4 placeholder "Add vlog" tiles (2 on the old cinematic mobile layout) in both files — need real vlog screenshots + view counts + links.
-- **Deploy:** confirm latest changes are pushed to `origin/main` and Netlify has redeployed (Netlify auto-deploys from git push on this repo — no separate Netlify config file, so a `git push` is the whole deploy step).
-- **Selar redirect:** confirm Selar checkout redirects to `tvc-welcome.html` after payment (was still unconfirmed as of the last check).
+## 2. tvc-welcome.html (post-payment redirect page)
+
+Previously used generic site styling (Georgia serif, red accent — same as the rest of the site). This session **redesigned it to match the Cinematic vlogging-course.html look** (near-black bg, gold accents `#C9A227`/`#E3BE4A`, Libre Caslon Display + Hanken Grotesk) — Gilbert explicitly picked Cinematic when asked, over Front Page and "leave it neutral."
+
+Added a new step 2, **"join the Telegram groups,"** with two pill-style buttons:
+- Info channel: `https://t.me/+4aGXXMv3sEo4MGE0`
+- Cohort 1 interactive group: `https://t.me/+LPQSy3HazYdmYjg8`
+
+Steps renumbered 1–4: check email → join Telegram → mark calendar → come ready to work.
+
+Committed. **If the design decision later lands on Front Page instead of Cinematic, this page will need re-skinning to match.**
+
+---
+
+## 3. A Decent Man page (a-decent-man.html) — UNCOMMITTED
+
+Both Selar buttons (paperback section + ebook section) changed:
+- Label: "Selar" → **"Buy from me"**
+- Position: moved to be the **first** option in each list (ahead of Amazon/Apple Books/Kobo).
+
+This is the one local change not yet committed as of this handoff.
