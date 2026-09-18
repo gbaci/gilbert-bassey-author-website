@@ -20,7 +20,12 @@
       "WebFetch(domain:help.selar.com)",
       "WebSearch",
       "WebFetch(domain:selar.co)",
-      "Bash(ffmpeg -i \"/Users/gilbertbassey/Desktop/Learn Story Craft/1080p/9. Creating compelling antagosnism.mp4\" -c:v libx264 -crf 28 -preset medium -vf scale=1280:720 -c:a aac -b:a 128k -movflags +faststart \"/Users/gilbertbassey/Desktop/Learn Story Craft/compressed/9. Creating compelling antagonism.mp4\" -y)"
+      "Bash(ffmpeg -i \"/Users/gilbertbassey/Desktop/Learn Story Craft/1080p/9. Creating compelling antagosnism.mp4\" -c:v libx264 -crf 28 -preset medium -vf scale=1280:720 -c:a aac -b:a 128k -movflags +faststart \"/Users/gilbertbassey/Desktop/Learn Story Craft/compressed/9. Creating compelling antagonism.mp4\" -y)",
+      "WebFetch(domain:lightbringerhq.substack.com)",
+      "Bash(cd \"/Users/gilbertbassey/projects/dev projects/gilbert-bassey-author-website\" && sed -i '' 's/57 people/125 people/g' vlogging-course.html && grep -n \"125 people\\\\|57 people\" vlogging-course.html)"
+    ],
+    "additionalDirectories": [
+      "/Users/gilbertbassey/projects/dev projects/gilbert-bassey-author-website"
     ]
   }
 }
