@@ -3,3 +3,7 @@ content/
 learn storycraft/
 lightbringer/
 wip/
+
+# Design handoffs: working files, never deploy
+design_handoff*/
+*handoff*.zip
