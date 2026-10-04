@@ -2,7 +2,6 @@
    Edit LINKS when the assets exist. Empty links show "Coming soon" instead of going nowhere. */
 
 const LINKS = {
-  preorder: "",   // TODO: Selar preorder URL. Until set, "Buy the book" links go to /ali-raindance.
   assets: "",     // TODO: cover / poster / trailer download pack
   goodreads: "",  // TODO: Goodreads book page (StoryGraph link can go in the asset pack)
   posters: "",    // TODO: poster pack for videos

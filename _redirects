@@ -2,11 +2,14 @@
 /ADM       /a-decent-man.html       200
 /readadm   /read-a-decent-man.html  200
 /readADM   /read-a-decent-man.html  200
-/atogam1   /ali-raindance           301
-/ATOGAM1   /ali-raindance           301
-/raindance /ali-raindance           301
-/ar        /ali-raindance           301
-/raindance/free    /raindance/free.html     200
-/raindance/read    /raindance/read.html     200
-/raindance/thanks  /raindance/thanks.html   200
-/raindance/privacy /raindance/privacy.html  200
+
+# Ali: Raindance campaign: /raindance is the main page
+/raindance          /raindance/index.html    200
+/raindance/free     /raindance/free.html     200
+/raindance/read     /raindance/read.html     200
+/raindance/thanks   /raindance/thanks.html   200
+/raindance/privacy  /raindance/privacy.html  200
+/atogam1            /raindance               301
+/ATOGAM1            /raindance               301
+/ar                 /raindance               301
+/ali-raindance      /raindance               301!
