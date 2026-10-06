@@ -6,7 +6,8 @@
 # Ali: Raindance campaign: /raindance is the main page
 /raindance          /raindance/index.html    200
 /raindance/free     /raindance/free.html     200
-/raindance/read     /raindance/read.html     200
+/raindance/sample   /raindance/sample.html   200
+/raindance/read     /raindance/sample        301
 /raindance/thanks   /raindance/thanks.html   200
 /raindance/privacy  /raindance/privacy.html  200
 /atogam1            /raindance               301

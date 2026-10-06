@@ -1,4 +1,4 @@
-/* Ali: Raindance free-copy page behaviour.
+/* Ali: Raindance free-copy page (the Raindance Reader Rewards).
    Edit LINKS when the assets exist. Empty links show "Coming soon" instead of going nowhere. */
 
 const LINKS = {
@@ -11,135 +11,112 @@ const LINKS = {
 const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
 
 (function () {
+  const form = document.querySelector(".f-form");
+  const claim = document.getElementById("claim");
+  const missionSelect = document.getElementById("f-mission");
+
   // ----- Links -----
-  document.querySelectorAll("[data-link]").forEach(function (a) {
-    const url = LINKS[a.dataset.link];
-    if (url) {
-      a.href = url;
-      if (/^https?:/.test(url)) { a.target = "_blank"; a.rel = "noopener"; }
-    } else if (a.classList.contains("task-action")) {
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const original = a.textContent;
-        a.textContent = "Coming soon";
-        setTimeout(function () { a.textContent = original; }, 1600);
-      });
-    }
-  });
+  document.querySelectorAll("[data-link]").forEach(function (a) { RD.wire(a, LINKS[a.dataset.link]); });
 
-  // ----- Task cards <-> Task field -----
-  const cards = Array.from(document.querySelectorAll(".task"));
-  const taskSelect = document.getElementById("f-task");
-
-  function choose(card, focus) {
-    cards.forEach(function (c) {
-      const on = c === card;
-      c.classList.toggle("is-chosen", on);
-      c.setAttribute("aria-checked", on ? "true" : "false");
-      c.tabIndex = on ? 0 : -1;
-    });
-    taskSelect.value = card.dataset.task;
-    if (focus) card.focus();
+  // ----- Smooth scroll to the form (hero button, "send proof", sticky bar) -----
+  function toForm(e) {
+    if (e) e.preventDefault();
+    claim.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(function () { document.getElementById("f-name").focus({ preventScroll: true }); }, 500);
   }
+  document.querySelectorAll("[data-to-form]").forEach(function (a) { a.addEventListener("click", toForm); });
 
-  cards.forEach(function (card, i) {
-    card.addEventListener("click", function (e) {
-      if (e.target.closest(".task-action")) return;
-      choose(card);
-    });
-    card.addEventListener("keydown", function (e) {
-      if (e.key === " " || e.key === "Enter") { e.preventDefault(); choose(card); }
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); choose(cards[(i + 1) % cards.length], true); }
-      if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); choose(cards[(i - 1 + cards.length) % cards.length], true); }
+  // ----- Missions: one open at a time; opening one sets the form's Mission field -----
+  const missions = Array.from(document.querySelectorAll(".f-mission"));
+  function setMission(m, open) {
+    m.classList.toggle("is-open", open);
+    m.querySelector(".f-m-q").setAttribute("aria-expanded", String(open));
+    m.querySelector(".f-m-a").hidden = !open;
+  }
+  missions.forEach(function (m) {
+    m.querySelector(".f-m-q").addEventListener("click", function () {
+      const wasOpen = m.classList.contains("is-open");
+      missions.forEach(function (other) { setMission(other, false); });
+      if (!wasOpen) {
+        setMission(m, true);
+        missionSelect.value = m.dataset.mission;
+      }
     });
   });
 
-  taskSelect.addEventListener("change", function () {
-    const card = cards.find(function (c) { return c.dataset.task === taskSelect.value; });
-    if (card) choose(card);
-  });
-
-  // ----- Referral code: ?r=CODE prefills "Referred by" and is remembered -----
+  // ----- Referral: ?ref=CODE (or the older ?r=CODE) fills "Referred by" and is remembered -----
   const refInput = document.getElementById("f-ref");
   let ref = "";
   try {
-    ref = new URLSearchParams(location.search).get("r") || "";
+    const q = new URLSearchParams(location.search);
+    ref = q.get("ref") || q.get("r") || "";
     if (ref) localStorage.setItem("raindance_ref", ref);
     else ref = localStorage.getItem("raindance_ref") || "";
   } catch (e) { /* storage unavailable: use the URL only */ }
-  if (ref && !refInput.value) refInput.value = ref.slice(0, 60);
+  if (ref) refInput.value = ref.slice(0, 60);
 
   // ----- Proof: file or link -----
   const fileInput = document.getElementById("f-file");
   const linkInput = document.getElementById("f-link");
-  const fileName = document.getElementById("file-name");
-  const proofBox = document.getElementById("proof");
-  const proofError = document.getElementById("proof-error");
+  const fileName = document.getElementById("f-file-name");
+  const proofField = form.querySelector('[data-field="proof"]');
+  const proofError = document.getElementById("f-proof-error");
 
   fileInput.addEventListener("change", function () {
     const f = fileInput.files[0];
     fileName.textContent = f ? f.name : "";
-    clearProofError();
+    proofField.classList.remove("invalid");
   });
-  linkInput.addEventListener("input", clearProofError);
-
-  function clearProofError() {
-    proofBox.classList.remove("invalid");
-    proofError.classList.remove("show");
-  }
-  function proofProblem(msg) {
-    proofError.textContent = msg;
-    proofBox.classList.add("invalid");
-    proofError.classList.add("show");
-  }
+  linkInput.addEventListener("input", function () { proofField.classList.remove("invalid"); });
 
   // ----- Validation -----
-  const form = document.querySelector(".claim-form");
-  const status = document.getElementById("form-status");
-  const success = document.getElementById("form-success");
-  const submitBtn = form.querySelector(".btn-submit");
-
-  function setInvalid(name, bad) {
-    const field = form.querySelector('[data-field="' + name + '"]');
-    if (field) field.classList.toggle("invalid", bad);
+  function mark(name, bad) {
+    form.querySelector('[data-field="' + name + '"]').classList.toggle("invalid", bad);
     return bad;
   }
-
-  form.querySelectorAll("input").forEach(function (input) {
-    input.addEventListener("input", function () {
-      const field = input.closest(".field");
-      if (field) field.classList.remove("invalid");
-    });
+  form.querySelectorAll("#f-name, #f-email").forEach(function (input) {
+    input.addEventListener("input", function () { input.closest(".f-field").classList.remove("invalid"); });
   });
 
   function validate() {
     let firstBad = null;
-    const el = form.elements;
-    const name = el["name"].value.trim();
-    const email = el["email"].value.trim();
-    const wa = el["whatsapp"].value.replace(/[^\d+]/g, "");
-
-    if (setInvalid("name", name.length < 2)) firstBad = firstBad || el["name"];
-    if (setInvalid("email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) firstBad = firstBad || el["email"];
-    if (setInvalid("whatsapp", wa.replace("+", "").length < 7)) firstBad = firstBad || el["whatsapp"];
+    const name = form.elements["name"].value.trim();
+    const email = form.elements["email"].value.trim();
+    if (mark("name", name.length < 2)) firstBad = firstBad || form.elements["name"];
+    if (mark("email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) firstBad = firstBad || form.elements["email"];
 
     const file = fileInput.files[0];
     const link = linkInput.value.trim();
-    if (!file && !link) {
-      proofProblem("Please upload a screenshot or paste a link.");
-      firstBad = firstBad || linkInput;
-    } else if (file && file.size > MAX_FILE_MB * 1024 * 1024) {
-      proofProblem("That file is too large. Please upload a screenshot under " + MAX_FILE_MB + " MB, or paste a link.");
-      firstBad = firstBad || linkInput;
-    } else if (!file && !/\S+\.\S+/.test(link)) {
-      proofProblem("That doesn’t look like a link. Please check it, or upload a screenshot.");
+    let problem = "";
+    if (!file && !link) problem = "Please upload a screenshot or paste a link.";
+    else if (file && !/^image\//.test(file.type)) problem = "Please upload an image, or paste a link.";
+    else if (file && file.size > MAX_FILE_MB * 1024 * 1024) problem = "That file is too large. Please upload a screenshot under " + MAX_FILE_MB + " MB, or paste a link.";
+    else if (!file && !/\S+\.\S+/.test(link)) problem = "That doesn't look like a link. Please check it, or upload a screenshot.";
+    if (problem) {
+      proofError.textContent = problem;
+      mark("proof", true);
       firstBad = firstBad || linkInput;
     }
 
     if (firstBad) firstBad.focus();
     return !firstBad;
   }
+
+  // ----- Submit: Netlify Forms, then the thank-you state in place -----
+  const status = document.getElementById("f-status");
+  const submitBtn = form.querySelector(".f-submit");
+  const main = document.getElementById("f-main");
+  const thanks = document.getElementById("thanks");
+
+  function showThanks() {
+    main.hidden = true;
+    thanks.hidden = false;
+    window.scrollTo(0, 0);
+    thanks.focus({ preventScroll: true });
+    try { history.replaceState(null, "", "#thanks"); } catch (err) {}
+  }
+  // QA: /raindance/free?preview=thanks shows the thank-you screen without sending a claim.
+  if (/[?&]preview=thanks\b/.test(location.search)) showThanks();
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -148,23 +125,54 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
 
     submitBtn.disabled = true;
     const label = submitBtn.textContent;
-    submitBtn.textContent = "Sending…";
+    submitBtn.textContent = "SENDING…";
 
     fetch("/", { method: "POST", body: new FormData(form) })
       .then(function (res) {
         if (!res.ok) throw new Error("Status " + res.status);
-        form.hidden = true;
-        success.hidden = false;
-        success.focus();
-        try { localStorage.removeItem("raindance_ref"); } catch (err) {}
-        if (window.fbq) fbq("track", "Lead", { content_name: "Raindance free copy" });
-        if (window.ttq) ttq.track("SubmitForm");
-        if (window.gtag) gtag("event", "generate_lead", { form_name: "raindance-claim", task: taskSelect.value });
+        RD.track("Lead", { content_name: "Raindance free ebook", mission: missionSelect.value });
+        showThanks();
       })
       .catch(function () {
+        status.innerHTML = "Something went wrong and your claim wasn't sent. Please try again, or email your proof to <a href=\"mailto:gilbert@gilbertbassey.com\">gilbert@gilbertbassey.com</a>.";
+      })
+      .finally(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = label;
-        status.innerHTML = "Something went wrong and your claim wasn’t sent. Please try again, or email your proof to <a href=\"mailto:gilbert@gilbertbassey.com\">gilbert@gilbertbassey.com</a>.";
       });
   });
+
+  // "Do another mission": back to the page with name, email and referral kept.
+  document.getElementById("f-again").addEventListener("click", function () {
+    fileInput.value = "";
+    linkInput.value = "";
+    fileName.textContent = "";
+    missions.forEach(function (m) { setMission(m, false); });
+    thanks.hidden = true;
+    main.hidden = false;
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (err) {}
+    document.getElementById("missions").scrollIntoView({ block: "start" });
+  });
+
+  // ----- Sticky claim bar (phone): shows once the hero button is gone, hides when the form is in view -----
+  const sticky = document.querySelector(".f-sticky");
+  const heroBtn = document.querySelector(".f-hero-btn");
+  if ("IntersectionObserver" in window) {
+    let heroGone = false, formNear = false;
+    function update() {
+      const show = heroGone && !formNear;
+      sticky.classList.toggle("is-on", show);
+      sticky.setAttribute("aria-hidden", String(!show));
+      sticky.querySelector("a").tabIndex = show ? 0 : -1;
+    }
+    new IntersectionObserver(function (entries) {
+      heroGone = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+      update();
+    }).observe(heroBtn);
+    new IntersectionObserver(function (entries) {
+      // "Near" once the top of the form section is within the viewport, or above it.
+      formNear = entries[0].isIntersecting || entries[0].boundingClientRect.top < 0;
+      update();
+    }, { rootMargin: "0px 0px -80px 0px" }).observe(claim);
+  }
 })();
