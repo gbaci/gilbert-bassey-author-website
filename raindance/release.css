@@ -253,7 +253,9 @@ body.rd {
 }
 .s-title-divider { display: none; }
 .s-hero-eyebrow { text-indent: 0.3em; }
-.s-couplet { font-size: 20px; line-height: 1.45; }
+/* Each line stays whole (Safari's line balancing was splitting line one into two);
+   the size eases down on narrow phones so line one still fits. */
+.s-couplet { font-size: clamp(16px, 5vw, 20px); line-height: 1.45; white-space: nowrap; text-wrap: nowrap; }
 .s-hero-btns { padding-top: 6px; }
 .s-date { font-size: 13.5px; color: var(--muted); }
 
