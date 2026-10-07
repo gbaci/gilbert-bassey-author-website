@@ -7,3 +7,7 @@ wip/
 # Design handoffs: working files, never deploy
 design_handoff*/
 *handoff*.zip
+
+# Working folders and archives that must never be deployed (spoilers)
+atogam website + codex/
+*.zip

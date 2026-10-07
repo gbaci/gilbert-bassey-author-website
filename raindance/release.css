@@ -461,7 +461,6 @@ body.rd {
 .s-covers .s-cover-next { border: 1px solid var(--gold-strong); background: #241a10; font-weight: 700; font-size: 16px; color: var(--gold); }
 .s-cover-labels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; font-size: 11.5px; line-height: 1.3; color: var(--muted); }
 .s-cover-labels .on { color: var(--cream); }
-.s-cover-labels .rest { grid-column: span 4; padding-top: 2px; }
 .s-saga-foot { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
 .s-saga-two { font-family: var(--cinzel); font-weight: 600; font-size: 13px; letter-spacing: 0.24em; color: var(--gold); }
 .s-saga-ask { font-style: italic; font-size: 23px; line-height: 1.35; color: var(--cream); text-wrap: balance; }
@@ -733,7 +732,6 @@ body.rd {
     .s-covers span { font-size: 22px; }
     .s-covers .s-cover-next { font-size: 22px; }
     .s-cover-labels { font-size: 13.5px; }
-    .s-cover-labels .rest { padding-top: 0; }
     .s-saga-foot { grid-area: foot; gap: 8px; padding-top: 0; align-self: start; }
     .s-saga-two { font-size: 14px; }
     .s-saga-ask { font-size: 28px; }
