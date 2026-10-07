@@ -190,15 +190,16 @@ body.rd {
 .s-nav { display: none; }
 .rd .s-pill {
     font-family: var(--cinzel);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.14em;
-    color: #f2be48;
-    border: 1px solid rgba(242, 190, 72, 0.6);
+    color: #1a120c;
+    border: 1px solid var(--gold);
     padding: 7px 12px;
     border-radius: 3px;
-    background: rgba(15, 11, 8, 0.2);
+    background: var(--gold);
 }
+.rd .s-pill:hover { background: #f6ce6e; border-color: #f6ce6e; color: #1a120c; }
 
 /* ----- First screen ----- */
 .s-hero { position: relative; height: 760px; margin-top: -56px; }
