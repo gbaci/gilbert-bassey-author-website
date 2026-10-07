@@ -425,14 +425,20 @@ body.rd {
 }
 .s-part-img { height: 118px; display: flex; align-items: center; justify-content: center; }
 .s-part-img img { max-height: 118px; object-fit: contain; filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.5)); }
-.s-bundle-line { font-size: 14.5px; line-height: 1.5; color: var(--body); }
+.s-part-name { font-family: var(--cinzel); font-weight: 600; font-size: 13px; line-height: 1.3; color: var(--head); }
+.s-part-sub { margin-top: -4px; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
+/* The hardcover leads the bundle: full width on phone, bigger image. */
+.s-parts .s-part-hc { grid-column: span 2; padding-top: 16px; background: radial-gradient(ellipse at 50% 45%, rgba(207, 145, 62, 0.16), var(--ground) 70%); border-color: var(--gold-dim); }
+.s-part-hc .s-part-img { height: 160px; }
+.s-part-hc .s-part-img img { max-height: 160px; }
+.s-part-hc .s-part-name { font-size: 15px; color: var(--gold); }
 .s-bundle-cta { display: flex; flex-direction: column; gap: 12px; }
 .s-bundle-cta .note { font-size: 13px; color: var(--muted); text-align: center; }
 .s-ed-foot { padding: 6px 8px 0; font-size: 13px; line-height: 1.5; color: var(--muted); text-align: center; }
 
 /* ----- Saga ----- */
-.s-saga { margin-top: 72px; background: var(--raised-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
-.s-saga-in { padding: 52px 18px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.s-saga { margin-top: 72px; scroll-margin-top: 56px; background: var(--raised-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
+.s-saga-in { padding: 52px 18px 0; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
 .s-saga-head { display: flex; flex-direction: column; gap: 20px; }
 .s-saga h2 { font-family: var(--cinzel); font-weight: 600; font-size: 30px; line-height: 1.15; color: var(--head); }
 .s-saga-books { width: 100%; display: flex; flex-direction: column; gap: 20px; }
@@ -452,32 +458,25 @@ body.rd {
 .s-cover-labels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; font-size: 11.5px; line-height: 1.3; color: var(--muted); }
 .s-cover-labels .on { color: var(--cream); }
 .s-cover-labels .rest { grid-column: span 4; padding-top: 2px; }
-.s-saga-foot { display: flex; flex-direction: column; gap: 20px; padding-top: 8px; }
-.s-saga-two { font-family: var(--cinzel); font-weight: 700; font-size: 22px; line-height: 1.3; color: var(--gold); text-wrap: balance; }
-.s-saga-plan { font-size: 15.5px; color: var(--body); }
+.s-saga-foot { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
+.s-saga-two { font-family: var(--cinzel); font-weight: 600; font-size: 13px; letter-spacing: 0.24em; color: var(--gold); }
+.s-saga-ask { font-style: italic; font-size: 23px; line-height: 1.35; color: var(--cream); text-wrap: balance; }
 
-/* ----- Founding Patrons ----- */
-.s-patrons { padding: 64px 22px 0; display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 56px; }
-.s-pat-note { display: flex; flex-direction: column; gap: 18px; }
-.s-pat-title { text-align: center; display: flex; flex-direction: column; gap: 10px; }
-.s-pat-title h2 { font-family: var(--cinzel); font-weight: 600; font-size: 26px; line-height: 1.2; color: var(--head); }
-.s-pat-body { display: flex; flex-direction: column; gap: 14px; font-size: 16.5px; line-height: 1.6; color: var(--body); }
-.s-pat-sign { font-family: var(--cinzel); font-weight: 600; font-size: 16px; color: var(--head); }
-.s-pat-card {
-    padding: 20px 16px;
-    border: 1px solid var(--gold-dim);
-    border-radius: 3px;
-    background: var(--raised);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
+/* ----- Founding Patrons (continues the saga band) ----- */
+.s-patrons { padding: 40px 22px 56px; display: flex; flex-direction: column; gap: 18px; }
+.s-pat-ticker { padding: 14px 0 16px; border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim); display: flex; flex-direction: column; gap: 12px; }
 .s-pat-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .s-places { font-family: var(--cinzel); font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: var(--head); }
 .s-pat-head .price { font-size: 19px; }
 .s-seats { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; }
 .s-seat { aspect-ratio: 1 / 1.3; border-radius: 2px; border: 1px solid var(--gold-dim); }
 .s-seat.is-taken { background: var(--gold); border-color: var(--gold); }
+.s-pat-body { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; font-size: 16.5px; line-height: 1.6; color: var(--body); }
+.s-pat-key { font-family: var(--cinzel); font-weight: 700; font-size: 18px; line-height: 1.35; color: var(--gold); }
+.s-pat-call { padding-top: 22px; font-family: var(--cinzel); font-weight: 700; font-size: 25px; line-height: 1.25; color: var(--head); text-align: center; text-wrap: balance; }
+/* Short gold rule above the subheading, so it reads as a new beat. */
+.s-pat-call::before { content: ""; display: block; width: 56px; height: 1px; margin: 0 auto 22px; background: var(--gold-line); }
+.s-pat-lead { margin-top: -6px; font-style: italic; font-size: 19px; line-height: 1.4; color: var(--cream); text-align: center; }
 .s-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .s-perks li {
     padding: 12px;
@@ -505,7 +504,7 @@ body.rd {
     color: var(--gold);
 }
 .s-perk-k { font-family: var(--cinzel); font-weight: 600; font-size: 10px; letter-spacing: 0.2em; color: var(--gold); }
-.s-terms { display: flex; flex-direction: column; }
+.s-terms { display: flex; flex-direction: column; margin-top: 6px; }
 
 /* ----- Author ----- */
 .s-author { padding: 64px 26px 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: center; }
@@ -681,11 +680,14 @@ body.rd {
     .s-bundle-head { gap: 12px; }
     .s-bundle-head h3 { font-size: 30px; }
     .s-bundle-head .price { font-size: 24px; }
-    .s-parts { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .s-parts { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .s-parts .s-part-hc { grid-column: auto; padding-top: 12px; }
+    .s-part-hc .s-part-img { height: 90px; }
+    .s-part-hc .s-part-img img { max-height: 90px; }
+    .s-part-hc .s-part-name { font-size: 13px; }
     .s-parts li { padding: 12px 6px; }
     .s-part-img { height: 90px; }
     .s-part-img img { max-height: 90px; filter: none; }
-    .s-bundle-line { font-size: 16px; line-height: 1.55; }
     .s-bundle-cta { flex-direction: row; align-items: center; gap: 18px; }
     .s-bundle-cta .note { font-size: 14px; text-align: left; }
     .s-ed-foot { text-align: left; padding: 0; font-size: 14px; }
@@ -693,7 +695,7 @@ body.rd {
     .s-saga { margin-top: 24px; }
     .s-saga-in {
         max-width: 1280px;
-        padding: 96px var(--pad);
+        padding: 96px var(--pad) 0;
         display: grid;
         grid-template-columns: min(420px, 38%) 1fr;
         grid-template-areas: "head books" "foot books";
@@ -710,27 +712,21 @@ body.rd {
     .s-covers .s-cover-next { font-size: 22px; }
     .s-cover-labels { font-size: 13.5px; }
     .s-cover-labels .rest { padding-top: 0; }
-    .s-saga-foot { grid-area: foot; gap: 18px; padding-top: 0; align-self: start; }
-    .s-saga-two { font-size: 24px; }
-    .s-saga-plan { font-size: 17px; }
+    .s-saga-foot { grid-area: foot; gap: 8px; padding-top: 0; align-self: start; }
+    .s-saga-two { font-size: 14px; }
+    .s-saga-ask { font-size: 28px; }
 
-    .s-patrons {
-        max-width: 1280px;
-        padding: 120px var(--pad) 0;
-        display: grid;
-        grid-template-columns: 1fr min(560px, 48%);
-        gap: 72px;
-        align-items: start;
-        scroll-margin-top: 0;
-    }
-    .s-pat-note { gap: 22px; padding-top: 12px; }
-    .s-pat-title { text-align: left; gap: 22px; }
-    .s-pat-title h2 { font-size: 40px; line-height: 1.15; }
-    .s-pat-body { gap: 16px; font-size: 18px; line-height: 1.65; }
-    .s-pat-sign { font-size: 17px; }
-    .s-pat-card { padding: 28px; gap: 20px; }
+    .s-saga { scroll-margin-top: 0; }
+    .s-patrons { max-width: 720px; padding: 72px var(--pad) 104px; gap: 22px; }
+    .s-pat-ticker { padding: 18px 0 20px; gap: 14px; }
     .s-pat-head .price { font-size: 22px; }
     .s-seats { gap: 5px; }
+    .s-pat-body { gap: 16px; font-size: 18px; line-height: 1.65; }
+    .s-pat-key { font-size: 21px; }
+    .s-pat-call { font-size: 32px; padding-top: 30px; }
+    .s-pat-call::before { margin-bottom: 30px; width: 72px; }
+    .s-pat-lead { font-size: 22px; }
+    .s-patrons .btn { align-self: center; min-width: 360px; }
     .s-perks { gap: 10px; }
     .s-perks li { padding: 14px; font-size: 15px; }
     .s-perks img { height: 72px; }
