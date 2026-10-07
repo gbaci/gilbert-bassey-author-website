@@ -8,18 +8,13 @@ const CONFIG = {
   // Raindance Bundles already paid for (0–50). At 50 the bundle button says SOLD OUT.
   bundlesSold: 0,
 
-  // TODO: payment links (Selar, Paystack, Flutterwave…).
+  // Payment links (Selar).
   pay: {
-    ebook: "",
-    paperback: "",
-    hardcover: "",
-    bundle: "",
-    patron: ""
-  },
-
-  // TODO: terms and refunds page. Until then the footer link opens the FAQ.
-  links: {
-    terms: ""
+    ebook: "https://selar.com/17eds99040",
+    paperback: "https://selar.com/6h2j9p9it7",
+    hardcover: "https://selar.com/jq4h2u9ol8",
+    bundle: "https://selar.com/4gx01k5jn7",
+    patron: "https://selar.com/65527h5444"
   }
 };
 
@@ -43,11 +38,6 @@ const CONFIG = {
         RD.track("InitiateCheckout", { content_name: el.dataset.name });
       });
     }
-  });
-
-  // Footer "Terms and refunds": real page when it exists, otherwise the FAQ.
-  document.querySelectorAll('[data-link="terms"]').forEach(function (el) {
-    if (CONFIG.links.terms) el.href = CONFIG.links.terms;
   });
 
   // ----- Founding Patron seats -----

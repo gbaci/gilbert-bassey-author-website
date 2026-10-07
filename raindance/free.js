@@ -2,9 +2,9 @@
    Edit LINKS when the assets exist. Empty links show "Coming soon" instead of going nowhere. */
 
 const LINKS = {
-  assets: "",     // TODO: cover / poster / trailer download pack
+  assets: "/raindance/share",           // share kit: posters, cover, art, captions
   goodreads: "",  // TODO: Goodreads book page (StoryGraph link can go in the asset pack)
-  posters: "",    // TODO: poster pack for videos
+  posters: "/raindance/share#posters", // same kit, opened at the posters
   maskGuide: ""   // TODO: Rainmaker mask guide
 };
 
