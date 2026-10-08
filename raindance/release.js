@@ -6,6 +6,10 @@
   // For QA, add ?phase=before or ?phase=after to any page URL.
   const PHASE = "auto";
 
+  // Free-copy points stop counting on this date, written as it should read on the page
+  // (e.g. "31 January 2027"). Empty hides every [data-needs-close] line.
+  const POINTS_CLOSE = "31 January 2027";
+
   const LAUNCH = Date.parse("2027-01-01T00:00:00+01:00");
   const SIGNED_CLOSE = Date.parse("2026-12-31T23:59:00+01:00");
 
@@ -78,10 +82,12 @@
     } else if (!signed) {
       document.querySelectorAll("[data-unsigned]").forEach(function (el) { el.textContent = el.dataset.unsigned; });
     }
+    document.querySelectorAll("[data-points-close]").forEach(function (el) { el.textContent = POINTS_CLOSE; });
+    document.querySelectorAll("[data-needs-close]").forEach(function (el) { el.hidden = !POINTS_CLOSE; });
     document.querySelectorAll("[data-accordion]").forEach(accordion);
   }
 
-  window.RD = { after: after, signed: signed, track: track, wire: wire };
+  window.RD = { after: after, signed: signed, track: track, wire: wire, pointsClose: POINTS_CLOSE };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", applyPhase);
   else applyPhase();

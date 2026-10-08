@@ -9,6 +9,12 @@ const LINKS = {
 };
 
 const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
+const LINK_BASE = "gilbertbassey.com/raindance/free?ref="; // personal link = this + handle
+
+// Instagram/TikTok handle → lowercase, no @, no spaces. Must match normHandle_ in the sheet's script.
+function normHandle(v) {
+  return String(v || "").trim().toLowerCase().replace(/^@+/, "").replace(/[^a-z0-9._]/g, "").slice(0, 30);
+}
 
 (function () {
   const form = document.querySelector(".f-form");
@@ -53,7 +59,13 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
     if (ref) localStorage.setItem("raindance_ref", ref);
     else ref = localStorage.getItem("raindance_ref") || "";
   } catch (e) { /* storage unavailable: use the URL only */ }
-  if (ref) refInput.value = ref.slice(0, 60);
+  if (ref) refInput.value = normHandle(ref);
+
+  // ----- Handle: remembered for return visits; tidied as they leave the field -----
+  const handleInput = document.getElementById("f-handle");
+  try { handleInput.value = localStorage.getItem("raindance_handle") || ""; } catch (e) {}
+  handleInput.addEventListener("blur", function () { handleInput.value = normHandle(handleInput.value); });
+  refInput.addEventListener("blur", function () { refInput.value = normHandle(refInput.value); });
 
   // ----- Proof: file or link -----
   const fileInput = document.getElementById("f-file");
@@ -74,7 +86,7 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
     form.querySelector('[data-field="' + name + '"]').classList.toggle("invalid", bad);
     return bad;
   }
-  form.querySelectorAll("#f-name, #f-email").forEach(function (input) {
+  form.querySelectorAll("#f-name, #f-email, #f-handle").forEach(function (input) {
     input.addEventListener("input", function () { input.closest(".f-field").classList.remove("invalid"); });
   });
 
@@ -84,6 +96,8 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
     const email = form.elements["email"].value.trim();
     if (mark("name", name.length < 2)) firstBad = firstBad || form.elements["name"];
     if (mark("email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) firstBad = firstBad || form.elements["email"];
+    handleInput.value = normHandle(handleInput.value);
+    if (mark("username", handleInput.value.length < 2)) firstBad = firstBad || handleInput;
 
     const file = fileInput.files[0];
     const link = linkInput.value.trim();
@@ -108,6 +122,38 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
   const main = document.getElementById("f-main");
   const thanks = document.getElementById("thanks");
 
+  const linkBox = document.getElementById("f-ty-link");
+  const linkText = document.getElementById("f-ty-url");
+  const copyBtn = document.getElementById("f-copy");
+  const shareBtn = document.getElementById("f-share");
+
+  function showLink(handle) {
+    linkBox.hidden = !handle;
+    linkText.textContent = LINK_BASE + handle;
+  }
+  function personalUrl() { return "https://" + linkText.textContent; }
+
+  copyBtn.addEventListener("click", function () {
+    const done = function () {
+      copyBtn.textContent = "COPIED";
+      setTimeout(function () { copyBtn.textContent = "COPY LINK"; }, 1600);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(personalUrl()).then(done, function () {});
+    else {
+      const range = document.createRange();
+      range.selectNodeContents(linkText);
+      getSelection().removeAllRanges();
+      getSelection().addRange(range);
+      try { document.execCommand("copy"); done(); } catch (e) {}
+    }
+  });
+  if (navigator.share) {
+    shareBtn.hidden = false;
+    shareBtn.addEventListener("click", function () {
+      navigator.share({ title: "Ali: Raindance", text: "Get the Ali: Raindance ebook free:", url: personalUrl() }).catch(function () {});
+    });
+  }
+
   function showThanks() {
     main.hidden = true;
     thanks.hidden = false;
@@ -116,7 +162,7 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
     try { history.replaceState(null, "", "#thanks"); } catch (err) {}
   }
   // QA: /raindance/free?preview=thanks shows the thank-you screen without sending a claim.
-  if (/[?&]preview=thanks\b/.test(location.search)) showThanks();
+  if (/[?&]preview=thanks\b/.test(location.search)) { showLink("yourhandle"); showThanks(); }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -131,6 +177,8 @@ const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
       .then(function (res) {
         if (!res.ok) throw new Error("Status " + res.status);
         RD.track("Lead", { content_name: "Raindance free ebook", mission: missionSelect.value });
+        try { localStorage.setItem("raindance_handle", handleInput.value); } catch (e) {}
+        showLink(handleInput.value);
         showThanks();
       })
       .catch(function () {

@@ -11,13 +11,13 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy notice | Ali: Raindance</title>
-    <meta name="description" content="How we use the details you give us when you claim a free copy of Ali: Raindance.">
+    <title>Leaderboard | The Raindance Reader Rewards</title>
+    <meta name="description" content="Who is leading the Raindance Reader Rewards. Collect points towards a signed copy of Ali: Raindance and the Rainmaker Fan Bundle.">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gilbertbassey.com/raindance/privacy">
-    <meta property="og:title" content="Privacy notice | Ali: Raindance">
-    <meta property="og:description" content="How we use the details you give us when you claim a free copy of Ali: Raindance.">
+    <meta property="og:url" content="https://gilbertbassey.com/raindance/leaderboard">
+    <meta property="og:title" content="Leaderboard | The Raindance Reader Rewards">
+    <meta property="og:description" content="Who is leading the Raindance Reader Rewards. Collect points towards a signed copy of Ali: Raindance and the Rainmaker Fan Bundle.">
     <meta property="og:image" content="https://gilbertbassey.com/images/ali-raindance-cover.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,32 +60,33 @@
 
 <header class="d-header">
     <a class="s-mark" href="/raindance"><img src="/raindance/assets/brand/atogam-mark-gold.svg" alt="A Tale of Gods and Men" width="81" height="24"></a>
-    <a class="s-pill" href="/raindance#editions" data-after="BUY">PREORDER</a>
+    <a class="s-pill" href="/raindance/free">GET IT FREE</a>
 </header>
 
-<main>
-    <div class="d-col">
-        <p class="eyebrow">ALI: RAINDANCE · FREE COPY</p>
-        <h1>Privacy notice</h1>
-        <p>This notice explains what happens to the details you give us when you claim a free copy of <em>Ali: Raindance</em>. The campaign is run by Gilbert Bassey and MoSA Publishing.</p>
+<main class="lb-col">
+    <div class="lb-intro">
+        <p class="eyebrow">THE RAINDANCE READER REWARDS</p>
+        <h1>Leaderboard</h1>
+        <p class="lb-sub">Points from approved claims. 10 points earns a signed paperback, 15 a signed hardcover, 30 the Rainmaker Fan Bundle. When points close, the top 3 with at least 50 points become Founding Patrons.</p>
+        <p class="lb-sub" data-needs-close hidden>Points close on <span data-points-close></span>.</p>
+    </div>
 
-        <h2>What we collect</h2>
-        <p>Your name, email address, Instagram or TikTok handle, the mission you chose, the proof you send (a screenshot or a link), and the handle of anyone who referred you.</p>
+    <p class="lb-me" id="lb-me" hidden></p>
 
-        <h2>Why we collect it</h2>
-        <p>To check your claim, send you the ebook, give you a personal link, count your points and contact you about rewards you earn. We add you to the <em>Ali: Raindance</em> email list for this. You can unsubscribe at any time from the bottom of any email.</p>
+    <div class="lb-search">
+        <label class="visually-hidden" for="lb-find">Find a handle</label>
+        <input id="lb-find" type="search" placeholder="Find your handle" autocomplete="off" autocapitalize="none" spellcheck="false">
+    </div>
 
-        <h2>Who sees it</h2>
-        <p>Your handle, points and reward level are shown on the public <a href="/raindance/leaderboard">leaderboard</a> once a claim is approved. Your name and email address are never shown there.</p>
-        <p>Everything else is seen only by the people running the campaign. Your details are stored with the services we use to run this website and send email. We never sell your details or share them with anyone else for their own marketing.</p>
+    <div>
+        <ol class="lb-list" id="lb-list" aria-live="polite"></ol>
+        <p class="lb-msg" id="lb-msg">Loading the leaderboard…</p>
+        <p class="lb-more" id="lb-more" hidden></p>
+    </div>
 
-        <h2>How long we keep it</h2>
-        <p>Only as long as we need it to run the campaign and deliver rewards. Ask us and we'll take your handle off the leaderboard.</p>
-
-        <h2>Your rights</h2>
-        <p>You can ask to see, correct or delete the details we hold about you at any time. Email <a href="mailto:gilbert@gilbertbassey.com">gilbert@gilbertbassey.com</a>. We handle personal data in line with the Nigeria Data Protection Act 2023.</p>
-
-        <p class="d-back"><a href="/raindance/free">← Back to the free copy page</a></p>
+    <div class="lb-cta">
+        <a class="btn btn-gold" href="/raindance/free">CLAIM YOUR FREE EBOOK</a>
+        <a href="/raindance/free#missions">How to earn points →</a>
     </div>
 </main>
 
@@ -99,5 +100,7 @@
         <a href="/contact">Contact</a>
     </nav>
 </footer>
+
+<script src="/raindance/leaderboard.js?v=20261008n"></script>
 </body>
 </html>

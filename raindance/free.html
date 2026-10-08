@@ -28,8 +28,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/raindance/release.css?v=20261008l">
-    <script src="/raindance/release.js?v=20261008l"></script>
+    <link rel="stylesheet" href="/raindance/release.css?v=20261008n">
+    <script src="/raindance/release.js?v=20261008n"></script>
 
     <!-- Meta Pixel Code -->
     <script>
@@ -147,7 +147,7 @@
     <ol class="f-steps">
         <li><span class="f-step-n">1</span><div><p class="f-step-t">Share</p><p class="f-step-d">Pick a mission</p></div></li>
         <li><span class="f-step-n">2</span><div><p class="f-step-t">Submit</p><p class="f-step-d">Send a screenshot or link</p></div></li>
-        <li><span class="f-step-n">3</span><div><p class="f-step-t">Earn</p><p class="f-step-d">Get approved by email</p></div></li>
+        <li><span class="f-step-n">3</span><div><p class="f-step-t">Earn</p><p class="f-step-d">Climb the <a href="/raindance/leaderboard">leaderboard</a></p></div></li>
     </ol>
 
     <!-- Missions + claim form -->
@@ -176,8 +176,16 @@
                     <div class="f-mission" data-mission="Make a video">
                         <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">▶&#xFE0E;</span><span class="f-m-title">Make a video</span><span class="f-m-chip">+3 PTS</span></button>
                         <div class="f-m-a" hidden>
-                            <p>Ideas: 3 reasons you want to read it · your reaction to the cover · your reaction to the sample · a countdown to release. Every video must send people here: say “link in Gilbert's bio” or put this page's link in your own bio. Up to 3 videos.</p>
+                            <p>Ideas: 3 reasons you want to read it · your reaction to the cover · your reaction to the sample · a countdown to release. Every video must send people here: say “link in Gilbert's bio” or put this page's link in your own bio.</p>
+                            <p>Your first video earns 3 points. Make more if you like: each extra video earns up to 5 points, depending on how well it does.</p>
                             <div class="f-m-actions"><a class="f-m-act" href="#" data-link="posters">GET THE POSTERS</a><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
+                        </div>
+                    </div>
+                    <div class="f-mission" data-mission="Post your reading reaction">
+                        <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">“</span><span class="f-m-title">Post your reading reaction</span><span class="f-m-chip">+5 PTS</span></button>
+                        <div class="f-m-a" hidden>
+                            <p>Once you've read it, post what you thought on Instagram, TikTok, X or your WhatsApp status. Honest is better than nice.</p>
+                            <div class="f-m-actions"><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
                         </div>
                     </div>
                     <div class="f-mission" data-mission="Make the Rainmaker's mask">
@@ -213,6 +221,14 @@
                         </div>
                     </div>
 
+                    <div class="f-field f-handle" data-field="username">
+                        <label class="visually-hidden" for="f-handle">Instagram or TikTok handle</label>
+                        <span class="f-at" aria-hidden="true">@</span>
+                        <input id="f-handle" name="username" type="text" placeholder="Instagram or TikTok handle" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40" required>
+                        <p class="f-hint">Your name on the public leaderboard, and your personal link.</p>
+                        <p class="f-error">Please enter your Instagram or TikTok handle.</p>
+                    </div>
+
                     <div class="f-field f-side">
                         <label class="visually-hidden" for="f-mission">Mission</label>
                         <select id="f-mission" name="mission">
@@ -220,6 +236,7 @@
                             <option>Add it to your reading list</option>
                             <option>Make a video</option>
                             <option>Make the Rainmaker's mask</option>
+                            <option>Post your reading reaction</option>
                         </select>
                         <span class="f-side-label" aria-hidden="true">Mission</span>
                     </div>
@@ -239,14 +256,14 @@
                     </div>
 
                     <div class="f-field f-side">
-                        <label class="visually-hidden" for="f-ref">Referred by (optional)</label>
-                        <input id="f-ref" name="referred_by" type="text" autocomplete="off">
-                        <span class="f-side-label" aria-hidden="true">Referred by (optional)</span>
+                        <label class="visually-hidden" for="f-ref">Who invited you? Their handle (optional)</label>
+                        <input id="f-ref" name="referred_by" type="text" placeholder="their handle" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+                        <span class="f-side-label" aria-hidden="true">Who invited you? (optional)</span>
                     </div>
 
                     <button class="btn f-submit" type="submit">CLAIM MY FREE EBOOK</button>
                     <p class="f-status" id="f-status" role="alert"></p>
-                    <p class="f-note">Checked by hand within two days. Your ebook link arrives in the approval email. <a href="/raindance/privacy">Privacy notice</a></p>
+                    <p class="f-note">Checked by hand within two days. Approved claims show on the <a href="/raindance/leaderboard">leaderboard</a>. <a href="/raindance/privacy">Privacy notice</a></p>
                 </form>
             </div>
         </div>
@@ -259,22 +276,27 @@
             <div class="acc-item">
                 <button type="button" class="acc-q" aria-expanded="false"><span>How do points and referrals work?</span><span class="acc-sign" aria-hidden="true">+</span></button>
                 <div class="acc-a" hidden>
-                    <p>When your claim is approved, we email you a personal link. Every friend who claims through it earns you a point.</p>
+                    <p>As soon as you claim, you get a personal link with your handle in it. Every friend who claims through it earns you a point once their claim is approved. Your points show on the <a href="/raindance/leaderboard">leaderboard</a>.</p>
                     <ul class="f-points">
                         <li><span>A friend claims through your link</span><span>1 point</span></li>
-                        <li><span>A video (up to 3)</span><span>3 points each</span></li>
+                        <li><span>Your first video</span><span>3 points</span></li>
+                        <li><span>Each extra video, by how well it does</span><span>up to 5 points</span></li>
                         <li><span>A photo with your Rainmaker's mask</span><span>5 points</span></li>
-                        <li><span>A review after you've read it</span><span>5 points</span></li>
+                        <li><span>A post about the book after you've read it</span><span>5 points</span></li>
                     </ul>
                 </div>
             </div>
-            <div class="acc-item"><button type="button" class="acc-q" aria-expanded="false"><span>What happens after I submit proof?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden>We check every claim by hand and reply within two days. The approval email carries your personal link.</div></div>
+            <div class="acc-item"><button type="button" class="acc-q" aria-expanded="false"><span>What happens after I submit proof?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden>We check every claim by hand within two days. Once it's approved, your handle and points appear on the <a href="/raindance/leaderboard">leaderboard</a>.</div></div>
             <div class="acc-item"><button type="button" class="acc-q" aria-expanded="false"><span>When will I receive my ebook?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden data-after="It is emailed to you as soon as your claim is approved.">It is emailed to you on release day, 1 January 2027. Reach 5 points and it is emailed as soon as your submission is approved.</div></div>
+            <div class="acc-item" data-needs-close hidden><button type="button" class="acc-q" aria-expanded="false"><span>When do points close?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden>Points stop counting on <span data-points-close></span>. Signed copies and Fan Bundles go out once, after that, to the highest level each person reached.</div></div>
+            <div class="acc-item"><button type="button" class="acc-q" aria-expanded="false"><span>Can I become a Founding Patron?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden>Yes. Founding Patrons pay for their place. You can earn one. When points close, the top 3 readers on the <a href="/raindance/leaderboard">leaderboard</a> with at least 50 points become Founding Patrons, with everything paying patrons get. If two readers tie, the place goes to whoever reached that score first.</div></div>
+            <div class="acc-item"><button type="button" class="acc-q" aria-expanded="false"><span>How do prizes reach me?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden>Delivery is free within Nigeria. Live abroad? Give us any Nigerian address, a friend or family member, and we'll deliver there. Fan Bundles go out in the first week of January 2027 with the preorders. Everything else goes out after points close.</div></div>
             <div class="acc-item"><button type="button" class="acc-q" aria-expanded="false"><span>Do rewards add up?</span><span class="acc-sign" aria-hidden="true">+</span></button><div class="acc-a" hidden>No. Each reward replaces the one below it, so you get the highest one you reach. Reach 15 points and the signed hardcover replaces the signed paperback. Your free ebook comes with every level.</div></div>
         </div>
     </section>
 
     <footer class="f-foot">
+        <p class="f-lb-link"><a href="/raindance/leaderboard">See the leaderboard →</a></p>
         <p class="before-only">Want it signed now? <a href="/raindance#editions">Preorder by 31 December →</a></p>
         <p class="after-only">Want a copy now? <a href="/raindance#editions">Buy the book →</a></p>
         <p class="f-copy">© 2026 Gilbert Bassey · Published by MoSA Publishing</p>
@@ -296,6 +318,16 @@
         <span class="divider f-ty-divider" aria-hidden="true"><i></i><b></b><i></i></span>
     </div>
 
+    <div class="f-ty-link" id="f-ty-link" hidden>
+        <p class="eyebrow gold">YOUR PERSONAL LINK</p>
+        <p class="f-ty-url" id="f-ty-url"></p>
+        <div class="f-ty-link-btns">
+            <button type="button" class="btn btn-gold" id="f-copy">COPY LINK</button>
+            <button type="button" class="btn btn-line" id="f-share" hidden>SHARE</button>
+        </div>
+        <p class="f-ty-link-note">Every friend who claims through it earns you a point once their claim is approved.</p>
+    </div>
+
     <div class="f-ty-keep">
         <p class="eyebrow">KEEP GOING</p>
         <ul class="f-keep">
@@ -310,17 +342,17 @@
         <p class="eyebrow f-ty-next">WHAT HAPPENS NEXT</p>
         <ol class="f-ty-steps">
             <li><span class="f-step-n">1</span><div><p class="f-step-t">We check it by hand</p><p class="f-step-d">Within two days.</p></div></li>
-            <li><span class="f-step-n">2</span><div><p class="f-step-t">You get an approval email</p><p class="f-step-d">It carries your ebook link and your personal referral link.</p></div></li>
+            <li><span class="f-step-n">2</span><div><p class="f-step-t">You join the leaderboard</p><p class="f-step-d">Once approved, your handle and points appear on the <a href="/raindance/leaderboard">leaderboard</a>.</p></div></li>
             <li><span class="f-step-n">3</span><div><p class="f-step-t">Share your link</p><p class="f-step-d">Every friend who claims through it earns you a point.</p></div></li>
         </ol>
         <div class="btn-stack">
             <button type="button" class="btn btn-gold" id="f-again">DO ANOTHER MISSION</button>
             <a class="btn btn-line" href="/raindance/sample">READ TWO FREE CHAPTERS</a>
         </div>
-        <p class="f-ty-note">Didn't get an email within two days? Check spam, then <a href="/contact">contact us</a>.</p>
+        <p class="f-ty-note">Not on the leaderboard after two days? <a href="/contact">Contact us</a>.</p>
     </div>
 </section>
 
-<script src="/raindance/free.js?v=20261008l"></script>
+<script src="/raindance/free.js?v=20261008n"></script>
 </body>
 </html>
