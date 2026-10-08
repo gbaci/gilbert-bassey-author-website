@@ -40,6 +40,12 @@ const CONFIG = {
     }
   });
 
+  // ----- Header: solid background once scrolled (phone header is sticky) -----
+  const header = document.querySelector(".s-header");
+  function solidHeader() { header.classList.toggle("is-solid", window.scrollY > 40); }
+  window.addEventListener("scroll", solidHeader, { passive: true });
+  solidHeader();
+
   // ----- Founding Patron seats -----
   const taken = Math.max(0, Math.min(20, CONFIG.placesTaken | 0));
   let seats = "";
