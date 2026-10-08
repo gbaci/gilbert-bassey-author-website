@@ -268,6 +268,9 @@ body.rd {
 /* ----- Story + Rainmaker band ----- */
 .s-story-text { padding: 56px 26px 0; display: flex; flex-direction: column; gap: 18px; }
 .s-story-text h2 { font-family: var(--cinzel); font-weight: 600; font-size: 32px; line-height: 1.15; color: var(--head); }
+/* Three-beat hook: one phrase per line, sized so the longest ("A nation on the brink.") never wraps. */
+.s-story-text h2.s-story-hook { font-size: clamp(20px, 6.6vw, 28px); line-height: 1.2; }
+.s-story-hook span { display: block; white-space: nowrap; }
 .s-story-body { display: flex; flex-direction: column; gap: 12px; font-size: 17.5px; line-height: 1.55; color: var(--cream); }
 .s-senate { position: relative; margin-top: 56px; height: 640px; overflow: hidden; }
 .s-senate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 20%; }
@@ -628,6 +631,7 @@ body.rd {
     }
     .s-story-text { padding: 0 var(--pad); gap: 22px; justify-content: center; }
     .s-story-text h2 { font-size: 44px; line-height: 1.12; }
+    .s-story-text h2.s-story-hook { font-size: clamp(28px, 2.6vw, 38px); line-height: 1.16; }
     .s-story-body { gap: 14px; font-size: 19px; line-height: 1.6; }
     .s-senate { margin-top: 0; height: 700px; border-radius: 3px 0 0 3px; }
     .s-senate img { object-position: 50% 20%; }
