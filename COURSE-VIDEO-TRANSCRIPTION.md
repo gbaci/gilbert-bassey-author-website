@@ -78,6 +78,18 @@ completion notification does not mean every file transcribed. **Always grep
 the log for `Skipping` or `Error` after a "complete" batch before trusting
 it**, and re-run any file that failed under its current, correct filename.
 
+## Gotcha: Whisper can get stuck repeating one line
+
+Found 2026-10-09 on Vlogging Course lesson 15. When a lesson plays a clip
+of a vlog (music, crosstalk, Pidgin), Whisper can lock into a loop and write
+the same line hundreds of times ("Hilda is back" x400), dropping the rest
+of the lesson. A "successful" run and a non-empty .txt don't catch this.
+**Skim each transcript, or check for a line repeated many times**, e.g.
+`sort 15.txt | uniq -c | sort -rn | head -3`. Fix: re-run that one file
+with `--condition-on-previous-text False` added to the command. That stops
+it carrying the stuck text forward, and the 2026-10-09 re-run came out
+clean.
+
 ## A note on network access during this session (probably not permanent)
 
 The very first attempt to download `large-v3-turbo`'s weights failed:

@@ -91,6 +91,12 @@ shorter than Learn Storycraft, so results comfortably beat target:
 | 1. Intro to foundations (2.2 min) | 251 MB | 18.5 MB | 13.6x |
 | (rest of the batch — see below, filled in after the Sept 29 2026 run) | | | |
 
+Second batch (lessons 9-17, Shooting + Editing modules, 2026-10-09): 13.3 GB
+of exports became 1.06 GB. The two long lessons were the only big ones:
+11. how to shoot (29.7 min) went from 3.4 GB to 312 MB, just over target, and
+14. the editing flow (26.5 min) from 3.0 GB to 265 MB. Everything else landed
+at 25-106 MB.
+
 Encode speed on this Mac (M1 Pro, software x264, `medium` preset): roughly
 **3x realtime** — a 15-minute lesson takes about 5 minutes to encode. For a
 full course of ~90 minutes of total footage, budget ~30 minutes of encoding
