@@ -11,7 +11,7 @@ const LINKS = {
 const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
 const LINK_BASE = "gilbertbassey.com/raindance/free?ref="; // personal link = this + handle
 
-// Instagram/TikTok handle → lowercase, no @, no spaces. Must match normHandle_ in the sheet's script.
+// Social media handle → lowercase, no @, no spaces. Must match normHandle_ in the sheet's script.
 function normHandle(v) {
   return String(v || "").trim().toLowerCase().replace(/^@+/, "").replace(/[^a-z0-9._]/g, "").slice(0, 30);
 }
