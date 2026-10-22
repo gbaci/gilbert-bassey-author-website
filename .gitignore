@@ -11,3 +11,6 @@ design_handoff*/
 # Working folders and archives that must never be deployed (spoilers)
 atogam website + codex/
 *.zip
+
+# Claude Code local settings: machine-specific, never publish
+.claude/settings.local.json

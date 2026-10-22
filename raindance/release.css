@@ -169,7 +169,7 @@ body.rd {
    ===================================================================== */
 
 /* Phone content width: fluid up to this, centred. */
-.s-story-text, .s-chars, .s-editions, .s-saga-in, .s-patrons, .s-author, .s-faq-in, .s-close-cta, .s-footer {
+.s-story-text, .s-chars, .s-editions, .s-author, .s-faq-in, .s-close-cta, .s-footer {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -295,7 +295,9 @@ body.rd {
 .s-quote { font-size: 25px; line-height: 1.32; color: #f6efe2; }
 
 /* ----- Chapter tiles ----- */
-.s-tiles { padding: 48px 18px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.s-chars-head { padding: 56px 18px 0; text-align: center; display: flex; flex-direction: column; gap: 8px; }
+.s-chars-head h2 { font-family: var(--cinzel); font-weight: 600; font-size: 26px; line-height: 1.2; color: var(--head); }
+.s-tiles { padding: 18px 18px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .s-tile {
     position: relative;
     aspect-ratio: 172 / 300;
@@ -328,7 +330,6 @@ body.rd {
 .s-tile-role { font-size: 13px; line-height: 1.35; font-style: italic; color: var(--body); }
 .s-tile-link { padding-top: 6px; font-family: var(--cinzel); font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: var(--gold); }
 .s-tile:hover .s-tile-link { color: var(--link-hover); }
-.s-tiles-cap { padding: 12px 26px 0; text-align: center; font-size: 13.5px; color: var(--muted); }
 
 /* ----- Cast ----- */
 .s-cast { padding: 40px 18px 0; display: flex; flex-direction: column; gap: 14px; }
@@ -402,7 +403,6 @@ body.rd {
 .s-bundle {
     border: 1px solid rgba(239, 228, 207, 0.12);
     border-radius: 3px;
-    background: var(--box);
     overflow: clip;
     display: flex;
     flex-direction: column;
@@ -434,76 +434,10 @@ body.rd {
 .s-bundle-cta .note { font-size: 13px; color: var(--muted); text-align: center; }
 .s-ed-foot { padding: 6px 8px 0; font-size: 13px; line-height: 1.5; color: var(--muted); text-align: center; }
 
-/* ----- Saga ----- */
-.s-saga { margin-top: 72px; scroll-margin-top: 56px; background: var(--raised-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
-.s-saga-in { padding: 52px 18px 0; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
-.s-saga-head { display: flex; flex-direction: column; gap: 20px; }
-.s-saga h2 { font-family: var(--cinzel); font-weight: 600; font-size: 30px; line-height: 1.15; color: var(--head); }
-.s-saga-books { width: 100%; display: flex; flex-direction: column; gap: 20px; }
-.s-covers { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; align-items: end; }
-.s-covers img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; box-shadow: 0 0 0 1px var(--gold-strong); }
-.s-covers span {
-    aspect-ratio: 2 / 3;
-    border: 1px dashed rgba(239, 228, 207, 0.22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--cinzel);
-    font-size: 14px;
-    color: var(--paper-muted);
-}
-.s-covers .s-cover-next { border: 1px solid var(--gold-strong); background: #241a10; font-weight: 700; font-size: 16px; color: var(--gold); }
-.s-cover-labels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; font-size: 11.5px; line-height: 1.3; color: var(--muted); }
-.s-cover-labels .on { color: var(--cream); }
-.s-saga-foot { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
-.s-saga-two { font-family: var(--cinzel); font-weight: 600; font-size: 13px; letter-spacing: 0.24em; color: var(--gold); }
-.s-saga-ask { font-style: italic; font-size: 23px; line-height: 1.35; color: var(--cream); text-wrap: balance; }
-
-/* ----- Founding Patrons (continues the saga band) ----- */
-.s-pat-img { width: 100%; height: auto; max-width: 440px; align-self: center; margin: 0 auto 10px; border-radius: 3px; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5); }
-.s-patrons { padding: 40px 22px 56px; display: flex; flex-direction: column; gap: 18px; }
-.s-pat-ticker { padding: 14px 0 16px; border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim); display: flex; flex-direction: column; gap: 12px; }
-.s-pat-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.s-places { font-family: var(--cinzel); font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: var(--head); }
-.s-pat-head .price { font-size: 19px; }
-.s-seats { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; }
-.s-seat { aspect-ratio: 1 / 1.3; border-radius: 2px; border: 1px solid var(--gold-dim); }
-.s-seat.is-taken { background: var(--gold); border-color: var(--gold); }
-.s-pat-body { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; font-size: 16.5px; line-height: 1.6; color: var(--body); }
-.s-pat-bold { font-weight: 600; color: var(--head); }
-.s-pat-call { padding-top: 22px; font-family: var(--cinzel); font-weight: 700; font-size: 25px; line-height: 1.25; color: var(--head); text-align: center; text-wrap: balance; }
-.s-pat-call span { color: var(--gold); }
-/* Short gold rule above the subheading, so it reads as a new beat. */
-.s-pat-call::before { content: ""; display: block; width: 56px; height: 1px; margin: 0 auto 22px; background: var(--gold-line); }
-.s-pat-lead { margin-top: -6px; font-style: italic; font-size: 19px; line-height: 1.4; color: var(--cream); text-align: center; }
-.s-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.s-perks li {
-    padding: 12px;
-    border: 1px solid var(--hair);
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-size: 14px;
-    line-height: 1.35;
-    color: var(--cream);
-}
-.s-perks img { height: 64px; width: auto; align-self: flex-start; }
-.s-perk-two {
-    height: 64px;
-    width: 50px;
-    border: 1px dashed var(--gold-line);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--cinzel);
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--gold);
-}
-.s-perk-k { font-family: var(--cinzel); font-weight: 600; font-size: 10px; letter-spacing: 0.2em; color: var(--gold); }
-.s-terms { display: flex; flex-direction: column; margin-top: 6px; }
+/* ----- Founding Patron: the bundle card again, so the ladder reads as one ----- */
+.s-bundle-patron { margin-top: 10px; scroll-margin-top: 56px; }
+.s-pat-text { display: flex; flex-direction: column; gap: 12px; font-size: 15.5px; line-height: 1.6; color: var(--body); }
+.s-pat-faq { margin-top: 2px; }
 
 /* ----- Author ----- */
 .s-author { padding: 64px 26px 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: center; }
@@ -570,17 +504,18 @@ body.rd {
         --edge: max(0px, calc((100vw - 1280px) / 2));
         --pad: clamp(36px, 5vw, 64px);
     }
-    .s-story-text, .s-chars, .s-editions, .s-saga-in, .s-patrons, .s-author, .s-faq-in, .s-close-cta, .s-footer { max-width: none; }
+    .s-story-text, .s-chars, .s-editions, .s-author, .s-faq-in, .s-close-cta, .s-footer { max-width: none; }
 
+    /* Sticky like the phone header, pulled back over the hero so the first screen is unchanged.
+       Keeps the nav and the PREORDER pill reachable at any scroll depth. */
     .s-header {
-        position: absolute;
-        left: 0;
-        right: 0;
+        position: sticky;
+        top: 0;
         height: 72px;
+        margin-bottom: -72px;
         padding: 0 48px 0 calc(var(--edge) + 48px);
     }
     .s-mark img { height: 22px; }
-    .s-pill { display: none; }
     .s-nav { display: flex; gap: 28px; padding-right: calc(var(--edge)); }
     .rd .s-nav a {
         font-family: var(--cinzel);
@@ -647,6 +582,8 @@ body.rd {
         gap: 48px;
         align-items: start;
     }
+    .s-chars-head { grid-column: 1 / -1; padding: 0; text-align: left; gap: 14px; }
+    .s-chars-head h2 { font-size: 34px; line-height: 1.15; }
     .s-chapters { display: flex; flex-direction: column; gap: 14px; }
     .s-tiles { padding: 0; gap: 12px; }
     .s-tile { aspect-ratio: 304 / 400; }
@@ -656,7 +593,6 @@ body.rd {
     .s-tile-name { font-size: 26px; }
     .s-tile-role { font-size: 15px; }
     .s-tile-link { font-size: 12px; }
-    .s-tiles-cap { padding: 0; text-align: left; font-size: 15px; }
     .s-cast { padding: 0; gap: 18px; }
     .s-cast > .eyebrow { text-align: left; }
     .s-spot { display: none; }
@@ -707,44 +643,8 @@ body.rd {
     .s-bundle-cta .note { font-size: 14px; text-align: left; }
     .s-ed-foot { text-align: left; padding: 0; font-size: 14px; }
 
-    .s-saga { margin-top: 24px; }
-    .s-saga-in {
-        max-width: 1280px;
-        padding: 96px var(--pad) 0;
-        display: grid;
-        grid-template-columns: min(420px, 38%) 1fr;
-        grid-template-areas: "head books" "foot books";
-        column-gap: 64px;
-        row-gap: 18px;
-        align-items: center;
-        text-align: left;
-    }
-    .s-saga-head { grid-area: head; gap: 18px; align-self: end; }
-    .s-saga h2 { font-size: 44px; line-height: 1.1; }
-    .s-saga-books { grid-area: books; gap: 12px; }
-    .s-covers, .s-cover-labels { gap: 12px; }
-    .s-covers span { font-size: 22px; }
-    .s-covers .s-cover-next { font-size: 22px; }
-    .s-cover-labels { font-size: 13.5px; }
-    .s-saga-foot { grid-area: foot; gap: 8px; padding-top: 0; align-self: start; }
-    .s-saga-two { font-size: 14px; }
-    .s-saga-ask { font-size: 28px; }
-
-    .s-saga { scroll-margin-top: 0; }
-    .s-patrons { max-width: 720px; padding: 72px var(--pad) 104px; gap: 22px; }
-    .s-pat-ticker { padding: 18px 0 20px; gap: 14px; }
-    .s-pat-head .price { font-size: 22px; }
-    .s-seats { gap: 5px; }
-    .s-pat-body { gap: 16px; font-size: 18px; line-height: 1.65; }
-    .s-pat-call { font-size: 32px; padding-top: 30px; }
-    .s-pat-call::before { margin-bottom: 30px; width: 72px; }
-    .s-pat-lead { font-size: 22px; }
-    .s-patrons .btn { align-self: center; min-width: 360px; }
-    .s-perks { gap: 10px; }
-    .s-perks li { padding: 14px; font-size: 15px; }
-    .s-perks img { height: 72px; }
-    .s-perk-two { height: 72px; width: 54px; font-size: 18px; }
-    .s-perk-k { font-size: 10.5px; }
+    .s-bundle-patron { margin-top: 2px; scroll-margin-top: 24px; }
+    .s-pat-text { font-size: 16px; line-height: 1.65; }
 
     .s-author {
         max-width: 1280px;

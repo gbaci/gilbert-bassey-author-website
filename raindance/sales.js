@@ -2,9 +2,6 @@
    Empty links show "Coming soon" instead of going nowhere. The launch date lives in release.js. */
 
 const CONFIG = {
-  // Founding Patron places already paid for (0–20).
-  placesTaken: 0,
-
   // Raindance Bundles already paid for (0–50). At 50 the bundle button says SOLD OUT.
   bundlesSold: 0,
 
@@ -45,17 +42,6 @@ const CONFIG = {
   function solidHeader() { header.classList.toggle("is-solid", window.scrollY > 40); }
   window.addEventListener("scroll", solidHeader, { passive: true });
   solidHeader();
-
-  // ----- Founding Patron seats -----
-  const taken = Math.max(0, Math.min(20, CONFIG.placesTaken | 0));
-  let seats = "";
-  for (let i = 0; i < 20; i++) seats += '<span class="s-seat' + (i < taken ? " is-taken" : "") + '"></span>';
-  const seatBox = document.querySelector(".s-seats");
-  seatBox.innerHTML = seats;
-  // \u2060 (word joiner) keeps "F01–F20" from breaking across lines.
-  const placesLine = taken === 0 ? "TWENTY PLACES · F01\u2060–\u2060F20" : (20 - taken) + " OF 20 PLACES LEFT";
-  document.querySelector(".s-places").textContent = placesLine;
-  seatBox.setAttribute("aria-label", taken + " of 20 Founding Patron places taken");
 
   // ----- Cast spotlight (phone) -----
   const CAST = [
