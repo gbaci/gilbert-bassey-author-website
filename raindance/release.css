@@ -235,7 +235,7 @@ body.rd {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-weight: inherit;
 }
 .s-title-ali {
@@ -256,7 +256,6 @@ body.rd {
     color: #f6efe2;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
-.s-title-divider { display: none; }
 .s-hero-eyebrow { text-indent: 0.3em; }
 /* Two fixed lines: each is its own block that never wraps, so no browser
    (Safari included) can split line one. Size eases down on narrow phones. */
@@ -551,7 +550,6 @@ body.rd {
     }
     .s-title { position: static; align-items: flex-start; gap: 12px; }
     .s-title-ali { font-size: 112px; line-height: 0.9; text-shadow: none; }
-    .s-title-divider { display: inline-flex; }
     .s-title-rd { font-size: 26px; text-indent: 0; text-shadow: none; }
     .s-hero-eyebrow { order: -1; text-indent: 0; }
     .s-couplet { font-size: 23px; }
