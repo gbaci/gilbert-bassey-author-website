@@ -3,7 +3,7 @@
 
 const LINKS = {
   assets: "/raindance/share",           // share kit: posters, cover, art, captions
-  goodreads: "",  // TODO: Goodreads book page (StoryGraph link can go in the asset pack)
+  goodreads: "https://www.goodreads.com/book/show/260625427-ali",
   posters: "/raindance/share#posters", // same kit, opened at the posters
   maskGuide: ""   // TODO: Rainmaker mask guide
 };
