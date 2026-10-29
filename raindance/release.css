@@ -1409,3 +1409,31 @@ body.rd {
     .lb-handle { font-size: 18px; }
     .lb-pts { font-size: 20px; }
 }
+
+/* ===== Beta-reader delivery address (/raindance/address) ===== */
+.a-card { width: 100%; margin-top: 10px; padding: 22px 18px; background: var(--paper); border: 1px solid rgba(36, 27, 18, 0.18); border-radius: 3px; text-align: left; }
+.a-card .f-field textarea {
+    width: 100%;
+    min-height: 96px;
+    padding: 12px;
+    border: 1px solid var(--paper-border);
+    border-radius: 2px;
+    background: var(--paper-field);
+    font-family: var(--spectral);
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--paper-head);
+    resize: vertical;
+}
+.a-card .f-field textarea::placeholder { color: #8a7f6d; opacity: 1; }
+.a-card .f-field textarea:focus { outline: none; border-color: var(--paper-accent); box-shadow: 0 0 0 1px var(--paper-accent); }
+.a-label { display: block; padding-bottom: 5px; font-size: 14px; color: var(--paper-body); }
+.a-label span { color: var(--paper-muted); }
+.a-card .f-note { text-align: left; }
+
+@media (max-width: 480px) {
+    .a-card .f-row2 { grid-template-columns: 1fr; }
+}
+@media (min-width: 900px) {
+    .a-card { padding: 30px 32px; }
+}
