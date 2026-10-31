@@ -27,12 +27,13 @@
   if (!signed) root.classList.add("is-unsigned");
 
   // Pixels: Meta standard events go through "track", everything else through "trackCustom".
-  const META_STANDARD = { ViewContent: 1, InitiateCheckout: 1, Lead: 1 };
+  const META_STANDARD = { ViewContent: 1, InitiateCheckout: 1, Lead: 1, Purchase: 1 };
+  const TIKTOK_NAMES = { Lead: "SubmitForm", Purchase: "CompletePayment" };
   function track(name, params) {
     params = Object.assign({ content_id: "ali-raindance" }, params);
     try {
       if (window.fbq) fbq(META_STANDARD[name] ? "track" : "trackCustom", name, params);
-      if (window.ttq) ttq.track(name === "Lead" ? "SubmitForm" : name, params);
+      if (window.ttq) ttq.track(TIKTOK_NAMES[name] || name, params);
       if (window.gtag) gtag("event", name, params);
     } catch (e) { /* tracking must never break the page */ }
   }
