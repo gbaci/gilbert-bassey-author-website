@@ -70,7 +70,7 @@
         <p class="eyebrow">A TALE OF GODS AND MEN · FOUNDING PATRONS</p>
         <h1>How should we thank you?</h1>
         <p>Thank you for becoming a founding patron of <em>A Tale of Gods and Men</em>. Your support puts copies of <em>Ali: Raindance</em> in the hands of readers who couldn't otherwise buy one, and earns you an acknowledgement in Book Two.</p>
-        <p>Two things to settle: how you'd like to be credited, and where your copies should go.</p>
+        <p style="color: var(--gold)">Two things to settle: how you'd like to be credited, and where your copies should go.</p>
 
         <div class="a-card">
             <form class="f-form" name="raindance-patron" method="POST" action="/raindance/patron-received" data-netlify="true" netlify-honeypot="company">
@@ -88,23 +88,18 @@
                         <input id="p-email" name="email" type="email" autocomplete="email" inputmode="email" required>
                     </div>
                 </div>
-                <div class="f-field">
-                    <label class="a-label" for="p-phone">Phone or WhatsApp number</label>
-                    <input id="p-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
-                </div>
 
                 <div class="f-field">
-                    <label class="a-label" for="p-credit">Name to print in Book Two</label>
-                    <input id="p-credit" name="credit_name" type="text" placeholder="e.g. Ada Okafor or The Okafor Family" required>
-                    <p class="f-hint">Your real name or any name you choose. I'll confirm the exact wording with you before anything is printed.</p>
-                </div>
-                <div class="f-field">
-                    <label class="a-label" for="p-pref">How should that appear?</label>
+                    <label class="a-label" for="p-pref">How should we credit you in Book Two?</label>
                     <select id="p-pref" name="credit_preference" required>
-                        <option>Use the name above</option>
+                        <option>Use my name</option>
                         <option>Acknowledge me anonymously</option>
-                        <option>I'd like to discuss the wording with you</option>
                     </select>
+                </div>
+                <div class="f-field" data-credit-name>
+                    <label class="a-label" for="p-credit">Name to print</label>
+                    <input id="p-credit" name="credit_name" type="text" placeholder="e.g. Ada Okafor or The Okafor Family" required>
+                    <p class="f-hint">Exactly as you'd like it to appear in the book.</p>
                 </div>
                 <div class="f-field">
                     <label class="a-label" for="p-site">Credit you on the ATOGAM website too?</label>
@@ -114,24 +109,15 @@
                         <option>No, just the book</option>
                     </select>
                 </div>
-                <div class="f-field">
-                    <label class="a-label" for="p-copies">How many copies did you sponsor?</label>
-                    <input id="p-copies" name="copies" type="number" min="25" step="1" value="25" inputmode="numeric" required>
-                </div>
 
                 <p class="a-label" style="padding-top:6px">Who should distribute your copies?</p>
                 <div class="a-toggle" role="radiogroup" aria-label="Who should distribute your copies?">
-                    <label><input type="radio" name="distribution" value="MoSA distributes" checked> Please handle it for me</label>
+                    <label><input type="radio" name="distribution" value="Giveaway by Gilbert" checked> Please handle it for me</label>
                     <label><input type="radio" name="distribution" value="Patron distributes"> I'll give them out myself</label>
                 </div>
 
                 <div data-region-group="mosa">
-                    <p class="a-get">My team at MoSA Publishing will share them through collection points, where readers pick up their copies.</p>
-                    <div class="f-field">
-                        <label class="a-label" for="p-reach">A school, library, community, or group of readers who'd benefit? <span>(optional)</span></label>
-                        <input id="p-reach" name="preferred_readers" type="text" placeholder="Who they are and where">
-                        <p class="f-hint">Suggestions are welcome. Where copies go will depend on what's practical.</p>
-                    </div>
+                    <p class="a-get">I'll give your copies away to readers through giveaways on my social media, and thank you publicly when I do.</p>
                 </div>
                 <div data-region-group="self" hidden>
                     <p class="a-get">We'll get all your copies to you in Nigeria. Tell me where.</p>
@@ -140,11 +126,16 @@
                         <textarea id="p-address" name="address" autocomplete="street-address" placeholder="House number, street, area, city, state, and a nearby landmark" required disabled></textarea>
                     </div>
                     <div class="f-field" style="margin-top:10px">
-                        <label class="a-label" for="p-receiver">Who will receive them? <span>(leave empty if it's you)</span></label>
-                        <input id="p-receiver" name="receiver_name" type="text" disabled>
+                        <label class="a-label" for="p-dphone">Phone number for delivery</label>
+                        <input id="p-dphone" name="delivery_phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="e.g. 0803 000 0000" required disabled>
                     </div>
                 </div>
 
+                <div class="f-field">
+                    <label class="a-label" for="p-handle">Your social media handle <span>(optional)</span></label>
+                    <input id="p-handle" name="social_handle" type="text" placeholder="e.g. @adaokafor on Instagram" autocapitalize="none" autocorrect="off" spellcheck="false">
+                    <p class="f-hint">So I can tag you when I share your copies with readers.</p>
+                </div>
                 <div class="f-field">
                     <label class="a-label" for="p-note">Anything else I should know? <span>(optional)</span></label>
                     <input id="p-note" name="notes" type="text">
@@ -183,6 +174,14 @@
     var val = (q.get(k) || "").trim();
     if (val && !/[{}$]/.test(val)) form.elements[k].value = val;
   });
+  var pref = form.elements["credit_preference"], nameBox = form.querySelector("[data-credit-name]");
+  function credit() {
+    var anon = pref.value === "Acknowledge me anonymously";
+    nameBox.hidden = anon;
+    form.elements["credit_name"].disabled = anon;
+  }
+  pref.addEventListener("change", credit);
+  credit();
   form.querySelectorAll('input[name="distribution"]').forEach(function (r) { r.addEventListener("change", show); });
   show();
 })();
