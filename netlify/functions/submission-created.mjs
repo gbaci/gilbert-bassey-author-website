@@ -13,6 +13,7 @@ const ROUTES = {
   "raindance-claim": "CLAIMS_HOOK_URL",           // Reader Rewards → "Raindance claims" sheet
   "raindance-arc": "DELIVERIES_HOOK_URL",         // review copies → "Raindance Deliveries" / ARC reviewers
   "raindance-beta-address": "DELIVERIES_HOOK_URL", // beta copies → "Raindance Deliveries" / Beta readers
+  "raindance-patron": "DELIVERIES_HOOK_URL",       // founding patrons → "Raindance Deliveries" / Founding patrons
 };
 
 export const handler = async (event) => {
