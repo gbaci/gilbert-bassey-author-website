@@ -1308,6 +1308,8 @@ body.rd {
     background: rgba(15, 11, 8, 0.94);
     border-bottom: 1px solid rgba(239, 228, 207, 0.1);
 }
+/* Form pages: the mark sits centred, in line with the centred content below it. */
+.d-header.is-center { justify-content: center; }
 .d-col { max-width: 640px; margin: 0 auto; padding: 52px 24px 64px; display: flex; flex-direction: column; gap: 14px; font-size: 17px; line-height: 1.65; color: var(--body); }
 .d-col h1 { padding-bottom: 6px; font-family: var(--cinzel); font-weight: 600; font-size: 32px; line-height: 1.2; color: var(--head); text-wrap: balance; }
 .d-col h2 { padding-top: 18px; font-family: var(--cinzel); font-weight: 600; font-size: 17px; letter-spacing: 0.03em; color: var(--gold); }
