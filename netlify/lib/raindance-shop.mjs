@@ -17,10 +17,11 @@ const ML_API = "https://connect.mailerlite.com/api";
 
 const ML_BUYERS = "200694714855327093";   // ali: raindance buyers (buyer thank-you, review emails)
 const ML_PATRONS = "202839595744757187";  // ali: raindance founding patrons (patron thank-you + form)
+const ML_EBOOK = "202850623440290905";    // ali: raindance ebook buyers (download email from 1 January)
 
 // Prices in naira. `physical` products need a Nigerian delivery address; `maxQty` 1 means no quantity box.
 export const PRODUCTS = {
-  ebook: { name: "Ali: Raindance (Ebook)", price: 5000, physical: false, maxQty: 1, group: ML_BUYERS },
+  ebook: { name: "Ali: Raindance (Ebook)", price: 5000, physical: false, maxQty: 1, group: ML_BUYERS, extraGroup: ML_EBOOK },
   paperback: { name: "Ali: Raindance (Paperback)", price: 10000, physical: true, maxQty: 10, group: ML_BUYERS },
   hardcover: { name: "Ali: Raindance (Hardcover)", price: 25000, physical: true, maxQty: 10, group: ML_BUYERS },
   bundle: { name: "The Raindance Bundle", price: 50000, physical: true, maxQty: 1, group: ML_BUYERS, teeSize: true },
@@ -95,7 +96,7 @@ export async function recordOrder(tx) {
 
   await Promise.all([
     forwardToSheet({ form_name: "raindance-sale", id: tx.reference, created_at: tx.paid_at || new Date().toISOString(), data }),
-    addToMailerLite(email, data.name, m.item, product.group),
+    addToMailerLite(email, data.name, m.item, [product.group, product.extraGroup].filter(Boolean)),
   ]);
   return m.item;
 }
@@ -114,14 +115,14 @@ async function forwardToSheet(payload) {
   }
 }
 
-async function addToMailerLite(email, name, item, group) {
+async function addToMailerLite(email, name, item, groups) {
   const key = process.env.MAILERLITE_API_KEY;
   if (!key) { console.error("MAILERLITE_API_KEY is not set;", email, "not added to MailerLite"); return; }
   try {
     const res = await fetch(`${ML_API}/subscribers`, {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ email, fields: { name, rd_format: item }, groups: [group] }),
+      body: JSON.stringify({ email, fields: { name, rd_format: item }, groups }),
     });
     if (!res.ok) console.error("MailerLite add failed", res.status, (await res.text()).slice(0, 200));
   } catch (err) {
