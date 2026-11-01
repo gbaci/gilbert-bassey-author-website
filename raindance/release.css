@@ -256,11 +256,14 @@ body.rd {
     color: #f6efe2;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
-.s-hero-eyebrow { text-indent: 0.3em; }
-/* Two fixed lines: each is its own block that never wraps, so no browser
-   (Safari included) can split line one. Size eases down on narrow phones. */
-.s-couplet { font-size: clamp(15px, 4.8vw, 20px); line-height: 1.45; text-wrap: wrap; }
-.s-couplet > span { display: block; white-space: nowrap; }
+/* Two fixed lines that never wrap, so no browser (Safari included) can split one.
+   Set in the same capitals as the title so it reads as part of the art. The first
+   line is smaller so it fits a phone; the second is bigger because it has the punch.
+   Sizes follow the screen width so both keep fitting on narrow phones. */
+.s-couplet { padding-bottom: 40px; font-family: var(--cinzel); font-style: normal; line-height: 1.5; text-transform: uppercase; text-wrap: wrap; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7); }
+.s-couplet span { display: block; white-space: nowrap; font-weight: 600; }
+.s-couplet span:first-child { font-size: clamp(10px, 3.05vw, 13px); letter-spacing: 0.05em; text-indent: 0.05em; }
+.s-couplet span:last-child { font-size: clamp(14px, 4.3vw, 18px); letter-spacing: 0.14em; text-indent: 0.14em; }
 .s-hero-btns { padding-top: 6px; }
 .s-date { font-size: 13.5px; color: var(--muted); }
 
@@ -551,8 +554,9 @@ body.rd {
     .s-title { position: static; align-items: flex-start; gap: 12px; }
     .s-title-ali { font-size: 112px; line-height: 0.9; text-shadow: none; }
     .s-title-rd { font-size: 26px; text-indent: 0; text-shadow: none; }
-    .s-hero-eyebrow { order: -1; text-indent: 0; }
-    .s-couplet { font-size: 23px; }
+    .s-couplet { padding-bottom: 22px; }
+    .s-couplet span:first-child { font-size: 14px; text-indent: 0; }
+    .s-couplet span:last-child { font-size: 19px; text-indent: 0; }
     .s-hero-btns { width: min(340px, 100%); padding-top: 0; }
     .s-date { font-size: 14px; }
 
