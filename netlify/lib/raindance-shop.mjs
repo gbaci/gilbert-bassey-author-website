@@ -21,9 +21,9 @@ const ML_EBOOK = "202850623440290905";    // ali: raindance ebook buyers (downlo
 
 // Prices in naira. `physical` products need a Nigerian delivery address; `maxQty` 1 means no quantity box.
 export const PRODUCTS = {
-  ebook: { name: "Ali: Raindance (Ebook)", price: 5000, physical: false, maxQty: 1, group: ML_BUYERS, extraGroup: ML_EBOOK },
-  paperback: { name: "Ali: Raindance (Paperback)", price: 10000, physical: true, maxQty: 10, group: ML_BUYERS },
-  hardcover: { name: "Ali: Raindance (Hardcover)", price: 25000, physical: true, maxQty: 10, group: ML_BUYERS },
+  ebook: { name: "Ali: Raindance (Ebook)", price: 5000, physical: false, noPhone: true, extras: true, maxQty: 1, group: ML_BUYERS, extraGroup: ML_EBOOK },
+  paperback: { name: "Ali: Raindance (Paperback)", price: 10000, physical: true, extras: true, maxQty: 10, group: ML_BUYERS },
+  hardcover: { name: "Ali: Raindance (Hardcover)", price: 25000, physical: true, extras: true, maxQty: 10, group: ML_BUYERS },
   bundle: { name: "The Raindance Bundle", price: 50000, physical: true, maxQty: 1, group: ML_BUYERS, teeSize: true },
   patron: { name: "Founding Patron (A Tale of Gods and Men)", price: 250000, physical: false, maxQty: 1, group: ML_PATRONS },
   // Hidden: only linked from the launch-team welcome email, and only until 31 December 2026 (Lagos time).
@@ -32,6 +32,60 @@ export const PRODUCTS = {
 };
 
 export const TEE_SIZES = ["S", "M", "L", "XL", "XXL"];
+
+// Extras from the order page. Only products marked `extras` can have them, and they all need delivery.
+export const TEE_PRICE = 25000;
+export const MAX_TEES = 10;
+export const POSTER_PRICE = 5000;
+export const CARDS_PRICE = 5000;
+export const POSTERS = {
+  rainmaker: "The Rainmaker",
+  ali: "Ali",
+  cover: "Ali and the Rainmaker",
+  podium: "The Rainmaker at the podium",
+};
+
+/** Tees as "M:2,L:1" turned into [["M", 2], ["L", 1]]: real sizes only, whole numbers, and no more than MAX_TEES in all. */
+function cleanTees(raw) {
+  const asked = {};
+  String(raw || "").split(",").forEach((part) => {
+    const [size, n] = part.split(":");
+    asked[size] = parseInt(n, 10);
+  });
+  let left = MAX_TEES;
+  const tees = [];
+  TEE_SIZES.forEach((size) => {
+    const n = Math.min(asked[size] || 0, left);
+    if (n > 0) { tees.push([size, n]); left -= n; }
+  });
+  return tees;
+}
+
+const teeCount = (x) => x.tees.reduce((sum, [, n]) => sum + n, 0);
+
+/** Tees written out for a person: "L" for one, "M x2, L x1" for more. */
+export function teeSummary(x) {
+  if (teeCount(x) === 1) return x.tees[0][0];
+  return x.tees.map(([size, n]) => `${size} x${n}`).join(", ");
+}
+
+/** The extras in an order, cleaned: only real tees and posters, posters once each, and only on products that allow them. */
+export function cleanExtras(item, f) {
+  if (!PRODUCTS[item]?.extras) return { tees: [], posters: [], cards: false };
+  const asked = Array.isArray(f.posters) ? f.posters : String(f.posters || "").split(",");
+  return {
+    tees: cleanTees(f.tees),
+    posters: Object.keys(POSTERS).filter((id) => asked.includes(id)),
+    cards: f.cards === true || f.cards === "1",
+  };
+}
+
+export const hasExtras = (x) => x.tees.length > 0 || x.posters.length > 0 || x.cards;
+
+/** The whole order's price in naira. This is the only place a total is worked out. */
+export function orderTotal(item, qty, x) {
+  return PRODUCTS[item].price * qty + teeCount(x) * TEE_PRICE + x.posters.length * POSTER_PRICE + (x.cards ? CARDS_PRICE : 0);
+}
 
 export function available(key) {
   const p = PRODUCTS[key];
@@ -63,7 +117,8 @@ export async function initializeTransaction({ email, amountNaira, callbackUrl, m
 export async function verifyTransaction(reference) {
   const res = await fetch(`${PAYSTACK_API}/transaction/verify/${encodeURIComponent(reference)}`, {
     headers: { Authorization: `Bearer ${secretKey()}` },
-  });
+  }).catch((err) => { console.error("Paystack verify failed", err); return null; });
+  if (!res) return null;
   const body = await res.json().catch(() => null);
   if (!res.ok || !body?.status) {
     console.error("Paystack verify failed", res.status, body?.message);
@@ -74,7 +129,8 @@ export async function verifyTransaction(reference) {
 
 /**
  * Record a paid order: a row in Raindance Deliveries → Sales, and the buyer added to the right
- * MailerLite group. Returns the product key when the payment is genuine and the amount matches.
+ * MailerLite group. When the payment is genuine and the amount matches, returns the product key
+ * and whether the sheet saved it (`saved` false means call again later); otherwise returns null.
  * Safe to call more than once for the same payment.
  */
 export async function recordOrder(tx) {
@@ -82,37 +138,50 @@ export async function recordOrder(tx) {
   const product = PRODUCTS[m.item];
   const qty = Math.max(1, Math.min(Number(m.qty) || 1, product ? product.maxQty : 1));
   if (!tx || tx.status !== "success" || tx.currency !== "NGN" || !product) return null;
-  if (tx.amount !== product.price * qty * 100) {
+  const extras = cleanExtras(m.item, m);
+  const total = orderTotal(m.item, qty, extras);
+  if (tx.amount !== total * 100) {
     console.error("Paystack amount mismatch", { reference: tx.reference, item: m.item, qty, got: tx.amount });
     return null;
   }
 
   const email = String(tx.customer?.email || m.email || "").trim().toLowerCase();
   const data = {
-    item: m.item, product: product.name, qty, amount: product.price * qty, name: m.name || "", email,
+    item: m.item, product: (tx.domain === "test" ? "TEST: " : "") + orderLabel(product, extras), qty, amount: total, name: m.name || "", email,
     phone: m.phone || "", address: m.address || "", city: m.city || "", state: m.state || "",
-    tee_size: m.tee_size || "",
+    tee_size: teeSummary(extras) || m.tee_size || "",
   };
 
-  await Promise.all([
+  const [saved] = await Promise.all([
     forwardToSheet({ form_name: "raindance-sale", id: tx.reference, created_at: tx.paid_at || new Date().toISOString(), data }),
     addToMailerLite(email, data.name, m.item, [product.group, product.extraGroup].filter(Boolean)),
   ]);
-  return m.item;
+  return { item: m.item, saved };
+}
+
+// One line for the Sales sheet's Product column, so whoever packs the order sees everything in it.
+function orderLabel(product, x) {
+  const parts = [product.name];
+  if (x.tees.length) parts.push(`${teeCount(x) === 1 ? "Rainmaker tee" : "Rainmaker tees"} (${teeSummary(x)})`);
+  x.posters.forEach((id) => parts.push(`Poster: ${POSTERS[id]}`));
+  if (x.cards) parts.push("Character cards and Sentinel front page");
+  return parts.join(" + ");
 }
 
 async function forwardToSheet(payload) {
   const url = process.env.DELIVERIES_HOOK_URL;
-  if (!url) { console.error("DELIVERIES_HOOK_URL is not set; sale", payload.id, "not recorded in the sheet"); return; }
+  if (!url) { console.error("DELIVERIES_HOOK_URL is not set; sale", payload.id, "not recorded in the sheet"); return false; }
   try {
     const res = await fetch(url, {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), redirect: "follow",
     });
     const reply = (await res.text()).trim();
-    if (reply !== "ok") console.error(`sale ${payload.id}: sheet replied ${res.status} "${reply.slice(0, 200)}"`);
+    if (reply === "ok") return true;
+    console.error(`sale ${payload.id}: sheet replied ${res.status} "${reply.slice(0, 200)}"`);
   } catch (err) {
     console.error(`sale ${payload.id}: ${err}`);
   }
+  return false;
 }
 
 async function addToMailerLite(email, name, item, groups) {

@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/raindance/release.css?v=20261031a">
+    <link rel="stylesheet" href="/raindance/release.css?v=20261102a">
     <script src="/raindance/release.js?v=20261031b"></script>
 
     <!-- Meta Pixel Code -->
@@ -61,8 +61,8 @@
 </head>
 <body class="rd d-page">
 
-<header class="d-header">
-    <a class="s-mark" href="/raindance"><img src="/raindance/assets/brand/atogam-mark-gold.svg" alt="A Tale of Gods and Men" width="81" height="24"></a>
+<header class="d-header is-center">
+    <a class="d-series" href="/raindance"><img src="/raindance/assets/brand/atogam-title-gold.webp" alt="A Tale of Gods and Men" width="480" height="84"></a>
 </header>
 
 <main>
@@ -71,7 +71,13 @@
         <h1 id="o-title">Thank you. Your order is in.</h1>
         <p id="o-lead">A confirmation from Paystack is on its way to your email, and a note from Gilbert will follow.</p>
         <p id="o-ref" class="f-hint" style="color: var(--muted)"></p>
-        <div class="btn-stack">
+        <div class="ck-patron" id="o-patron" hidden>
+            <img src="/raindance/assets/web/p-patron-stack.webp" alt="A stack of Ali: Raindance paperbacks" width="170" height="170">
+            <h2>Put this story in more hands</h2>
+            <p>As a Founding Patron, you sponsor 25 copies for readers who can't afford one, and you're acknowledged in Book Two.</p>
+            <a class="btn btn-gold" href="/raindance/checkout?item=patron">BECOME A FOUNDING PATRON, ₦250,000</a>
+        </div>
+        <div class="btn-stack" id="o-read">
             <a class="btn btn-gold" id="o-btn" href="/raindance/sample">READ TWO FREE CHAPTERS</a>
         </div>
     </div>
@@ -91,7 +97,11 @@
 (function () {
   var q = new URLSearchParams(location.search);
   var item = q.get("item"), ref = q.get("ref");
-  if (q.get("status") === "failed") {
+  if (q.get("status") === "unconfirmed") {
+    document.getElementById("o-title").textContent = "We're still confirming your payment";
+    document.getElementById("o-lead").innerHTML = 'Please don\'t pay again. If you have a receipt from Paystack, your order is safe and we\'ll process it. If you have any doubt, email <a href="mailto:gilbert@gilbertbassey.com">gilbert@gilbertbassey.com</a> with the reference below.';
+    document.getElementById("o-btn").hidden = true;
+  } else if (q.get("status") === "failed") {
     document.getElementById("o-title").textContent = "The payment didn't go through";
     document.getElementById("o-lead").innerHTML = 'Nothing was charged, or it couldn\'t be confirmed. Please <a href="/raindance#editions">try again</a>, or email <a href="mailto:gilbert@gilbertbassey.com">gilbert@gilbertbassey.com</a> if money left your account.';
     document.getElementById("o-btn").hidden = true;
@@ -104,8 +114,20 @@
       launch: "Your signed paperback ships in the first week of January. Delivery is paid to the rider when it arrives.",
       patron: "A thank-you from Gilbert is on its way, with a short form for how you'd like to be credited."
     };
-    if (lines[item]) document.getElementById("o-lead").textContent = lines[item] + " A confirmation from Paystack is in your email.";
-    RD.track("Purchase", { content_name: item, value: Number(q.get("value")) || 0, currency: "NGN" });
+    var extras = q.get("extras") === "1" ? (item === "ebook"
+      ? " Your extras ship in the first week of January. Delivery is paid to the rider when they arrive."
+      : " Your extras travel with it.") : "";
+    if (lines[item]) document.getElementById("o-lead").textContent = lines[item] + extras + " A confirmation from Paystack is in your email.";
+    if (item === "bundle") {
+      document.getElementById("o-patron").hidden = false;
+      var read = document.getElementById("o-btn");
+      read.className = "ck-textlink";
+      read.textContent = "Read two free chapters";
+    }
+    // Count each purchase once: not on a refresh, and not if someone just opens this address.
+    var seenKey = "rd-purchase-" + ref, seen = false;
+    try { seen = !!sessionStorage.getItem(seenKey); sessionStorage.setItem(seenKey, "1"); } catch (e) {}
+    if (ref && lines[item] && !seen) RD.track("Purchase", { content_name: item, value: Number(q.get("value")) || 0, currency: "NGN" });
   }
   if (ref) document.getElementById("o-ref").textContent = "Reference: " + ref;
 })();

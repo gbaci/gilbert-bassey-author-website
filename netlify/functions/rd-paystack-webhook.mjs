@@ -20,8 +20,11 @@ export const handler = async (event) => {
   if (!valid) return { statusCode: 401, body: "Invalid signature" };
 
   const evt = JSON.parse(raw);
-  if (evt.event === "charge.success") await recordOrder(evt.data);
+  const order = evt.event === "charge.success" ? await recordOrder(evt.data) : null;
 
-  // Always answer 200 to a genuine Paystack call, or it keeps retrying.
+  // If the sheet didn't save a real order, a failure answer makes Paystack try again later.
+  if (order && !order.saved) return { statusCode: 500, body: "Not saved yet" };
+
+  // Otherwise answer 200 to a genuine Paystack call, or it keeps retrying.
   return { statusCode: 200, body: "OK" };
 };

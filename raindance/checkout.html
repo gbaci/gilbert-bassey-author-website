@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout | Ali: Raindance</title>
+    <title>Your order | Ali: Raindance</title>
     <meta name="description" content="Buy Ali: Raindance.">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta property="og:type" content="website">
@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/raindance/release.css?v=20261031a">
+    <link rel="stylesheet" href="/raindance/release.css?v=20261102a">
     <script src="/raindance/release.js?v=20261031b"></script>
 
     <!-- Meta Pixel Code -->
@@ -61,77 +61,154 @@
 </head>
 <body class="rd d-page">
 
-<header class="d-header">
-    <a class="s-mark" href="/raindance"><img src="/raindance/assets/brand/atogam-mark-gold.svg" alt="A Tale of Gods and Men" width="81" height="24"></a>
+<header class="d-header is-center">
+    <a class="d-series" href="/raindance"><img src="/raindance/assets/brand/atogam-title-gold.webp" alt="A Tale of Gods and Men" width="480" height="84"></a>
 </header>
 
-<main>
-    <div class="d-col is-center">
-        <p class="eyebrow">ALI: RAINDANCE</p>
-        <h1 id="c-title">Checkout</h1>
-        <p id="c-lead"></p>
+<main class="ck" id="ck">
+    <p class="ck-test" id="ck-test" hidden></p>
 
-        <div class="a-card" id="c-card">
-            <form class="f-form" id="c-form" novalidate>
-                <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+    <!-- Step 1: the order -->
+    <section id="ck-order" hidden>
+        <div class="ck" style="padding:0;max-width:none">
+            <h1>Your order</h1>
+            <div class="ck-box">
+                <div class="ck-item">
+                    <img id="ck-img" alt="">
+                    <div>
+                        <p class="ck-name" id="ck-name"></p>
+                        <p class="ck-price" id="ck-price"></p>
+                    </div>
+                </div>
+                <p class="ck-text" id="ck-lead" hidden></p>
+                <div class="ck-eds" id="ck-eds" hidden></div>
+                <div class="ck-qty" id="ck-qty" hidden>
+                    <span>How many copies?</span>
+                    <div class="ck-step">
+                        <button type="button" id="ck-minus" aria-label="One fewer">−</button>
+                        <span id="ck-count">1</span>
+                        <button type="button" id="ck-plus" aria-label="One more">+</button>
+                    </div>
+                </div>
+                <div id="ck-bundle-tee" hidden>
+                    <p class="ck-text" style="padding-bottom:8px;font-size:15px;color:var(--head)">Your tee size</p>
+                    <div class="ck-sizes" id="ck-bundle-sizes"></div>
+                </div>
+            </div>
 
-                <div class="f-field">
-                    <label class="a-label" for="c-name">Your name</label>
-                    <input id="c-name" name="name" type="text" autocomplete="name" required>
-                </div>
-                <div class="f-field">
-                    <label class="a-label" for="c-email">Your email</label>
-                    <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required>
-                    <p class="f-hint" id="c-email-hint">Your receipt and updates come here.</p>
-                </div>
-                <div class="f-field">
-                    <label class="a-label" for="c-phone">Phone number</label>
-                    <input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="e.g. 0803 000 0000" required>
-                </div>
+            <div class="ck-extras" id="ck-extras" hidden>
+                <h2>Take more of the story home</h2>
+                <p class="ck-sub">Optional. Tap anything to see more.</p>
 
-                <div data-show="tee" hidden>
-                    <div class="f-field">
-                        <label class="a-label" for="c-tee">Rainmaker tee size</label>
-                        <select id="c-tee" name="tee_size" required disabled>
-                            <option value="">Choose a size</option>
-                            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
-                        </select>
+                <div class="ck-extra" id="x-tee">
+                    <button type="button" class="ck-row" data-open="tee">
+                        <img src="/raindance/assets/web/p-shirt-mask.webp" alt="">
+                        <span class="ck-row-text"><span class="ck-row-name">Rainmaker tee</span><span class="ck-row-note" id="tee-note"></span></span>
+                        <span class="ck-sign" aria-hidden="true"></span>
+                    </button>
+                    <div class="ck-open" data-panel="tee" hidden>
+                        <p class="ck-text">Tap a size to add a tee. You can mix sizes, and use − and + to change how many.</p>
+                        <div class="ck-sizes" id="ck-tee-sizes"></div>
+                        <div class="ck-tee-rows" id="ck-tee-rows"></div>
                     </div>
                 </div>
 
-                <div data-show="qty" hidden>
-                    <div class="f-field">
-                        <label class="a-label" for="c-qty">How many copies?</label>
-                        <input id="c-qty" name="qty" type="number" min="1" max="10" step="1" value="1" inputmode="numeric" disabled>
+                <div class="ck-extra" id="x-poster">
+                    <button type="button" class="ck-row" data-open="poster">
+                        <img class="is-crop" src="/raindance/assets/web/posters/rainmaker-480.jpg" alt="">
+                        <span class="ck-row-text"><span class="ck-row-name">Posters</span><span class="ck-row-note" id="poster-note"></span></span>
+                        <span class="ck-sign" aria-hidden="true"></span>
+                    </button>
+                    <div class="ck-open" data-panel="poster" hidden>
+                        <p class="ck-text">Each poster is 42 cm wide and 59 cm tall (A2 size), as big as four sheets of office paper put together.</p>
+                        <p class="ck-text">Tap a poster to add it. Tap the arrows to see it large.</p>
+                        <div class="ck-posters" id="ck-posters"></div>
                     </div>
                 </div>
 
-                <div data-show="physical" hidden>
-                    <div class="f-field">
-                        <label class="a-label" for="c-address">Delivery address in Nigeria</label>
-                        <textarea id="c-address" name="address" autocomplete="street-address" placeholder="House number, street, area, and a nearby landmark" required disabled></textarea>
+                <div class="ck-extra" id="x-cards">
+                    <button type="button" class="ck-row" data-open="cards">
+                        <img src="/raindance/assets/web/p-envelope-cards.webp?v=2" alt="">
+                        <span class="ck-row-text"><span class="ck-row-name">Character cards and <em>Sentinel</em> front page</span><span class="ck-row-note" id="cards-note"></span></span>
+                        <span class="ck-sign" aria-hidden="true"></span>
+                    </button>
+                    <div class="ck-open" data-panel="cards" hidden>
+                        <p class="ck-text">Eight character cards, two of them to open only after you finish the book, plus a front page of the <em>Sentinel</em>, the newspaper in the story.</p>
+                        <button type="button" class="ck-add" id="ck-cards"></button>
                     </div>
-                    <div class="f-row2" style="margin-top:10px">
-                        <div class="f-field">
-                            <label class="a-label" for="c-city">City or town</label>
-                            <input id="c-city" name="city" type="text" autocomplete="address-level2" required disabled>
-                        </div>
-                        <div class="f-field">
-                            <label class="a-label" for="c-state">State</label>
-                            <input id="c-state" name="state" type="text" autocomplete="address-level1" required disabled>
-                        </div>
-                    </div>
-                    <p class="f-hint">Delivery within Nigeria is paid separately, to the rider, when your copy arrives.</p>
                 </div>
+            </div>
 
-                <p class="a-get" id="c-total"></p>
-                <button class="btn f-submit" type="submit" id="c-pay">PAY</button>
-                <p class="f-status" id="c-status" role="alert"></p>
-                <p class="f-note">Payment is handled securely by Paystack. By paying you agree to the <a href="/raindance/terms">terms and refunds</a>.</p>
-            </form>
+            <div class="ck-lines" id="ck-lines-1"></div>
+            <button type="button" class="btn btn-gold ck-next" id="ck-continue">CONTINUE</button>
+            <p class="f-status" id="ck-order-status" role="alert" style="color:#ef9a86"></p>
         </div>
-    </div>
+    </section>
+
+    <!-- Step 2: details and pay -->
+    <section id="ck-details" hidden>
+        <div class="ck" style="padding:0;max-width:none">
+            <h1>Your details</h1>
+            <div class="ck-box">
+                <div class="ck-lines" id="ck-lines-2"></div>
+                <button type="button" class="ck-change" id="ck-change">Change your order</button>
+            </div>
+            <div class="a-card">
+                <form class="f-form" id="c-form" novalidate>
+                    <p class="hp"><label>Leave this empty <input name="leave_blank" tabindex="-1" autocomplete="off"></label></p>
+                    <div class="f-field">
+                        <label class="a-label" for="c-name">Your name</label>
+                        <input id="c-name" name="name" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="f-field">
+                        <label class="a-label" for="c-email">Your email</label>
+                        <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                        <p class="f-hint" id="c-email-hint">Your receipt and updates come here.</p>
+                    </div>
+                    <div class="f-field" data-show="phone">
+                        <label class="a-label" for="c-phone">Phone number</label>
+                        <input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="e.g. 0803 000 0000" required>
+                    </div>
+                    <div data-show="physical">
+                        <div class="f-field">
+                            <label class="a-label" for="c-address">Delivery address in Nigeria</label>
+                            <textarea id="c-address" name="address" autocomplete="street-address" placeholder="House number, street, area, and a nearby landmark" required></textarea>
+                        </div>
+                        <div class="f-row2" style="margin-top:10px">
+                            <div class="f-field">
+                                <label class="a-label" for="c-city">City or town</label>
+                                <input id="c-city" name="city" type="text" autocomplete="address-level2" required>
+                            </div>
+                            <div class="f-field">
+                                <label class="a-label" for="c-state">State</label>
+                                <input id="c-state" name="state" type="text" autocomplete="address-level1" required>
+                            </div>
+                        </div>
+                        <p class="f-hint">Delivery within Nigeria is paid separately, to the rider, when your order arrives.</p>
+                    </div>
+                    <button class="btn f-submit" type="submit" id="c-pay">PAY</button>
+                    <p class="f-status" id="c-status" role="alert"></p>
+                    <p class="f-note">Payment is handled securely by Paystack. By paying you agree to the <a href="/raindance/terms">terms and refunds</a>.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- If the link names something we don't sell -->
+    <section id="ck-none" hidden>
+        <div class="ck" style="padding:0;max-width:none;text-align:center">
+            <h1>This edition isn't available</h1>
+            <p>Have a look at the editions on the <a href="/raindance#editions">book page</a>.</p>
+        </div>
+    </section>
 </main>
+
+<div class="ck-view" id="ck-view" role="dialog" aria-modal="true" aria-labelledby="ck-view-name" hidden>
+    <button type="button" class="ck-view-close" id="ck-view-close" aria-label="Close">×</button>
+    <img id="ck-view-img" alt="">
+    <p id="ck-view-name"></p>
+    <button type="button" class="ck-view-btn" id="ck-view-btn"></button>
+</div>
 
 <footer class="s-footer">
     <p>© 2026 Gilbert Bassey · Published by MoSA Publishing</p>
@@ -147,60 +224,284 @@
 (function () {
   // Display copy only. The real prices live on the server (netlify/lib/raindance-shop.mjs),
   // which is what Paystack charges. Keep these in step with it.
+  var A = "/raindance/assets/web/";
   var ITEMS = {
-    ebook: { name: "the ebook", price: 5000, lead: "The ebook arrives by email on 1 January, release day." },
-    paperback: { name: "the paperback", price: 10000, physical: true, qty: true, lead: "Preorders ship in the first week of January." },
-    hardcover: { name: "the hardcover", price: 25000, physical: true, qty: true, lead: "Preorders ship in the first week of January." },
-    bundle: { name: "the Raindance Bundle", price: 50000, physical: true, tee: true, lead: "Signed, numbered hardcover, Rainmaker tee, character cards, a Sentinel front page, and a bookmark. Only 50 made." },
-    patron: { name: "a Founding Patron place", price: 250000, lead: "You sponsor 25 copies of Ali: Raindance for readers who can't afford one, and you're acknowledged in Book Two." },
-    launch: { name: "the signed launch-team paperback", price: 6500, physical: true, qty: true, until: "2027-01-01T00:00:00+01:00", lead: "Signed, with one collectible from the story's world. Launch-team price until 31 December." }
+    ebook: { name: "Ebook", label: "Ebook", price: 5000, img: A + "p-ebook.webp", extras: true, noPhone: true },
+    paperback: { name: "Paperback", label: "Paperback", price: 10000, img: A + "p-paperback.webp", physical: true, qty: true, extras: true },
+    hardcover: { name: "Hardcover", label: "Hardcover", price: 25000, img: A + "p-hardcover.webp", physical: true, qty: true, extras: true },
+    bundle: { name: "The Raindance Bundle", label: "The Raindance Bundle", price: 50000, img: A + "p-box.webp", physical: true, tee: true, lead: "Signed, numbered hardcover, Rainmaker tee, eight character cards, a Sentinel front page, and a bookmark. Only 50 made." },
+    patron: { name: "Founding Patron", label: "Founding Patron", price: 250000, img: A + "p-patron-stack.webp", direct: true, lead: "You sponsor 25 copies of Ali: Raindance for readers who can't afford one, and you're acknowledged in Book Two." },
+    launch: { name: "Signed launch-team paperback", label: "Signed launch-team paperback", price: 6500, img: A + "p-paperback.webp", physical: true, qty: true, until: "2027-01-01T00:00:00+01:00", lead: "Signed, with one collectible from the story's world. Launch-team price until 31 December." }
   };
-  var key = new URLSearchParams(location.search).get("item");
-  var it = ITEMS[key];
-  var form = document.getElementById("c-form");
-  var naira = function (n) { return "\u20a6" + n.toLocaleString("en-NG"); };
+  var EDITIONS = ["ebook", "paperback", "hardcover"];
+  var SIZES = ["S", "M", "L", "XL", "XXL"];
+  var TEE = 25000, MAX_TEES = 10, POSTER = 5000, CARDS = 5000;
+  var POSTERS = [
+    { id: "rainmaker", name: "The Rainmaker" },
+    { id: "ali", name: "Ali" },
+    { id: "cover", name: "Ali and the Rainmaker" },
+    { id: "podium", name: "The Rainmaker at the podium" }
+  ];
+  var $ = function (id) { return document.getElementById(id); };
+  var naira = function (n) { return "₦" + n.toLocaleString("en-NG"); };
+  var esc = function (s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; };
+  var ZOOM = '<span aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#f1e8d7" stroke-width="1.6"><path d="M8.5 1.5h4v4M12.5 1.5l-4.5 4.5M5.5 12.5h-4v-4M1.5 12.5l4.5-4.5"/></svg></span>';
+  var TICK = '<span class="ck-tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#0f0b08" stroke-width="2.2"><path d="M2.5 7.5l3 3 6-7"/></svg></span>';
 
-  if (!it || (it.until && Date.now() >= Date.parse(it.until))) {
-    document.getElementById("c-title").textContent = "This edition isn't available";
-    document.getElementById("c-lead").innerHTML = 'Have a look at the editions on the <a href="/raindance#editions">book page</a>.';
-    document.getElementById("c-card").hidden = true;
-    return;
+  var key = new URLSearchParams(location.search).get("item") || "paperback";
+  var it = ITEMS[key];
+  if (!it || (it.until && Date.now() >= Date.parse(it.until))) { $("ck-none").hidden = false; return; }
+
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var state = { key: key, qty: 1, tees: {}, posters: [], cards: false, bundleTee: "", open: {}, view: null };
+  var form = $("c-form");
+
+  function current() { return ITEMS[state.key]; }
+  function teeCount() { return SIZES.reduce(function (sum, s) { return sum + (state.tees[s] || 0); }, 0); }
+  function hasExtras() { return teeCount() > 0 || state.posters.length > 0 || state.cards; }
+  function needsDelivery() { return !!current().physical || hasExtras(); }
+  function total() {
+    return current().price * state.qty + teeCount() * TEE + state.posters.length * POSTER + (state.cards ? CARDS : 0);
   }
 
-  document.getElementById("c-title").textContent = "Buy " + it.name;
-  document.getElementById("c-lead").textContent = it.lead;
-  if (key === "patron") document.getElementById("c-email-hint").textContent = "Your thank-you and a short form for your credit come here.";
+  function linesHtml() {
+    var c = current(), rows = [];
+    rows.push([state.qty > 1 ? c.label + " × " + state.qty : c.label, naira(c.price * state.qty)]);
+    SIZES.forEach(function (s) {
+      var t = state.tees[s];
+      if (t) rows.push(["Rainmaker tee, size " + s + (t > 1 ? " × " + t : ""), naira(t * TEE)]);
+    });
+    var n = state.posters.length;
+    if (n) rows.push([n === 1 ? "1 poster" : n + " posters", naira(n * POSTER)]);
+    if (state.cards) rows.push(["Character cards and front page", naira(CARDS)]);
+    if (needsDelivery()) rows.push(["Delivery", "Paid to the rider"]);
+    return rows.map(function (r) { return "<div><span>" + esc(r[0]) + "</span><span>" + esc(r[1]) + "</span></div>"; }).join("") +
+      '<div class="ck-total"><span>Total today</span><span>' + naira(total()) + "</span></div>";
+  }
 
-  function toggle(name, on) {
-    form.querySelectorAll('[data-show="' + name + '"]').forEach(function (g) {
-      g.hidden = !on;
-      g.querySelectorAll("input, select, textarea").forEach(function (f) { f.disabled = !on; });
+  function sizeButtons(box, chosen, onPick) {
+    box.innerHTML = "";
+    SIZES.forEach(function (s) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = s;
+      b.setAttribute("data-fk", box.id + s);
+      b.setAttribute("aria-pressed", String(s === chosen));
+      b.addEventListener("click", function () { onPick(s === chosen ? "" : s); render(); });
+      box.appendChild(b);
     });
   }
-  toggle("physical", !!it.physical);
-  toggle("qty", !!it.qty);
-  toggle("tee", !!it.tee);
 
-  var qty = form.elements.qty, total = document.getElementById("c-total"), pay = document.getElementById("c-pay");
-  function update() {
-    var n = it.qty ? Math.max(1, Math.min(parseInt(qty.value, 10) || 1, 10)) : 1;
-    total.innerHTML = "Total: <strong>" + naira(it.price * n) + "</strong>" + (it.physical ? " plus delivery" : "");
-    pay.textContent = "PAY " + naira(it.price * n);
+  function changeTee(size, by) {
+    var t = (state.tees[size] || 0) + by;
+    if (by > 0 && teeCount() >= MAX_TEES) return;
+    if (t > 0) state.tees[size] = t; else delete state.tees[size];
+    render();
   }
-  qty.addEventListener("input", update);
-  update();
-  RD.track("InitiateCheckout", { content_name: key, value: it.price, currency: "NGN" });
+
+  function teeButtons() {
+    var box = $("ck-tee-sizes"), rows = $("ck-tee-rows"), full = teeCount() >= MAX_TEES;
+    box.innerHTML = "";
+    rows.innerHTML = "";
+    SIZES.forEach(function (s) {
+      var t = state.tees[s] || 0;
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = s;
+      b.setAttribute("data-fk", "tee-" + s);
+      b.setAttribute("aria-pressed", String(t > 0));
+      b.setAttribute("aria-label", "Add a size " + s + " tee");
+      b.disabled = full && !t;
+      b.addEventListener("click", function () { changeTee(s, 1); });
+      box.appendChild(b);
+      if (!t) return;
+      var r = document.createElement("div");
+      r.className = "ck-qty";
+      r.innerHTML = "<span>Size " + s + '</span><div class="ck-step">' +
+        '<button type="button" data-fk="tee-minus-' + s + '" aria-label="One fewer size ' + s + ' tee">−</button>' +
+        '<span aria-live="polite">' + t + "</span>" +
+        '<button type="button" data-fk="tee-plus-' + s + '" aria-label="One more size ' + s + ' tee"' + (full ? " disabled" : "") + ">+</button></div>";
+      r.querySelectorAll("button")[0].addEventListener("click", function () { changeTee(s, -1); });
+      r.querySelectorAll("button")[1].addEventListener("click", function () { changeTee(s, 1); });
+      rows.appendChild(r);
+    });
+  }
+
+  function render() {
+    var active = document.activeElement, focusKey = active && active.getAttribute("data-fk");
+    var c = current();
+    $("ck-img").src = c.img;
+    $("ck-name").textContent = c.name;
+    $("ck-price").textContent = naira(c.price);
+    $("ck-lead").hidden = !c.lead;
+    $("ck-lead").textContent = c.lead || "";
+
+    var isEdition = EDITIONS.indexOf(state.key) >= 0;
+    $("ck-eds").hidden = !isEdition;
+    if (isEdition) {
+      $("ck-eds").innerHTML = "";
+      EDITIONS.forEach(function (id) {
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = ITEMS[id].name;
+        b.setAttribute("data-fk", "ed-" + id);
+        b.setAttribute("aria-pressed", String(id === state.key));
+        b.addEventListener("click", function () {
+          state.key = id;
+          if (!ITEMS[id].qty) state.qty = 1;
+          render();
+        });
+        $("ck-eds").appendChild(b);
+      });
+    }
+
+    $("ck-qty").hidden = !c.qty;
+    $("ck-count").textContent = state.qty;
+    $("ck-minus").disabled = state.qty <= 1;
+    $("ck-plus").disabled = state.qty >= 10;
+
+    $("ck-bundle-tee").hidden = !c.tee;
+    if (c.tee) sizeButtons($("ck-bundle-sizes"), state.bundleTee, function (s) { state.bundleTee = s; $("ck-order-status").textContent = ""; });
+
+    $("ck-extras").hidden = !c.extras;
+    if (c.extras) {
+      teeButtons();
+      var tees = teeCount();
+      $("tee-note").textContent = tees ? tees + " added · " + naira(tees * TEE) : naira(TEE) + " each";
+      var n = state.posters.length;
+      $("poster-note").textContent = n ? n + " added · " + naira(n * POSTER) : naira(POSTER) + " each";
+      $("cards-note").textContent = state.cards ? "Added · " + naira(CARDS) : naira(CARDS);
+      $("x-tee").classList.toggle("is-on", tees > 0);
+      $("x-poster").classList.toggle("is-on", n > 0);
+      $("x-cards").classList.toggle("is-on", state.cards);
+      $("ck-cards").textContent = state.cards ? "Remove" : "Add to my order";
+      $("ck-cards").classList.toggle("is-on", state.cards);
+
+      $("ck-posters").innerHTML = "";
+      POSTERS.forEach(function (p) {
+        var on = state.posters.indexOf(p.id) >= 0;
+        var b = document.createElement("div");
+        b.className = "ck-poster" + (on ? " is-on" : "");
+        b.innerHTML = '<button type="button" class="ck-poster-pick" data-fk="pick-' + p.id + '" aria-pressed="' + on + '" aria-label="' + (on ? "Remove " : "Add ") + esc(p.name) + '">' +
+          '<img src="' + A + "posters/" + p.id + '-480.jpg" alt="" width="480" height="679" loading="lazy">' + TICK + "<span>" + esc(p.name) + "</span></button>" +
+          '<button type="button" class="ck-poster-zoom" data-fk="zoom-' + p.id + '" aria-label="See ' + esc(p.name) + ' large">' + ZOOM + "</button>";
+        b.querySelector(".ck-poster-pick").addEventListener("click", function () { togglePoster(p.id); render(); });
+        b.querySelector(".ck-poster-zoom").addEventListener("click", function () { openView(p); });
+        $("ck-posters").appendChild(b);
+      });
+
+      document.querySelectorAll("[data-open]").forEach(function (b) {
+        var id = b.getAttribute("data-open"), open = !!state.open[id];
+        b.setAttribute("aria-expanded", String(open));
+        b.querySelector(".ck-sign").textContent = open ? "−" : "+";
+        document.querySelector('[data-panel="' + id + '"]').hidden = !open;
+      });
+    }
+
+    $("ck-lines-1").innerHTML = linesHtml();
+    $("ck-lines-2").innerHTML = linesHtml();
+    $("c-pay").textContent = "PAY " + naira(total());
+    if (focusKey) focusOn(focusKey);
+  }
+  function focusOn(k) {
+    var el = document.querySelector('[data-fk="' + k + '"]');
+    if (el) el.focus();
+  }
+
+  function togglePoster(id) {
+    var i = state.posters.indexOf(id);
+    if (i >= 0) state.posters.splice(i, 1); else state.posters.push(id);
+  }
+
+  // The large poster view
+  function openView(p) {
+    state.view = p;
+    $("ck-view-img").src = A + "posters/" + p.id + ".jpg";
+    $("ck-view-img").alt = p.name;
+    $("ck-view-name").textContent = p.name;
+    var on = state.posters.indexOf(p.id) >= 0;
+    $("ck-view-btn").textContent = on ? "REMOVE FROM ORDER" : "ADD FOR " + naira(POSTER);
+    $("ck-view-btn").classList.toggle("is-on", on);
+    $("ck-view").hidden = false;
+    document.documentElement.style.overflow = "hidden";
+    $("ck-view-close").focus();
+  }
+  function closeView() {
+    $("ck-view").hidden = true;
+    document.documentElement.style.overflow = "";
+    if (state.view) focusOn("zoom-" + state.view.id);
+    state.view = null;
+  }
+  $("ck-view-close").addEventListener("click", closeView);
+  $("ck-view").addEventListener("click", function (e) { if (e.target === $("ck-view")) closeView(); });
+  document.addEventListener("keydown", function (e) {
+    if (!state.view) return;
+    if (e.key === "Escape") closeView();
+    if (e.key === "Tab") {  // keep the keyboard inside the large view while it's open
+      e.preventDefault();
+      (document.activeElement === $("ck-view-close") ? $("ck-view-btn") : $("ck-view-close")).focus();
+    }
+  });
+  $("ck-view-btn").addEventListener("click", function () {
+    togglePoster(state.view.id);
+    render();
+    closeView();
+  });
+
+  document.querySelectorAll("[data-open]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-open");
+      state.open[id] = !state.open[id];
+      render();
+    });
+  });
+  $("ck-cards").addEventListener("click", function () { state.cards = !state.cards; render(); });
+  $("ck-minus").addEventListener("click", function () { state.qty = Math.max(1, state.qty - 1); render(); });
+  $("ck-plus").addEventListener("click", function () { state.qty = Math.min(10, state.qty + 1); render(); });
+
+  // Moving between the two steps
+  function show(step) {
+    $("ck-order").hidden = step !== "order";
+    $("ck-details").hidden = step !== "details";
+    window.scrollTo(0, 0);
+    if (step === "details") {
+      var physical = needsDelivery(), phone = physical || !current().noPhone;
+      form.querySelectorAll('[data-show="physical"]').forEach(function (g) {
+        g.hidden = !physical;
+        g.querySelectorAll("input, textarea").forEach(function (f) { f.disabled = !physical; });
+      });
+      var ph = form.querySelector('[data-show="phone"]');
+      ph.hidden = !phone;
+      ph.querySelector("input").disabled = !phone;
+      if (state.key === "patron") $("c-email-hint").textContent = "Your thank-you and a short form for your credit come here.";
+    }
+  }
+  $("ck-continue").addEventListener("click", function () {
+    if (current().tee && !state.bundleTee) { $("ck-order-status").textContent = "Please choose your tee size."; return; }
+    show("details");
+  });
+  $("ck-change").addEventListener("click", function () { show("order"); });
+
+  // Test-mode notice, so nobody thinks a test payment is real
+  if (isLocal) {
+    $("ck-test").hidden = false;
+    $("ck-test").innerHTML = "<strong>Preview on this computer.</strong> Everything works except the last step: the pay button stops here and no payment starts.";
+  } else {
+    fetch("/.netlify/functions/rd-checkout").then(function (r) { return r.json(); }).then(function (b) {
+      if (!b.testMode) return;
+      $("ck-test").hidden = false;
+      $("ck-test").innerHTML = "<strong>Test mode.</strong> No real money moves. Use Paystack's test card on the payment page.";
+    }).catch(function () {});
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var status = document.getElementById("c-status");
+    var status = $("c-status"), pay = $("c-pay");
     status.textContent = "";
     if (!form.reportValidity()) return;
-    var data = { item: key };
+    if (isLocal) { status.textContent = "This is the preview on your computer, so no payment starts here. Your order would be " + naira(total()) + "."; return; }
+    var data = { item: state.key, qty: state.qty, tees: SIZES.filter(function (s) { return state.tees[s]; }).map(function (s) { return s + ":" + state.tees[s]; }).join(","), posters: state.posters, cards: state.cards, tee_size: state.bundleTee };
     Array.prototype.forEach.call(form.elements, function (f) { if (f.name && !f.disabled) data[f.name] = f.value; });
     pay.disabled = true;
     var label = pay.textContent;
-    pay.textContent = "TAKING YOU TO PAYSTACK\u2026";
+    pay.textContent = "TAKING YOU TO PAYSTACK…";
     fetch("/.netlify/functions/rd-checkout", {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data)
     })
@@ -215,6 +516,19 @@
         pay.textContent = label;
       });
   });
+
+  // Coming back from Paystack with the back button: the pay button must work again.
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;
+    $("c-pay").disabled = false;
+    $("c-status").textContent = "";
+    render();
+  });
+
+  state.open.poster = true;
+  render();
+  show(it.direct ? "details" : "order");
+  if (window.RD) RD.track("InitiateCheckout", { content_name: key, value: it.price, currency: "NGN" });
 })();
 </script>
 </body>
