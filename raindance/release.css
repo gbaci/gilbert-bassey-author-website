@@ -712,14 +712,15 @@ body.rd {
    FREE COPY PAGE (/raindance/free)
    ===================================================================== */
 
-.f-header, .f-hero, .f-rewards, .f-steps, .f-band-in, .f-faq, .f-foot, .f-thanks {
+.f-hero, .f-rewards, .f-steps, .f-band-in, .f-faq, .f-foot, .f-thanks {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
 /* ----- Header ----- */
-.f-header { height: 56px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; }
+/* Full width so the bar covers the page when it sticks; the padding keeps its contents lined up with the page below. */
+.f-header { position: sticky; top: 0; z-index: 20; height: 56px; padding: 0 max(18px, calc((100% - 600px) / 2 + 18px)); display: flex; align-items: center; justify-content: space-between; background: rgba(15, 11, 8, 0.94); border-bottom: 1px solid rgba(239, 228, 207, 0.1); }
 .rd .f-buy { font-family: var(--cinzel); font-weight: 600; font-size: 11.5px; letter-spacing: 0.14em; color: var(--soft); }
 .rd .f-buy:hover { color: var(--head); }
 
@@ -866,7 +867,7 @@ body.rd {
 .f-step-d { font-size: 13px; line-height: 1.4; color: var(--soft); }
 
 /* ----- Missions + form (cream band) ----- */
-.f-band { margin-top: 40px; background: var(--paper); color: var(--paper-ink); scroll-margin-top: 0; }
+.f-band { margin-top: 40px; background: var(--paper); color: var(--paper-ink); scroll-margin-top: 56px; }
 .f-band-in { padding: 32px 16px; display: flex; flex-direction: column; gap: 22px; }
 .f-missions { display: flex; flex-direction: column; gap: 12px; }
 .f-band-head { text-align: center; display: flex; flex-direction: column; gap: 6px; }
@@ -911,7 +912,7 @@ body.rd {
 .rd .f-m-proof { background: var(--paper-head); color: var(--cream); }
 .rd .f-m-proof:hover { background: #3a2c1e; color: #fff; }
 
-.f-claim { scroll-margin-top: 12px; }
+.f-claim, #missions { scroll-margin-top: 68px; }
 .f-form { display: flex; flex-direction: column; gap: 10px; }
 .f-claim-head { text-align: center; display: flex; flex-direction: column; gap: 6px; padding-bottom: 4px; }
 .f-claim-head h2 { font-family: var(--cinzel); font-weight: 700; font-size: 22px; color: var(--paper-head); }
@@ -1065,9 +1066,10 @@ body.rd {
 
 /* ----- Free page: desktop ----- */
 @media (min-width: 900px) {
-    .f-header, .f-hero, .f-rewards, .f-steps, .f-band-in, .f-faq, .f-foot, .f-thanks { max-width: 1280px; }
+    .f-hero, .f-rewards, .f-steps, .f-band-in, .f-faq, .f-foot, .f-thanks { max-width: 1280px; }
 
-    .f-header { height: 72px; padding: 0 var(--pad); }
+    .f-header { height: 72px; padding: 0 max(var(--pad), calc((100% - 1280px) / 2 + var(--pad))); }
+    .f-claim, #missions { scroll-margin-top: 88px; }
     .rd .f-buy { font-size: 12px; }
 
     .f-hero {
@@ -1179,7 +1181,7 @@ body.rd {
     .rd .f-m-act { min-height: 42px; padding: 0 16px; font-size: 12px; }
     .rd .f-m-proof { display: none; }
 
-    .f-claim { position: sticky; top: 24px; padding: 28px; background: var(--paper-field); border: 1px solid rgba(36, 27, 18, 0.18); border-radius: 3px; }
+    .f-claim { position: sticky; top: 96px; padding: 28px; background: var(--paper-field); border: 1px solid rgba(36, 27, 18, 0.18); border-radius: 3px; }
     .f-form { gap: 12px; }
     .f-claim-head { text-align: left; gap: 4px; padding-bottom: 6px; }
     .f-claim-head h2 { font-size: 24px; }
