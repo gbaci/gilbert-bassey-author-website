@@ -1546,3 +1546,17 @@ body.rd {
     .ck h1 { font-size: 30px; }
     .ck-posters { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* "Get your link" box (free, share, and leaderboard pages) */
+.rd-link { padding: 20px 18px; border: 1px solid var(--hair); border-radius: 3px; background: var(--raised); display: flex; flex-direction: column; gap: 12px; }
+.rd-link .eyebrow { font-size: 11px; margin: 0; }
+.rd-link-sub { font-size: 14.5px; line-height: 1.5; color: var(--muted); margin: 0; }
+.rd-link-form { position: relative; display: flex; flex-wrap: wrap; gap: 8px; }
+.rd-link-at { position: absolute; left: 12px; top: 13px; color: var(--muted); pointer-events: none; }
+.rd-link-form input { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 0 12px 0 28px; border: 1px solid var(--hair); border-radius: 3px; background: transparent; color: var(--cream); font: inherit; font-size: 16px; }
+.rd-link-form .btn { flex: 0 0 auto; min-height: 48px; padding: 0 22px; font-size: 13px; }
+.rd-link-error { font-size: 14px; color: var(--gold); margin: 0; }
+.rd-link-out { display: flex; flex-direction: column; gap: 10px; }
+.rd-link-out[hidden] { display: none; }
+.rd-link-url { font-size: 16.5px; line-height: 1.4; color: var(--cream); overflow-wrap: anywhere; margin: 0; }
+.rd-link-copy { font-size: 13px; min-height: 44px; }

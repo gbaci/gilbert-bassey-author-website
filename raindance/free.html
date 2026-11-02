@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/raindance/release.css?v=20261102l">
+    <link rel="stylesheet" href="/raindance/release.css?v=20261102m">
     <script src="/raindance/release.js?v=20261023a"></script>
 
     <!-- Meta Pixel Code -->
@@ -173,11 +173,26 @@
                     <p class="eyebrow">CHOOSE YOUR MISSION</p>
                     <p>Any one gets you the ebook.</p>
                 </div>
+                <div class="rd-link" data-get-link>
+            <p class="eyebrow gold">YOUR PERSONAL LINK</p>
+            <p class="rd-link-sub">Use your handle now and put this link in your post, so anyone who claims through it counts for you. It's the same handle you'll use when you send your proof.</p>
+            <form class="rd-link-form" novalidate>
+                <label class="visually-hidden" for="rd-link-free">Your social media handle</label>
+                <span class="rd-link-at" aria-hidden="true">@</span>
+                <input id="rd-link-free" type="text" placeholder="Your social media handle" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40">
+                <button type="submit" class="btn btn-gold">GET MY LINK</button>
+            </form>
+            <p class="rd-link-error" role="alert" hidden>Please enter your social media handle.</p>
+            <div class="rd-link-out" aria-live="polite" hidden>
+                <p class="rd-link-url"></p>
+                <button type="button" class="btn btn-line rd-link-copy">COPY LINK</button>
+            </div>
+        </div>
                 <div class="f-mlist">
                     <div class="f-mission" data-mission="Share a post">
                         <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">↗</span><span class="f-m-title">Share a post</span><span class="f-m-chip">EBOOK</span><span class="f-m-chev" aria-hidden="true"></span></button>
                         <div class="f-m-a" hidden>
-                            <p>Put the cover or a poster on your WhatsApp status, Instagram, X or TikTok.</p>
+                            <p>Put the cover or a poster on your WhatsApp status, Instagram, X or TikTok, with your personal link.</p>
                             <div class="f-m-actions"><a class="f-m-act" href="#" data-link="assets">GET THE ASSETS</a><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
                         </div>
                     </div>
@@ -191,7 +206,7 @@
                     <div class="f-mission" data-mission="Make a video">
                         <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">▶&#xFE0E;</span><span class="f-m-title">Make a video</span><span class="f-m-chip">+3 PTS</span><span class="f-m-chev" aria-hidden="true"></span></button>
                         <div class="f-m-a" hidden>
-                            <p>Ideas: 3 reasons you want to read it · your reaction to the cover · your reaction to the sample · a countdown to release. Every video must send people here: say “link in Gilbert's bio” or put this page's link in your own bio.</p>
+                            <p>Ideas: 3 reasons you want to read it · your reaction to the cover · your reaction to the sample · a countdown to release. Every video must send people here: put your personal link in your bio, then point viewers to it.</p>
                             <p>Your first video earns 3 points. Make more if you like: each extra video earns up to 5 points, depending on how well it does.</p>
                             <div class="f-m-actions"><a class="f-m-act" href="#" data-link="posters">GET THE POSTERS</a><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
                         </div>
@@ -368,6 +383,7 @@
     </div>
 </section>
 
+<script src="/raindance/personal-link.js?v=20261102a"></script>
 <script src="/raindance/free.js?v=20261029a"></script>
 </body>
 </html>

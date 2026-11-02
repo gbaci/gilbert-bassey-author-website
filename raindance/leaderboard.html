@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/raindance/release.css?v=20261102l">
+    <link rel="stylesheet" href="/raindance/release.css?v=20261102m">
     <script src="/raindance/release.js?v=20261023a"></script>
 
     <!-- Meta Pixel Code -->
@@ -86,6 +86,22 @@
         <p class="lb-more" id="lb-more" hidden></p>
     </div>
 
+    <div class="rd-link" data-get-link>
+            <p class="eyebrow gold">YOUR PERSONAL LINK</p>
+            <p class="rd-link-sub">Lost your link? Enter the handle you claimed with. Every friend who claims through it earns you a point once their claim is approved.</p>
+            <form class="rd-link-form" novalidate>
+                <label class="visually-hidden" for="rd-link-lb">Your social media handle</label>
+                <span class="rd-link-at" aria-hidden="true">@</span>
+                <input id="rd-link-lb" type="text" placeholder="Your social media handle" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40">
+                <button type="submit" class="btn btn-gold">GET MY LINK</button>
+            </form>
+            <p class="rd-link-error" role="alert" hidden>Please enter your social media handle.</p>
+            <div class="rd-link-out" aria-live="polite" hidden>
+                <p class="rd-link-url"></p>
+                <button type="button" class="btn btn-line rd-link-copy">COPY LINK</button>
+            </div>
+        </div>
+
     <div class="lb-cta">
         <a class="btn btn-gold" href="/raindance/free">CLAIM YOUR FREE EBOOK</a>
         <a href="/raindance/free#missions">How to earn points →</a>
@@ -103,6 +119,7 @@
     </nav>
 </footer>
 
+<script src="/raindance/personal-link.js?v=20261102a"></script>
 <script src="/raindance/leaderboard.js?v=20261023a"></script>
 </body>
 </html>
