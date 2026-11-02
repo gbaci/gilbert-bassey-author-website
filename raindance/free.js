@@ -21,6 +21,12 @@ function normHandle(v) {
   const claim = document.getElementById("claim");
   const missionSelect = document.getElementById("f-mission");
 
+  // The reading reaction mission opens at launch, once people have the book.
+  if (!RD.after) {
+    const reaction = missionSelect.querySelector('option[value="Post your reading reaction"]');
+    if (reaction) reaction.remove();
+  }
+
   // ----- Links -----
   document.querySelectorAll("[data-link]").forEach(function (a) { RD.wire(a, LINKS[a.dataset.link]); });
 

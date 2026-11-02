@@ -1586,3 +1586,6 @@ body.rd {
 }
 .k-steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
 .k-jump { align-self: center; font-size: 13px; }
+.k-rewards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.k-rewards li { display: flex; gap: 12px; padding: 8px 0; border-top: 1px solid var(--hair); }
+.k-rewards strong { flex: 0 0 82px; font-weight: 500; color: var(--gold); }
