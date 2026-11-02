@@ -2,7 +2,7 @@
    Empty links show "Coming soon" instead of going nowhere. The launch date lives in release.js. */
 
 const CONFIG = {
-  // Raindance Bundles already paid for (0–50). At 50 the bundle button says SOLD OUT.
+  // ATOGAM Bundles already paid for (0–50). At 50 the bundle button says SOLD OUT.
   bundlesSold: 0,
 
   // Payment links (Selar).
