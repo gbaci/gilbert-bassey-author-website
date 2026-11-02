@@ -5,13 +5,13 @@ const CONFIG = {
   // ATOGAM Bundles already paid for (0–50). At 50 the bundle button says SOLD OUT.
   bundlesSold: 0,
 
-  // Payment links (Selar).
+  // Payment links (our own checkout, paid through Paystack).
   pay: {
-    ebook: "https://selar.com/17eds99040",
-    paperback: "https://selar.com/6h2j9p9it7",
-    hardcover: "https://selar.com/jq4h2u9ol8",
-    bundle: "https://selar.com/4gx01k5jn7",
-    patron: "https://selar.com/65527h5444"
+    ebook: "/raindance/checkout?item=ebook",
+    paperback: "/raindance/checkout?item=paperback",
+    hardcover: "/raindance/checkout?item=hardcover",
+    bundle: "/raindance/checkout?item=bundle",
+    patron: "/raindance/checkout?item=patron"
   }
 };
 
