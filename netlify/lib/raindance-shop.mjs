@@ -152,11 +152,19 @@ export async function recordOrder(tx) {
     tee_size: teeSummary(extras) || m.tee_size || "",
   };
 
-  const [saved] = await Promise.all([
-    forwardToSheet({ form_name: "raindance-sale", id: tx.reference, created_at: tx.paid_at || new Date().toISOString(), data }),
+  const created_at = tx.paid_at || new Date().toISOString();
+  const [saved, patronSaved] = await Promise.all([
+    forwardToSheet({ form_name: "raindance-sale", id: tx.reference, created_at, data }),
+    m.item !== "patron" || forwardToSheet({
+      form_name: "raindance-patron", id: tx.reference, created_at,
+      data: {
+        name: data.name, email, social_handle: m.social_handle, distribution: m.distribution,
+        address: m.patron_address, delivery_phone: data.phone, copies_sponsored: 25,
+      },
+    }),
     addToMailerLite(email, data.name, m.item, [product.group, product.extraGroup].filter(Boolean)),
   ]);
-  return { item: m.item, saved };
+  return { item: m.item, saved: saved && patronSaved };
 }
 
 // One line for the Sales sheet's Product column, so whoever packs the order sees everything in it.

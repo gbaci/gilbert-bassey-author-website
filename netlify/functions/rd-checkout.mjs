@@ -48,12 +48,21 @@ export const handler = async (event) => {
     posters: extras.posters.join(","),
     cards: extras.cards ? "1" : "",
   };
+  if (item === "patron") {
+    const self = f.distribution === "Patron distributes";
+    Object.assign(meta, {
+      distribution: self ? "Patron distributes" : "Giveaway by Gilbert",
+      patron_address: self ? clean(f.patron_address, 500) : "",
+      social_handle: self ? "" : clean(f.social_handle, 120),
+    });
+  }
 
   const missing = [];
   if (meta.name.length < 2) missing.push("your name");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push("a valid email");
   if (needsPhone && meta.phone.length < 7) missing.push("your phone number");
   if (needsDelivery && (meta.address.length < 5 || !meta.city || !meta.state)) missing.push("your delivery address");
+  if (meta.distribution === "Patron distributes" && meta.patron_address.length < 5) missing.push("the address for your copies");
   if (product.teeSize && !TEE_SIZES.includes(meta.tee_size)) missing.push("a T-shirt size");
   if (missing.length) return reply(400, { error: "Please add " + missing.join(", ") + "." });
 

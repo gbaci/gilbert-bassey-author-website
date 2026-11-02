@@ -186,6 +186,28 @@
                         </div>
                         <p class="f-hint">Delivery within Nigeria is paid separately, to the rider, when your order arrives.</p>
                     </div>
+                    <div data-show="patron" class="f-form" hidden>
+                        <p class="a-label" style="padding-top:6px">Who should give out your copies?</p>
+                        <div class="a-toggle" role="radiogroup" aria-label="Who should give out your copies?">
+                            <label><input type="radio" name="distribution" value="Giveaway by Gilbert" checked> Please handle it for me</label>
+                            <label><input type="radio" name="distribution" value="Patron distributes"> I'll give them out myself</label>
+                        </div>
+                        <div id="c-dist-mosa" class="f-form">
+                            <p class="a-get">I'll give your copies away to readers through giveaways on my social media, and thank you publicly when I do.</p>
+                            <div class="f-field">
+                                <label class="a-label" for="c-handle">Your social media handle <span>(optional)</span></label>
+                                <input id="c-handle" name="social_handle" type="text" placeholder="e.g. @adaokafor on Instagram" autocapitalize="none" autocorrect="off" spellcheck="false">
+                                <p class="f-hint">So I can tag you when I share your copies with readers.</p>
+                            </div>
+                        </div>
+                        <div id="c-dist-self" hidden>
+                            <p class="a-get">We'll get all your copies to you in Nigeria. Tell me where.</p>
+                            <div class="f-field">
+                                <label class="a-label" for="c-paddress">Address for the copies</label>
+                                <textarea id="c-paddress" name="patron_address" autocomplete="street-address" placeholder="House number, street, area, city, state, and a nearby landmark" required disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn f-submit" type="submit" id="c-pay">PAY</button>
                     <p class="f-status" id="c-status" role="alert"></p>
                     <p class="f-note">Payment is handled securely by Paystack. By paying you agree to the <a href="/raindance/terms">terms and refunds</a>.</p>
@@ -457,6 +479,16 @@
   $("ck-plus").addEventListener("click", function () { state.qty = Math.min(10, state.qty + 1); render(); });
 
   // Moving between the two steps
+  // Founding Patron: the handle if I give out the copies, the address if they do.
+  function patronFields() {
+    var self = form.querySelector('input[name="distribution"]:checked').value === "Patron distributes";
+    $("c-dist-mosa").hidden = self;
+    $("c-handle").disabled = self;
+    $("c-dist-self").hidden = !self;
+    $("c-paddress").disabled = !self;
+  }
+  form.querySelectorAll('input[name="distribution"]').forEach(function (r) { r.addEventListener("change", patronFields); });
+
   function show(step) {
     $("ck-order").hidden = step !== "order";
     $("ck-details").hidden = step !== "details";
@@ -470,7 +502,10 @@
       var ph = form.querySelector('[data-show="phone"]');
       ph.hidden = !phone;
       ph.querySelector("input").disabled = !phone;
-      if (state.key === "patron") $("c-email-hint").textContent = "Your thank-you and a short form for your credit come here.";
+      var patron = state.key === "patron", box = form.querySelector('[data-show="patron"]');
+      box.hidden = !patron;
+      box.querySelectorAll("input, select, textarea").forEach(function (f) { f.disabled = !patron; });
+      if (patron) { $("c-email-hint").textContent = "Your receipt and thank-you come here."; patronFields(); }
     }
   }
   $("ck-continue").addEventListener("click", function () {
@@ -498,7 +533,7 @@
     if (!form.reportValidity()) return;
     if (isLocal) { status.textContent = "This is the preview on your computer, so no payment starts here. Your order would be " + naira(total()) + "."; return; }
     var data = { item: state.key, qty: state.qty, tees: SIZES.filter(function (s) { return state.tees[s]; }).map(function (s) { return s + ":" + state.tees[s]; }).join(","), posters: state.posters, cards: state.cards, tee_size: state.bundleTee };
-    Array.prototype.forEach.call(form.elements, function (f) { if (f.name && !f.disabled) data[f.name] = f.value; });
+    Array.prototype.forEach.call(form.elements, function (f) { if (f.name && !f.disabled && (f.type !== "radio" || f.checked)) data[f.name] = f.value; });
     pay.disabled = true;
     var label = pay.textContent;
     pay.textContent = "TAKING YOU TO PAYSTACK…";
