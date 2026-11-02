@@ -1560,3 +1560,29 @@ body.rd {
 .rd-link-out[hidden] { display: none; }
 .rd-link-url { font-size: 16.5px; line-height: 1.4; color: var(--cream); overflow-wrap: anywhere; margin: 0; }
 .rd-link-copy { font-size: 13px; min-height: 44px; }
+.k-slide { margin: 6px 0 -4px; font-size: 14.5px; font-weight: 500; color: var(--soft); }
+
+/* Reader quotes carousel (sales page) */
+.s-voices { padding: 56px 0; display: flex; flex-direction: column; gap: 24px; overflow: hidden; }
+.s-voices-head { padding: 0 24px; text-align: center; display: flex; flex-direction: column; gap: 10px; }
+.s-voices-head h2 { margin: 0; font-family: var(--cinzel); font-weight: 600; font-size: 26px; line-height: 1.25; color: var(--cream); text-wrap: balance; }
+.s-voice-track { list-style: none; margin: 0; padding: 4px max(24px, calc(50% - 280px)); display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.s-voice-track::-webkit-scrollbar { display: none; }
+.s-voice { flex: 0 0 min(100%, 560px); box-sizing: border-box; min-height: 250px; scroll-snap-align: center; padding: 28px 24px; border: 1px solid var(--hair); border-radius: 3px; background: var(--raised); display: flex; flex-direction: column; justify-content: center; gap: 16px; text-align: center; }
+.s-voice blockquote { margin: 0; font-style: italic; font-size: 20px; line-height: 1.45; color: var(--cream); text-wrap: pretty; }
+.s-voice p { margin: 0; font-size: 14px; color: var(--muted); }
+.s-voice-nav { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.s-voice-btn { width: 44px; height: 44px; border: 1px solid var(--gold-dim); border-radius: 3px; background: transparent; color: var(--gold); font-size: 18px; cursor: pointer; }
+.s-voice-btn:disabled { opacity: 0.35; cursor: default; }
+.s-voice-count { min-width: 56px; text-align: center; font-size: 14px; color: var(--soft); }
+@media (prefers-reduced-motion: reduce) { .s-voice-track { scroll-behavior: auto; } }
+
+/* The other characters sit after the editions, before the author (sales page) */
+.s-cast-sec { max-width: 600px; margin-left: auto; margin-right: auto; }
+@media (min-width: 900px) {
+    .s-chars { display: flex; flex-direction: column; padding-bottom: 24px; }
+    .s-chapters { width: min(760px, 100%); }
+    .s-cast-sec { max-width: 1280px; padding: 72px var(--pad) 0; }
+}
+.k-steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.k-jump { align-self: center; font-size: 13px; }

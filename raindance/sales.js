@@ -68,3 +68,45 @@ const CONFIG = {
     });
   });
 })();
+
+// Reader quotes carousel: swipe or use the arrows. It never moves on its own.
+(function () {
+  const track = document.getElementById("s-voice-track");
+  if (!track) return;
+  const cards = Array.from(track.children);
+  const prev = document.getElementById("s-voice-prev");
+  const next = document.getElementById("s-voice-next");
+  const count = document.getElementById("s-voice-count");
+  let current = 0;
+
+  function show(i) {
+    current = i;
+    count.textContent = (i + 1) + " of " + cards.length;
+    prev.disabled = i === 0;
+    next.disabled = i === cards.length - 1;
+  }
+  function go(i) {
+    const card = cards[i];
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
+    show(i);
+  }
+  prev.addEventListener("click", function () { go(current - 1); });
+  next.addEventListener("click", function () { go(current + 1); });
+
+  let timer;
+  track.addEventListener("scroll", function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      const middle = track.getBoundingClientRect().left + track.clientWidth / 2;
+      let best = 0, gap = Infinity;
+      cards.forEach(function (c, i) {
+        const r = c.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - middle);
+        if (d < gap) { gap = d; best = i; }
+      });
+      show(best);
+    }, 90);
+  });
+  show(0);
+})();
