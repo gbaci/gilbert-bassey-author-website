@@ -27,7 +27,7 @@ export const PRODUCTS = {
   bundle: { name: "The ATOGAM Bundle", price: 50000, physical: true, maxQty: 1, group: ML_BUYERS, teeSize: true },
   patron: { name: "Founding Patron (A Tale of Gods and Men)", price: 250000, physical: false, maxQty: 1, group: ML_PATRONS },
   // Hidden: only linked from the launch-team welcome email, and only until 31 December 2026 (Lagos time).
-  launch: { name: "Ali: Raindance (Signed Paperback, Launch Team)", price: 6500, physical: true, maxQty: 10,
+  launch: { name: "Ali: Raindance (Signed Paperback, Launch Team, add 1 collectible per copy)", price: 6500, physical: true, maxQty: 10,
     group: ML_BUYERS, until: "2027-01-01T00:00:00+01:00" },
 };
 
