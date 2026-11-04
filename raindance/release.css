@@ -1594,3 +1594,21 @@ body.rd {
 .k-rewards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; text-align: left; }
 .k-rewards li { display: flex; gap: 12px; padding: 8px 0; border-top: 1px solid var(--hair); }
 .k-rewards strong { flex: 0 0 82px; font-weight: 500; color: var(--gold); }
+
+/* Free section menu: the same three tabs on the free, share, and leaderboard pages. */
+.x-tabs { position: sticky; top: 56px; z-index: 19; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #0f0b08; border-bottom: 1px solid rgba(239, 228, 207, 0.1); }
+.x-tabs a { min-height: 44px; padding: 0 4px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.x-tabs a:hover { color: var(--cream); }
+.x-tabs a[aria-current="page"] { color: var(--cream); border-bottom-color: var(--gold); }
+.f-claim, #missions { scroll-margin-top: 112px; }
+.f-band { scroll-margin-top: 100px; }
+.k-sec { scroll-margin-top: 116px; }
+.f-thanks { scroll-margin-top: 100px; }
+.f-ty-next { width: 100%; margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 10px; }
+.f-ty-next .btn { width: 100%; box-sizing: border-box; }
+@media (min-width: 900px) {
+    .x-tabs { padding: 0 max(var(--pad), calc((100% - 720px) / 2)); }
+    .x-tabs a { font-size: 13px; }
+    .f-page .x-tabs { top: 72px; }
+    .f-claim, #missions { scroll-margin-top: 132px; }
+}
