@@ -2,9 +2,7 @@
    Edit LINKS when the assets exist. Empty links show "Coming soon" instead of going nowhere. */
 
 const LINKS = {
-  assets: "/raindance/share",           // share kit: posters, cover, art, captions
   goodreads: "https://www.goodreads.com/book/show/260625427-ali",
-  posters: "/raindance/share#posters", // same kit, opened at the posters
   maskGuide: ""   // TODO: Rainmaker mask guide
 };
 
@@ -55,6 +53,10 @@ function normHandle(v) {
       }
     });
   });
+
+  // ----- "Send your proof" on What to post: ?m=video picks that mission in the form -----
+  const fromKit = { pass: "Pass it on", poster: "Share a post", video: "Make a video" }[new URLSearchParams(location.search).get("m")];
+  if (fromKit) missionSelect.value = fromKit;
 
   // ----- Referral: ?ref=CODE (or the older ?r=CODE) fills "Referred by" and is remembered -----
   const refInput = document.getElementById("f-ref");
