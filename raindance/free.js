@@ -9,10 +9,23 @@ const LINKS = {
 const MAX_FILE_MB = 8; // Netlify Forms accepts up to 8 MB per submission.
 const LINK_BASE = "gilbertbassey.com/raindance/free?ref="; // personal link = this + handle
 
-// Social media handle → lowercase, no @, no spaces. Must match normHandle_ in the sheet's script.
+// Social media handle → lowercase, no @, no spaces. A pasted profile address becomes just the handle
+// (instagram.com/b_rookly → b_rookly). Must match personal-link.js and normHandle_ in the sheet's script.
 function normHandle(v) {
-  return String(v || "").trim().toLowerCase().replace(/^@+/, "").replace(/[^a-z0-9._]/g, "").slice(0, 30);
+  let s = String(v || "").trim().toLowerCase();
+  if (s.indexOf("/") !== -1) {
+    const fbId = s.match(/profile\.php\?id=(\d+)/);
+    if (fbId) s = fbId[1];
+    else s = s.replace(/^https?:\/\//, "").split(/[?#]/)[0].replace(/\/+$/, "").split("/").pop();
+  }
+  return s.replace(/^@+/, "").replace(/[^a-z0-9._]/g, "").slice(0, 30);
 }
+
+// What to screenshot depends on the mission. The reading list has no post to show.
+const PROOF_TEXT = {
+  post: { upload: "Upload a screenshot of your post", hint: "Screenshot your own post, showing your name or profile.", error: "Please upload a screenshot of your post." },
+  list: { upload: "Upload a screenshot of your list", hint: "Screenshot Ali: Raindance on your Want to Read list, on Goodreads or StoryGraph.", error: "Please upload a screenshot of your list." }
+};
 
 (function () {
   const form = document.querySelector(".f-form");
@@ -50,13 +63,26 @@ function normHandle(v) {
       if (!wasOpen) {
         setMission(m, true);
         missionSelect.value = m.dataset.mission;
+        showProofText();
       }
     });
   });
 
+  // ----- Proof wording and examples follow the chosen mission -----
+  function showProofText() {
+    const isList = missionSelect.value === "Add it to your reading list";
+    const text = isList ? PROOF_TEXT.list : PROOF_TEXT.post;
+    document.getElementById("f-upload-text").textContent = text.upload;
+    document.getElementById("f-proof-hint").textContent = text.hint;
+    document.getElementById("f-proof-error").textContent = text.error;
+    document.getElementById("f-examples").hidden = isList;
+    missionSelect.closest(".f-field").classList.remove("invalid");
+  }
+  missionSelect.addEventListener("change", showProofText);
+
   // ----- "Send your proof" on What to post: ?m=video picks that mission in the form -----
   const fromKit = { pass: "Pass it on", poster: "Share a post", video: "Make a video" }[new URLSearchParams(location.search).get("m")];
-  if (fromKit) missionSelect.value = fromKit;
+  if (fromKit) { missionSelect.value = fromKit; showProofText(); }
 
   // ----- Referral: ?ref=CODE (or the older ?r=CODE) fills "Referred by" and is remembered -----
   const refInput = document.getElementById("f-ref");
@@ -75,7 +101,7 @@ function normHandle(v) {
   handleInput.addEventListener("blur", function () { handleInput.value = normHandle(handleInput.value); });
   refInput.addEventListener("blur", function () { refInput.value = normHandle(refInput.value); });
 
-  // ----- Proof: file or link -----
+  // ----- Proof: a screenshot is required; a link to the post is an optional extra -----
   const fileInput = document.getElementById("f-file");
   const linkInput = document.getElementById("f-link");
   const fileName = document.getElementById("f-file-name");
@@ -87,7 +113,6 @@ function normHandle(v) {
     fileName.textContent = f ? f.name : "";
     proofField.classList.remove("invalid");
   });
-  linkInput.addEventListener("input", function () { proofField.classList.remove("invalid"); });
 
   // ----- Validation -----
   function mark(name, bad) {
@@ -107,17 +132,19 @@ function normHandle(v) {
     handleInput.value = normHandle(handleInput.value);
     if (mark("username", handleInput.value.length < 2)) firstBad = firstBad || handleInput;
 
+    if (mark("mission", !missionSelect.value)) firstBad = firstBad || missionSelect;
+
     const file = fileInput.files[0];
-    const link = linkInput.value.trim();
     let problem = "";
-    if (!file && !link) problem = "Please upload a screenshot or paste a link.";
-    else if (file && !/^image\//.test(file.type)) problem = "Please upload an image, or paste a link.";
-    else if (file && file.size > MAX_FILE_MB * 1024 * 1024) problem = "That file is too large. Please upload a screenshot under " + MAX_FILE_MB + " MB, or paste a link.";
-    else if (!file && !/\S+\.\S+/.test(link)) problem = "That doesn't look like a link. Please check it, or upload a screenshot.";
+    if (!file) problem = missionSelect.value === "Add it to your reading list" ? PROOF_TEXT.list.error : PROOF_TEXT.post.error;
+    else if (!/^image\//.test(file.type)) problem = "Please upload an image of your screenshot.";
+    else if (file.size > MAX_FILE_MB * 1024 * 1024) problem = "That file is too large. Please upload a screenshot under " + MAX_FILE_MB + " MB.";
     if (problem) {
       proofError.textContent = problem;
       mark("proof", true);
-      firstBad = firstBad || linkInput;
+      firstBad = firstBad || fileInput;
+    } else {
+      mark("proof", false);
     }
 
     if (firstBad) firstBad.focus();
@@ -203,6 +230,8 @@ function normHandle(v) {
     fileInput.value = "";
     linkInput.value = "";
     fileName.textContent = "";
+    missionSelect.value = "";
+    showProofText();
     missions.forEach(function (m) { setMission(m, false); });
     thanks.hidden = true;
     main.hidden = false;
@@ -210,7 +239,7 @@ function normHandle(v) {
     document.getElementById("missions").scrollIntoView({ block: "start" });
   });
 
-  // ----- Sticky claim bar (phone): shows once the hero button is gone, hides when the form is in view -----
+  // ----- Sticky claim bar (phone): shows once the hero button is gone, hides when the missions are in view -----
   const sticky = document.querySelector(".f-sticky");
   const heroBtn = document.querySelector(".f-hero-btn");
   if ("IntersectionObserver" in window) {
@@ -226,9 +255,9 @@ function normHandle(v) {
       update();
     }).observe(heroBtn);
     new IntersectionObserver(function (entries) {
-      // "Near" once the top of the form section is within the viewport, or above it.
+      // "Near" once the top of the missions section is within the viewport, or above it.
       formNear = entries[0].isIntersecting || entries[0].boundingClientRect.top < 0;
       update();
-    }, { rootMargin: "0px 0px -80px 0px" }).observe(claim);
+    }, { rootMargin: "0px 0px -80px 0px" }).observe(document.getElementById("missions"));
   }
 })();

@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/raindance/release.css?v=20261104b">
+    <link rel="stylesheet" href="/raindance/release.css?v=20261105a">
     <script src="/raindance/release.js?v=20261023a"></script>
 
     <!-- Meta Pixel Code -->
@@ -87,7 +87,7 @@
             <h1>Get the ebook free. Earn a signed copy.</h1>
             <p class="f-hero-line" data-after="Do one thing to share it. Your ebook arrives as soon as you're approved.">Do one thing to share it before launch. Do more to collect more.</p>
             <div class="f-hero-cta">
-                <a class="btn btn-gold f-hero-btn" href="#claim" data-to-form>CLAIM YOUR FREE EBOOK</a>
+                <a class="btn btn-gold f-hero-btn" href="#missions">CLAIM YOUR FREE EBOOK</a>
                 <p class="f-date before-only">Out 1 January 2027</p>
             </div>
         </div>
@@ -166,7 +166,7 @@
     <!-- Steps -->
     <ol class="f-steps">
         <li><span class="f-step-n">1</span><div><p class="f-step-t">Share</p><p class="f-step-d">Pick a mission</p></div></li>
-        <li><span class="f-step-n">2</span><div><p class="f-step-t">Submit</p><p class="f-step-d">Send a screenshot or link</p></div></li>
+        <li><span class="f-step-n">2</span><div><p class="f-step-t">Submit</p><p class="f-step-d">Send a screenshot of your post</p></div></li>
         <li><span class="f-step-n">3</span><div><p class="f-step-t">Earn</p><p class="f-step-d">Climb the <a href="/raindance/leaderboard">leaderboard</a></p></div></li>
     </ol>
 
@@ -220,21 +220,21 @@
                         <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">▶&#xFE0E;</span><span class="f-m-title">Make a video on why you can’t wait to read it</span><span class="f-m-chip">+3 PTS</span><span class="f-m-chev" aria-hidden="true"></span></button>
                         <div class="f-m-a" hidden>
                             <p>Your first video earns 3 points. Make more if you like: each extra video earns up to 5 points, depending on how well it does.</p>
-                            <ol class="f-m-steps"><li>Pick an idea: 3 reasons you want to read it, your reaction to the cover, your reaction to the sample, or a countdown to release.</li><li>Post it, put your personal link in your bio, and point viewers to it.</li><li>Send us a screenshot or the link.</li></ol>
+                            <ol class="f-m-steps"><li>Pick an idea: 3 reasons you want to read it, your reaction to the cover, your reaction to the sample, or a countdown to release.</li><li>Post it, put your personal link in your bio, and point viewers to it.</li><li>Screenshot your post and send it to us.</li></ol>
                             <div class="f-m-actions"><a class="f-m-act" href="/raindance/share#video">GET THE IMAGES</a><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
                         </div>
                     </div>
                     <div class="f-mission after-only" data-mission="Post your reading reaction">
                         <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">“</span><span class="f-m-title">Post your reaction after reading it</span><span class="f-m-chip">+5 PTS</span><span class="f-m-chev" aria-hidden="true"></span></button>
                         <div class="f-m-a" hidden>
-                            <ol class="f-m-steps"><li>Read the book.</li><li>Post what you thought on Instagram, TikTok, X, or your WhatsApp status. Honest is better than nice.</li><li>Send us a screenshot or the link.</li></ol>
+                            <ol class="f-m-steps"><li>Read the book.</li><li>Post what you thought on Instagram, TikTok, X, or your WhatsApp status. Honest is better than nice.</li><li>Screenshot your post and send it to us.</li></ol>
                             <div class="f-m-actions"><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
                         </div>
                     </div>
                     <div class="f-mission" data-mission="Make the Rainmaker's mask">
                         <button type="button" class="f-m-q" aria-expanded="false"><span class="f-m-icon" aria-hidden="true">◐</span><span class="f-m-title">Take a photo in your own Rainmaker’s mask</span><span class="f-m-chip">+5 PTS</span><span class="f-m-chev" aria-hidden="true"></span></button>
                         <div class="f-m-a" hidden>
-                            <ol class="f-m-steps"><li>Make the mask.</li><li>Take a picture with it and post it with <strong>#TheRainmakerRises</strong>.</li><li>Send us a screenshot or the link.</li></ol>
+                            <ol class="f-m-steps"><li>Make the mask.</li><li>Take a picture with it and post it with <strong>#TheRainmakerRises</strong>.</li><li>Screenshot your post and send it to us.</li></ol>
                             <div class="f-m-actions"><a class="f-m-act" href="#" data-link="maskGuide">GET THE MASK GUIDE</a><a class="f-m-proof" href="#claim" data-to-form>DONE IT? SEND PROOF ↓</a></div>
                         </div>
                     </div>
@@ -273,9 +273,10 @@
                         <p class="f-error">Please enter your social media handle.</p>
                     </div>
 
-                    <div class="f-field f-side">
+                    <div class="f-field f-side" data-field="mission">
                         <label class="visually-hidden" for="f-mission">Mission</label>
-                        <select id="f-mission" name="mission">
+                        <select id="f-mission" name="mission" required>
+                            <option value="" selected disabled>Which mission did you do?</option>
                             <option value="Pass it on">The Pass It On Challenge: tag a friend</option>
                             <option value="Share a post">Share a poster or the cover</option>
                             <option value="Add it to your reading list">Add it to your Goodreads or StoryGraph list</option>
@@ -284,21 +285,51 @@
                             <option value="Post your reading reaction">Post your reaction after reading it</option>
                         </select>
                         <span class="f-side-label" aria-hidden="true">Mission</span>
+                        <p class="f-error">Please choose the mission you did.</p>
                     </div>
 
                     <div class="f-field" data-field="proof">
                         <div class="f-proof">
                             <label class="f-upload">
                                 <input id="f-file" name="proof_file" type="file" accept="image/*">
-                                Upload a screenshot
+                                <span id="f-upload-text">Upload a screenshot of your post</span>
                             </label>
-                            <span>or</span>
-                            <label class="visually-hidden" for="f-link">Paste a link to your post</label>
-                            <input class="f-link" id="f-link" name="proof_link" type="text" inputmode="url" placeholder="paste a link" autocomplete="off">
                             <span class="f-file-name" id="f-file-name" aria-live="polite"></span>
                         </div>
-                        <p class="f-hint">Screenshot your actual post, showing your name or profile. A screenshot of this website or a link to it doesn’t count.</p>
-                        <p class="f-error" id="f-proof-error">Please upload a screenshot or paste a link.</p>
+                        <p class="f-hint" id="f-proof-hint">Screenshot your own post, showing your name or profile.</p>
+                        <p class="f-error" id="f-proof-error">Please upload a screenshot of your post.</p>
+                    </div>
+
+                    <div class="f-examples" id="f-examples" role="group" aria-label="What counts as proof">
+                        <figure class="f-ex is-yes">
+                            <div class="f-ex-shot" aria-hidden="true">
+                                <div class="f-ex-who"><i></i><b>@yourname</b></div>
+                                <img src="/raindance/assets/web/cover-front-800.jpg" alt="" loading="lazy">
+                                <p>#AliRaindance</p>
+                            </div>
+                            <figcaption><span aria-hidden="true">✓</span> Your post</figcaption>
+                        </figure>
+                        <figure class="f-ex is-no">
+                            <div class="f-ex-shot" aria-hidden="true">
+                                <div class="f-ex-url">gilbertbassey.com</div>
+                                <img src="/raindance/assets/web/cover-front-800.jpg" alt="" loading="lazy">
+                                <p class="f-ex-btn">CLAIM</p>
+                            </div>
+                            <figcaption><span aria-hidden="true">✕</span> Our website</figcaption>
+                        </figure>
+                        <figure class="f-ex is-no">
+                            <div class="f-ex-shot" aria-hidden="true">
+                                <div class="f-ex-avatar"></div>
+                                <p class="f-ex-name">@yourname</p>
+                                <div class="f-ex-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                            </div>
+                            <figcaption><span aria-hidden="true">✕</span> Your profile</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="f-field">
+                        <label class="visually-hidden" for="f-link">Link to your post (optional)</label>
+                        <input id="f-link" name="proof_link" type="text" inputmode="url" placeholder="Link to your post (optional)" autocomplete="off">
                     </div>
 
                     <div class="f-field f-side">
@@ -349,7 +380,7 @@
     </footer>
 
     <div class="f-sticky" aria-hidden="true">
-        <a class="f-sticky-btn" href="#claim" data-to-form tabindex="-1">CLAIM YOUR FREE EBOOK ↓</a>
+        <a class="f-sticky-btn" href="#missions" tabindex="-1">CLAIM YOUR FREE EBOOK ↓</a>
     </div>
 </main>
 
@@ -404,7 +435,7 @@
     </div>
 </section>
 
-<script src="/raindance/personal-link.js?v=20261102a"></script>
-<script src="/raindance/free.js?v=20261104a"></script>
+<script src="/raindance/personal-link.js?v=20261105a"></script>
+<script src="/raindance/free.js?v=20261105a"></script>
 </body>
 </html>

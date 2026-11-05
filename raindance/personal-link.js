@@ -8,7 +8,13 @@
 
   // Same tidy-up as normHandle in free.js and normHandle_ in the sheet's script.
   function normHandle(v) {
-    return String(v || "").trim().toLowerCase().replace(/^@+/, "").replace(/[^a-z0-9._]/g, "").slice(0, 30);
+    let s = String(v || "").trim().toLowerCase();
+    if (s.indexOf("/") !== -1) {
+      const fbId = s.match(/profile\.php\?id=(\d+)/);
+      if (fbId) s = fbId[1];
+      else s = s.replace(/^https?:\/\//, "").split(/[?#]/)[0].replace(/\/+$/, "").split("/").pop();
+    }
+    return s.replace(/^@+/, "").replace(/[^a-z0-9._]/g, "").slice(0, 30);
   }
 
   function personalise(handle) {
