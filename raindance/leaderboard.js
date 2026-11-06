@@ -7,9 +7,6 @@ const DATA_URL = "https://script.google.com/macros/s/AKfycbw51aAw_fP8pJG2wLuSSNs
 
 const SHOW = 100; // rows shown before someone searches
 
-// Physical-reward levels show as "locked in": reaching one secures it; more points can upgrade it.
-const LOCKED = { "Signed paperback": 1, "Signed hardcover": 1, "Fan Bundle": 1, "Fan Bundle + Patron race": 1 };
-
 (function () {
   const list = document.getElementById("lb-list");
   const msg = document.getElementById("lb-msg");
@@ -36,7 +33,7 @@ const LOCKED = { "Signed paperback": 1, "Signed hardcover": 1, "Fan Bundle": 1, 
     handle.textContent = "@" + p.handle;
     const level = document.createElement("span");
     level.className = "lb-level";
-    level.textContent = LOCKED[p.level] ? p.level + " · locked in" : p.level;
+    level.textContent = p.level;
     name.append(handle, level);
     const pts = document.createElement("span");
     pts.className = "lb-pts";

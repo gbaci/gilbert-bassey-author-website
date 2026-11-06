@@ -730,6 +730,8 @@ body.rd {
 .f-hero-text { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .f-hero-text .eyebrow { padding-top: 6px; }
 .f-hero h1 { font-family: var(--cinzel); font-weight: 600; font-size: 28px; line-height: 1.18; color: var(--head); }
+.f-hero-title { color: var(--gold); white-space: nowrap; }
+.f-hero h1 { font-size: min(28px, 6.3vw); }
 .f-hero-line { font-size: 16px; line-height: 1.5; color: var(--body); }
 .f-hero-cta { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .f-hero-btn { width: 100%; font-size: 13.5px; }
@@ -957,6 +959,8 @@ body.rd {
 .f-proof .f-link { width: 120px; height: 34px; padding: 0 8px; font-size: 15px; background: var(--paper-field); }
 .f-file-name { flex-basis: 100%; text-align: center; font-size: 13px; color: var(--paper-head); word-break: break-all; }
 .f-file-name:empty { display: none; }
+.r-delivery { display: flex; flex-direction: column; gap: 10px; }
+.r-closed { color: var(--gold); }
 .f-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
 .f-examples[hidden] { display: none; }
 .f-ex { margin: 0; display: flex; flex-direction: column; gap: 5px; }
