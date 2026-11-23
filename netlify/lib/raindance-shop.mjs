@@ -24,7 +24,7 @@ export const PRODUCTS = {
   ebook: { name: "Ali: Raindance (Ebook)", price: 5000, physical: false, noPhone: true, extras: true, maxQty: 1, group: ML_BUYERS, extraGroup: ML_EBOOK },
   paperback: { name: "Ali: Raindance (Paperback)", price: 10000, physical: true, extras: true, maxQty: 10, group: ML_BUYERS },
   hardcover: { name: "Ali: Raindance (Hardcover)", price: 25000, physical: true, extras: true, maxQty: 10, group: ML_BUYERS },
-  bundle: { name: "The ATOGAM Bundle", price: 50000, physical: true, maxQty: 1, group: ML_BUYERS, teeSize: true },
+  bundle: { name: "The ATOGAM Collector’s Box", price: 50000, physical: true, maxQty: 1, group: ML_BUYERS },
   patron: { name: "Founding Patron (A Tale of Gods and Men)", price: 250000, physical: false, maxQty: 1, group: ML_PATRONS },
   // Hidden: only linked from the launch-team welcome email, and only until 31 December 2026 (Lagos time).
   launch: { name: "Ali: Raindance (Signed Paperback, Launch Team, add 1 collectible per copy)", price: 6500, physical: true, maxQty: 10,

@@ -2,7 +2,7 @@
    Empty links show "Coming soon" instead of going nowhere. The launch date lives in release.js. */
 
 const CONFIG = {
-  // ATOGAM Bundles already paid for (0–50). At 50 the bundle button says SOLD OUT.
+  // ATOGAM Collector's Boxes already paid for (0–50). At 50 the box button says SOLD OUT.
   bundlesSold: 0,
 
   // Payment links (our own checkout, paid through Paystack).
